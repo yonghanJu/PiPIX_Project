@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Juyonghan/Andriod/AndriodStudioProjects/PipiX/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.39791666666666664" />
+        <entry key="..\:/Juyonghan/Andriod/AndriodStudioProjects/PipiX/app/src/main/res/drawable/ic_launcher_background.xml" value="0.39791666666666664" />
+        <entry key="..\:/Juyonghan/Andriod/AndriodStudioProjects/PipiX/app/src/main/res/drawable/startbutton2.xml" value="0.234375" />
+        <entry key="..\:/Juyonghan/Andriod/AndriodStudioProjects/PipiX/app/src/main/res/layout/activity_main.xml" value="0.3333333333333333" />
+        <entry key="..\:/Juyonghan/Andriod/AndriodStudioProjects/PipiX/app/src/main/res/layout/fragment_on_boarding.xml" value="0.21965579710144928" />
+        <entry key="..\:/Juyonghan/Andriod/AndriodStudioProjects/PipiX/app/src/main/res/layout/fragment_on_boarding_first.xml" value="0.21965579710144928" />
+        <entry key="..\:/Juyonghan/Andriod/AndriodStudioProjects/PipiX/app/src/main/res/layout/fragment_on_boarding_second.xml" value="0.21965579710144928" />
+        <entry key="..\:/Juyonghan/Andriod/AndriodStudioProjects/PipiX/app/src/main/res/layout/fragment_onboarding1.xml" value="0.21965579710144928" />
+        <entry key="..\:/Juyonghan/Andriod/AndriodStudioProjects/PipiX/app/src/main/res/layout/fragment_onboarding_1.xml" value="0.21965579710144928" />
+        <entry key="..\:/Juyonghan/Andriod/AndriodStudioProjects/PipiX/app/src/main/res/layout/fragment_prepare.xml" value="0.22" />
+        <entry key="..\:/Juyonghan/Andriod/AndriodStudioProjects/PipiX/app/src/main/res/layout/fragment_welcome.xml" value="0.22" />
+        <entry key="..\:/Juyonghan/Andriod/AndriodStudioProjects/PipiX/app/src/main/res/layout/test_fragment.xml" value="0.22509057971014493" />
+        <entry key="..\:/Users/pck49/Documents/GitHub/Pipi/app/src/main/res/layout/activity_main.xml" value="0.23148148148148148" />
+        <entry key="..\:/Users/pck49/Documents/GitHub/Pipi/app/src/main/res/layout/dialog_loading.xml" value="0.23148148148148148" />
+        <entry key="..\:/Users/pck49/Documents/GitHub/Pipi/app/src/main/res/layout/fragment_on_boarding_first.xml" value="0.23148148148148148" />
+        <entry key="..\:/Users/pck49/Documents/GitHub/PipiX/app/src/main/res/layout/fragment_on_boarding_first.xml" value="0.2351851851851852" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.pipi.pipix.src.Fragment.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_prepareFragment"
+            app:destination="@id/prepareFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/prepareFragment"
+        android:name="com.pipi.pipix.src.Fragment.PrepareFragment"
+        android:label="fragment_prepare"
+        tools:layout="@layout/fragment_prepare" >
+        <action
+            android:id="@+id/action_prepareFragment_to_onBoardingFirstFragment"
+            app:destination="@id/onBoardingFirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onBoardingFirstFragment"
+        android:name="com.pipi.pipix.src.Fragment.OnBoardingFirstFragment"
+        android:label="fragment_on_boarding_first"
+        tools:layout="@layout/fragment_on_boarding_first" >
+        <action
+            android:id="@+id/action_onBoardingFirstFragment_to_onBoardingSecondFragment"
+            app:destination="@id/onBoardingSecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onBoardingSecondFragment"
+        android:name="com.pipi.pipix.src.Fragment.OnBoardingSecondFragment"
+        android:label="fragment_on_boarding_second"
+        tools:layout="@layout/fragment_on_boarding_second" />
+</navigation>
