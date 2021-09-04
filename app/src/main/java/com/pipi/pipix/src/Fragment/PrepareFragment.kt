@@ -13,7 +13,7 @@ class PrepareFragment : BaseFragment<FragmentPrepareBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val buttonnext = binding.buttonNext
+        val buttonnext = binding.prepareButtonNext
         buttonnext.setOnClickListener {
             findNavController().navigate(R.id.action_prepareFragment_to_onBoardingFirstFragment)
         }
