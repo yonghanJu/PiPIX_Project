@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 
 class TDViewModel(applications: Application): AndroidViewModel(applications) {
 
-    private val readAllData: LiveData<List<TestData>>
+    val readAllData: LiveData<List<TestData>>
     private val repository: TDRepository
 
     init{
