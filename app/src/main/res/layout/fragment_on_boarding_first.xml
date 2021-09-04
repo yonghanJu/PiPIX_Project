@@ -4,19 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/onboarding_1"
     tools:context=".src.Fragment.OnBoardingFirstFragment">
 
-    <ImageButton
-        android:id="@+id/button_next2"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/on_boarding_first_button_next"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/nextbutton"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:paddingVertical="20dp"
+        android:background="@drawable/button_background2"
+        android:paddingHorizontal="130dp"
+        android:text="다음"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/cardview_light_background"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.928"/>
+        app:srcCompat="@drawable/nextbutton" />
+
+    <ImageView
+        android:id="@+id/on_boarding_first_imageview_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/earphoneblue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/on_boarding_first_textview_text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:text="이어폰을 연결해주세요"
+        app:layout_constraintEnd_toEndOf="@+id/on_boarding_first_imageview_image"
+        app:layout_constraintStart_toStartOf="@+id/on_boarding_first_imageview_image"
+        app:layout_constraintTop_toBottomOf="@+id/on_boarding_first_imageview_image" />
+
+    <TextView
+        android:id="@+id/on_boarding_first_textview_text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textStyle="bold"
+        android:text="이어폰이나 헤드셋을 사용하지 않을시"
+        app:layout_constraintEnd_toEndOf="@+id/on_boarding_first_textview_text1"
+        app:layout_constraintStart_toStartOf="@+id/on_boarding_first_textview_text1"
+        app:layout_constraintTop_toBottomOf="@+id/on_boarding_first_textview_text1" />
+
+    <TextView
+        android:id="@+id/on_boarding_first_textview_text3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textStyle="bold"
+        android:text="정확하게 측정할 수 없습니다"
+        app:layout_constraintEnd_toEndOf="@+id/on_boarding_first_textview_text2"
+        app:layout_constraintStart_toStartOf="@+id/on_boarding_first_textview_text2"
+        app:layout_constraintTop_toBottomOf="@+id/on_boarding_first_textview_text2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

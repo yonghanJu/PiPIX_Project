@@ -12,7 +12,7 @@ class OnBoardingFirstFragment : BaseFragment<FragmentOnBoardingFirstBinding>(Fra
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val buttonnext = binding.buttonNext2
+        val buttonnext = binding.onBoardingFirstButtonNext
         buttonnext.setOnClickListener{
             findNavController().navigate(R.id.action_onBoardingFirstFragment_to_onBoardingSecondFragment)
         }
