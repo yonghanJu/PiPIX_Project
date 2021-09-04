@@ -14,7 +14,7 @@ class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>(
         super.onViewCreated(view, savedInstanceState)
 
 
-        val buttonstart = binding.buttonStart
+        val buttonstart = binding.welcomeButtonStart
         buttonstart.setOnClickListener {
             findNavController().navigate(R.id.action_welcomeFragment_to_prepareFragment)
         }
