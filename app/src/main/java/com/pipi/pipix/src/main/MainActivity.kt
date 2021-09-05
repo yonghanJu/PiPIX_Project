@@ -11,7 +11,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        //setTheme(R.style.Theme_AppCompat_Light_DarkActionBar) 스플래시를 테마로 설정했을 경우 테마를 원래 상태로 바꿀때 사용
         super.onCreate(savedInstanceState)
 
 
