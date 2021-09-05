@@ -1,4 +1,4 @@
-package com.pipi.pipix.src.Fragment
+package com.pipi.pipix.src.main.Fragment
 
 import android.view.LayoutInflater
 import android.view.View

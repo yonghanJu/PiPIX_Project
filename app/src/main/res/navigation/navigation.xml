@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="com.pipi.pipix.src.Fragment.WelcomeFragment"
+        android:name="com.pipi.pipix.src.main.Fragment.WelcomeFragment"
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/prepareFragment"
-        android:name="com.pipi.pipix.src.Fragment.PrepareFragment"
+        android:name="com.pipi.pipix.src.main.Fragment.PrepareFragment"
         android:label="fragment_prepare"
         tools:layout="@layout/fragment_prepare" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/onBoardingFirstFragment"
-        android:name="com.pipi.pipix.src.Fragment.OnBoardingFirstFragment"
+        android:name="com.pipi.pipix.src.main.Fragment.OnBoardingFirstFragment"
         android:label="fragment_on_boarding_first"
         tools:layout="@layout/fragment_on_boarding_first" >
         <action
@@ -37,12 +37,12 @@
     </fragment>
     <fragment
         android:id="@+id/onBoardingSecondFragment"
-        android:name="com.pipi.pipix.src.Fragment.OnBoardingSecondFragment"
+        android:name="com.pipi.pipix.src.main.Fragment.OnBoardingSecondFragment"
         android:label="fragment_on_boarding_second"
         tools:layout="@layout/fragment_on_boarding_second" />
     <fragment
         android:id="@+id/LoginFragement"
-        android:name="com.pipi.pipix.src.Fragment.LoginFragment"
+        android:name="com.pipi.pipix.src.main.Fragment.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -52,7 +52,7 @@
 
     <fragment
         android:id="@+id/ProfileFragment"
-        android:name="com.pipi.pipix.src.Fragment.ProfileFragment"
+        android:name="com.pipi.pipix.src.main.Fragment.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action

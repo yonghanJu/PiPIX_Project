@@ -1,4 +1,4 @@
-package com.pipi.pipix.src.Fragment
+package com.pipi.pipix.src.main.Fragment
 
 import android.os.Bundle
 import android.view.View
@@ -8,7 +8,6 @@ import com.pipi.pipix.R
 import com.pipi.pipix.config.ApplicationClass
 import com.pipi.pipix.config.BaseFragment
 import com.pipi.pipix.databinding.FragmentProfileBinding
-import com.pipi.pipix.databinding.FragmentResultBinding
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBinding::bind, R.layout.fragment_profile) {
 

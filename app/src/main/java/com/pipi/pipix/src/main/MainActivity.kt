@@ -1,4 +1,4 @@
-package com.pipi.pipix.src
+package com.pipi.pipix.src.main
 
 import android.os.Bundle
 import androidx.navigation.Navigation

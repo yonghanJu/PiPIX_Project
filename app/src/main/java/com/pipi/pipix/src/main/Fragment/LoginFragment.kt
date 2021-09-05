@@ -1,7 +1,6 @@
-package com.pipi.pipix.src.Fragment
+package com.pipi.pipix.src.main.Fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.pipi.pipix.R
