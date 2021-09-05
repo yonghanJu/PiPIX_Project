@@ -13,4 +13,6 @@
     <color name="btncolor2">#7F92F6</color>
     <color name="btncolor3">#F6A0F5</color>
     <color name="btncolor4">#FA57F8</color>
+    <color name="line">#1A000000</color>
+    <color name="transparency">#00FFFFFF</color>
 </resources>
