@@ -1,4 +1,4 @@
-package com.pipi.pipix.src
+package com.pipi.pipix.src.main
 
 import android.os.Bundle
 import androidx.navigation.Navigation
@@ -12,6 +12,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
 
         //JetPack navigation
