@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:gravity="center"
+            android:id="@+id/item_time"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2021.09.01 오전 12시 39분"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@color/black"/>
+
+        <ImageView
+            android:id="@+id/item_more"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/more"/>
+    </LinearLayout>
+
+    <View
+        android:layout_marginHorizontal="10dp"
+        android:id="@+id/item_view"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/line"/>
+
+</LinearLayout>
