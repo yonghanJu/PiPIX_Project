@@ -11,7 +11,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_AppCompat_Light_DarkActionBar)
         super.onCreate(savedInstanceState)
+
 
 
         //JetPack navigation
