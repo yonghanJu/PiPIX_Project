@@ -5,6 +5,7 @@ import android.content.Context
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Window
+import android.view.WindowManager
 import com.pipi.pipix.databinding.DialogLoadingBinding
 
 class LoadingDialog(context: Context) : Dialog(context) {
@@ -18,6 +19,7 @@ class LoadingDialog(context: Context) : Dialog(context) {
         setCancelable(false)
         window!!.setBackgroundDrawable(ColorDrawable())
         window!!.setDimAmount(0.2f)
+        window!!.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND) //배경이 투명해지지 않도록
     }
 
     override fun show() {

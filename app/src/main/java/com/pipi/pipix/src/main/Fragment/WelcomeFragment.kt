@@ -1,9 +1,10 @@
-package com.pipi.pipix.src.Fragment
+package com.pipi.pipix.src.main.Fragment
 
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.pipi.pipix.R
+import com.pipi.pipix.config.ApplicationClass
 import com.pipi.pipix.config.BaseFragment
 import com.pipi.pipix.databinding.FragmentWelcomeBinding
 
@@ -15,8 +16,12 @@ class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>(
 
 
         val buttonstart = binding.welcomeButtonStart
+
         buttonstart.setOnClickListener {
-            findNavController().navigate(R.id.action_welcomeFragment_to_prepareFragment)
+            if(ApplicationClass.prefs.userNickName == null){
+                findNavController().navigate(R.id.action_welcomeFragment_to_LoginFragement)}
+            else{
+                findNavController().navigate(R.id.action_welcomeFragment_to_ProfileFragment)}
         }
 
     }
