@@ -7,18 +7,18 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class TDViewModel(applications: Application): AndroidViewModel(applications) {
+class PRViewModel(applications: Application): AndroidViewModel(applications) {
 
-    val readAllData: LiveData<List<TestData>>
-    private val repository: TDRepository
+    val readAllData: LiveData<List<PureResult>>
+    private val repository: PRRepository
 
     init{
-        val testDataDao = TDDatabase.getDatabase(applications).testDataDao()
-        repository = TDRepository(testDataDao)
+        val pureResultDao = PRDatabase.getDatabase(applications).pureResultDao()
+        repository = PRRepository(pureResultDao)
         readAllData = repository.readAllData
     }
 
-    fun addTestData(td: TestData){
+    fun addTestData(td: PureResult){
         viewModelScope.launch(Dispatchers.IO) {
             repository.addTestData(td)
         }

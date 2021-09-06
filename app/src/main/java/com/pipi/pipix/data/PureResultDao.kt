@@ -8,10 +8,10 @@ import androidx.room.Query
 
 
 @Dao
-interface TestDataDao {
+interface PureResultDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addTestData(td: TestData)
+    suspend fun addPureResult(pr: PureResult)
 
-    @Query("SELECT * FROM test_data_table ORDER BY id ASC")
-    fun readAllData(): LiveData<List<TestData>>
+    @Query("SELECT * FROM pure_result_table ORDER BY id ASC")
+    fun readAllData(): LiveData<List<PureResult>>
 }

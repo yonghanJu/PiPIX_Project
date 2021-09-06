@@ -4,8 +4,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 
-@Entity(tableName = "test_data_table")
-data class TestData (
+@Entity(tableName = "pure_result_table")
+data class PureResult (
     @PrimaryKey(autoGenerate = true)
     val id: Int,
     val year: Int,
