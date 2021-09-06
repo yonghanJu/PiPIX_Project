@@ -16,8 +16,5 @@ class OnBoardingFirstFragment : BaseFragment<FragmentOnBoardingFirstBinding>(Fra
         buttonnext.setOnClickListener{
             findNavController().navigate(R.id.action_onBoardingFirstFragment_to_onBoardingSecondFragment)
         }
-
-
     }
-
 }
