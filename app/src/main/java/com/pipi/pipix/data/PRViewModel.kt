@@ -18,9 +18,15 @@ class PRViewModel(applications: Application): AndroidViewModel(applications) {
         readAllData = repository.readAllData
     }
 
-    fun addPureResult(td: PureResult){
+    fun deletePureResult(pr: PureResult){
         viewModelScope.launch(Dispatchers.IO) {
-            repository.addPureResult(td)
+            repository.deletePureResult(pr)
+        }
+    }
+
+    fun addPureResult(pr: PureResult){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.addPureResult(pr)
         }
     }
 }
