@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".src.Fragment.WelcomeFragment">
+    tools:context=".src.main.Fragment.WelcomeFragment">
 
     <Button
         android:id="@+id/welcome_button_start"
@@ -29,7 +29,7 @@
         android:id="@+id/welcome_imageview_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="250dp"
         android:src="@drawable/pipix_text_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
