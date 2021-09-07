@@ -2,11 +2,13 @@ package com.pipi.pipix.src.main.Fragment
 
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pipi.pipix.R
 import com.pipi.pipix.config.ApplicationClass
 import com.pipi.pipix.config.BaseFragment
+import com.pipi.pipix.data.PRViewModel
 import com.pipi.pipix.databinding.FragmentProfileBinding
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBinding::bind, R.layout.fragment_profile) {
@@ -16,6 +18,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
 
         val resultList = arrayListOf("2021.09.05 오전 12시 39분","2021.09.05 오전 12시 39분","2021.09.05 오전 12시 39분",
             "2021.09.05 오전 12시 39분","2021.09.05 오전 12시 39분","2021.09.05 오전 12시 39분")
+
 
         // 리사이클러뷰에 LinearLayoutManager 객체 지정.
         val recyclerView = binding.profileRecyclerviewResult
