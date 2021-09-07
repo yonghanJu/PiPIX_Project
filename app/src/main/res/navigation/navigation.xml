@@ -39,7 +39,11 @@
         android:id="@+id/onBoardingSecondFragment"
         android:name="com.pipi.pipix.src.main.Fragment.OnBoardingSecondFragment"
         android:label="fragment_on_boarding_second"
-        tools:layout="@layout/fragment_on_boarding_second" />
+        tools:layout="@layout/fragment_on_boarding_second" >
+        <action
+            android:id="@+id/action_onBoardingSecondFragment_to_PureFragment"
+            app:destination="@id/PureFragment" />
+    </fragment>
     <fragment
         android:id="@+id/LoginFragement"
         android:name="com.pipi.pipix.src.main.Fragment.LoginFragment"
@@ -59,4 +63,10 @@
             android:id="@+id/action_ProfileFragment_to_prepareFragment"
             app:destination="@id/prepareFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/PureFragment"
+        android:name="com.pipi.pipix.src.main.Fragment.PureFragment"
+        android:label="fragment_pure"
+        tools:layout="@layout/fragment_pure" />
 </navigation>
