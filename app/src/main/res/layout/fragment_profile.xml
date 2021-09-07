@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="검색결과"
+        android:text="검사결과"
         android:textSize="15sp"
         android:textColor="@color/black"
         android:textStyle="bold"
