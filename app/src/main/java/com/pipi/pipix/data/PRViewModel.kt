@@ -9,6 +9,7 @@ import kotlinx.coroutines.launch
 
 class PRViewModel(applications: Application): AndroidViewModel(applications) {
 
+    //not private
     val readAllData: LiveData<List<PureResult>>
     private val repository: PRRepository
 
