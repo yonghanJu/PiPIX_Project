@@ -14,9 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PipiX">
-        <activity
-            android:name=".src.main.MainActivity2"
-            android:exported="true" />
+
         <activity
             android:name=".src.main.MainActivity"
             android:exported="true"
@@ -30,6 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".src.chart.ChartActivity"/>
     </application>
 
 </manifest>

@@ -12,7 +12,7 @@ import kotlinx.coroutines.NonDisposableHandle
 import kotlinx.coroutines.NonDisposableHandle.parent
 import java.text.SimpleDateFormat
 
-class ProfileRecyclerviewAdapter2 (val context: ProfileFragment) :  RecyclerView.Adapter<ProfileRecyclerviewAdapter2.ViewHolder>() {
+class ProfileRecyclerviewAdapter (val context: ProfileFragment) :  RecyclerView.Adapter<ProfileRecyclerviewAdapter.ViewHolder>() {
 
     private var userList = emptyList<PureResult>()
 
@@ -54,7 +54,7 @@ class ProfileRecyclerviewAdapter2 (val context: ProfileFragment) :  RecyclerView
         // contents of the view with that element
         //val sdf = SimpleDateFormat("yyyy.mm.dd hh:mm")
         val currentItem = userList[position]
-        val time = "${currentItem.year}.${currentItem.month}.${currentItem.date}.${currentItem.time}"
+        val time = currentItem.date
         viewHolder.dateTime?.setText(time)
 
 
