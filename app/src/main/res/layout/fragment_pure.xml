@@ -94,6 +94,15 @@
             android:src="@drawable/pinkicon"
             android:visibility="gone"/>
 
+        <TextView
+            android:id="@+id/pureCountText"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="100dp" />
+
     </FrameLayout>
 
 
