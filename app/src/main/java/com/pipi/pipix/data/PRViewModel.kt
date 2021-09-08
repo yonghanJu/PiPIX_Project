@@ -9,6 +9,7 @@ import kotlinx.coroutines.launch
 
 class PRViewModel(applications: Application): AndroidViewModel(applications) {
 
+    //not private
     val readAllData: LiveData<List<PureResult>>
     private val repository: PRRepository
 
@@ -18,9 +19,15 @@ class PRViewModel(applications: Application): AndroidViewModel(applications) {
         readAllData = repository.readAllData
     }
 
-    fun addPureResult(td: PureResult){
+    fun deletePureResult(pr: PureResult){
         viewModelScope.launch(Dispatchers.IO) {
-            repository.addPureResult(td)
+            repository.deletePureResult(pr)
+        }
+    }
+
+    fun addPureResult(pr: PureResult){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.addPureResult(pr)
         }
     }
 }
