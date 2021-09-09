@@ -8,7 +8,8 @@ import androidx.room.PrimaryKey
 data class PureResult (
     @PrimaryKey(autoGenerate = true)
     val id: Int,
-    val tpa: Int,
+    val tpaRight: Int,
+    val tpaLeft: Int,
     val date: String,
 
     val R_250: Int?,
