@@ -1,16 +1,19 @@
 package com.pipi.pipix.src.main
 
 import android.content.Context
+import android.content.Intent
 import android.media.MediaPlayer
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import com.pipi.pipix.R
 import com.pipi.pipix.data.PRViewModel
 import com.pipi.pipix.data.PureResult
 import com.pipi.pipix.data.PureViewModel
+import com.pipi.pipix.src.main.Fragment.ProfileFragment
 import kotlinx.coroutines.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -65,7 +68,7 @@ class PureTest(var buttonRight: Button, var buttonLeft:Button, var buttonCheck:B
     private val dbMap = mutableMapOf<Int,Float>()
     //데시벨 맵핑
     init {
-        for(i in 0..100 step 5) dbMap[i] = i/100f
+        for(i in 0..100 step 5) dbMap[i] = (1/10000f)*i + 0.00003f
 
         //우
         result[1] = resultRight
@@ -309,9 +312,12 @@ class PureTest(var buttonRight: Button, var buttonLeft:Button, var buttonCheck:B
         l6000 = result[0]?.get(6000)
         l8000 = result[0]?.get(8000)
 
+        val tpaRight = (r500!!+2*r1000!!+2*r2000!!+r4000!!)/6
+        val tpaLeft = (l500!!+2*l1000!!+2*l2000!!+l4000!!)/6
+
         // 검사 결과 생성
         val date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmm"))
-        val pr = PureResult(0,0,date,r250,r500,r750,r1000, r1500, r2000, r3000,r4000,r6000,r8000,l250,l500,l750,l1000,l1500,l2000,l3000,l4000,l6000,l8000)
+        val pr = PureResult(0,tpaRight, tpaLeft,date,r250,r500,r750,r1000, r1500, r2000, r3000,r4000,r6000,r8000,l250,l500,l750,l1000,l1500,l2000,l3000,l4000,l6000,l8000)
 
         // 검사결과 추가
         resultViewModel.addPureResult(pr)
