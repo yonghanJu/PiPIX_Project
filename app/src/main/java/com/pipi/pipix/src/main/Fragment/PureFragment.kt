@@ -16,18 +16,18 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.pipi.pipix.R
 import com.pipi.pipix.config.BaseFragment
+import com.pipi.pipix.data.PRViewModel
 import com.pipi.pipix.data.PureViewModel
 import com.pipi.pipix.databinding.FragmentPureBinding
 import com.pipi.pipix.src.main.PureTest
 import com.pipi.pipix.src.main.SoundController.isStopMusicOfOtherApps
 import com.pipi.pipix.src.main.SoundController.mAudioManager
 import kotlinx.coroutines.*
-import java.lang.Thread.sleep
-import kotlin.concurrent.thread
 
 class PureFragment : BaseFragment<FragmentPureBinding>(FragmentPureBinding::bind, R.layout.fragment_pure) {
 
     private lateinit var viewModel: PureViewModel
+    private lateinit var resultViewModel:PRViewModel
     private lateinit var buttonRight:Button
     private lateinit var buttonCheck:Button
     private lateinit var buttonLeft:Button
@@ -40,8 +40,6 @@ class PureFragment : BaseFragment<FragmentPureBinding>(FragmentPureBinding::bind
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this).get(PureViewModel::class.java)
-
         // 뷰 바인딩
         textCount = binding.pureCountText
         imageSound = binding.pureImageviewImage
@@ -51,6 +49,8 @@ class PureFragment : BaseFragment<FragmentPureBinding>(FragmentPureBinding::bind
 
 
         // 카운트와 이미지의 Visibility 관찰
+        viewModel = ViewModelProvider(this).get(PureViewModel::class.java)
+
         viewModel.currentCountVisible.observe(viewLifecycleOwner, Observer {
             textCount.visibility = it
         })
@@ -58,6 +58,9 @@ class PureFragment : BaseFragment<FragmentPureBinding>(FragmentPureBinding::bind
         viewModel.currentImageVisible.observe(viewLifecycleOwner, Observer {
             imageSound.visibility = it
         })
+
+        // 검사결과 데이터 뷰모델
+        resultViewModel = ViewModelProvider(this).get(PRViewModel::class.java)
 
         // 다른 앱의 음악 끄기 SoundController 이용
         isStopMusicOfOtherApps()
@@ -67,7 +70,7 @@ class PureFragment : BaseFragment<FragmentPureBinding>(FragmentPureBinding::bind
         mAudioManager.setStreamVolume(st,15,1)
 
         // PureTest 객체 생성
-        val pureTest = context?.let { PureTest(buttonRight,buttonLeft,buttonCheck,textCount,viewModel, it,false) }
+        val pureTest = context?.let { PureTest(buttonRight,buttonLeft,buttonCheck,textCount,viewModel,resultViewModel, it,false) }
 
         //// 코루틴스코프안에서 테스트 진행
         val scope = CoroutineScope(CoroutineName("PureTest"))
@@ -75,9 +78,12 @@ class PureFragment : BaseFragment<FragmentPureBinding>(FragmentPureBinding::bind
         testInCoroutine.start()
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+
             pureTest?.cancel()
             testInCoroutine.cancel()
             findNavController().popBackStack()
+
+            Toast.makeText(context,"순음청력검사가 취소 되었습니다.",Toast.LENGTH_LONG).show()
         }
     }
 }
