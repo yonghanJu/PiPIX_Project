@@ -8,6 +8,8 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -19,6 +21,7 @@ import com.pipi.pipix.databinding.FragmentPureBinding
 import com.pipi.pipix.src.main.PureTest
 import com.pipi.pipix.src.main.SoundController.isStopMusicOfOtherApps
 import com.pipi.pipix.src.main.SoundController.mAudioManager
+import kotlinx.coroutines.*
 import java.lang.Thread.sleep
 import kotlin.concurrent.thread
 
@@ -31,6 +34,7 @@ class PureFragment : BaseFragment<FragmentPureBinding>(FragmentPureBinding::bind
     private lateinit var textCount:TextView
     private lateinit var imageSound: ImageView
 
+    @InternalCoroutinesApi
     @RequiresApi(Build.VERSION_CODES.P)
     @SuppressLint("WrongConstant")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -62,7 +66,18 @@ class PureFragment : BaseFragment<FragmentPureBinding>(FragmentPureBinding::bind
         val st = AudioManager.STREAM_MUSIC
         mAudioManager.setStreamVolume(st,15,1)
 
-        val test = context?.let { PureTest(buttonRight,buttonLeft,buttonCheck,textCount,viewModel, it) }
-        thread { test?.doTest() }
+        // PureTest 객체 생성
+        val pureTest = context?.let { PureTest(buttonRight,buttonLeft,buttonCheck,textCount,viewModel, it,false) }
+
+        //// 코루틴스코프안에서 테스트 진행
+        val scope = CoroutineScope(CoroutineName("PureTest"))
+        val testInCoroutine = scope.launch { pureTest?.doTest() }
+        testInCoroutine.start()
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            pureTest?.cancel()
+            testInCoroutine.cancel()
+            findNavController().popBackStack()
+        }
     }
 }
