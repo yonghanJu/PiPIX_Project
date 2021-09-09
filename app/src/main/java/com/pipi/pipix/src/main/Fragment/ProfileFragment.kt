@@ -15,6 +15,7 @@ import com.pipi.pipix.databinding.FragmentProfileBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.test.withTestContext
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -22,8 +23,14 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
 
     private  lateinit var mUserViewModel : PRViewModel
 
+    companion object {
+        var testType : Int? = null // 1이면 순음 2이면 어음
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        testType = null//뒤로가기로 인해 다시 화면에 돌아오면 null 처리
 
 
         // 리사이클러뷰에 LinearLayoutManager 객체 지정.
@@ -47,7 +54,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
         //test data
         val now = System.currentTimeMillis()
         val date =  Date(now)
-        val sdf =  SimpleDateFormat("yyyy.MM.dd HH시 mm분")
+        val sdf =  SimpleDateFormat("yyyy.MM.dd a hh시 mm분")
         val getTime = sdf.format(date)
 
         val testPureData = PureResult(0,0,getTime,0,0,0,0,0,0,0,0,0,0,
@@ -61,7 +68,14 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
         binding.profileTextviewNickname.text = ApplicationClass.prefs.userNickName
 
         binding.profileButtonTest1.setOnClickListener {
-            findNavController().navigate(R.id.action_ProfileFragment_to_prepareFragment)
+            findNavController().navigate(R.id.action_ProfileFragment_to_pureNoticeFragment)
+            testType = 1
+        }
+        binding.profileButtonTest2.setOnClickListener {
+            findNavController().navigate(R.id.action_ProfileFragment_to_speechNoticeFragment)
+            testType = 2
         }
     }
+
+
 }
