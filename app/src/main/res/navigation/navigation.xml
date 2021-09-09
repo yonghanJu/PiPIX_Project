@@ -43,6 +43,9 @@
         <action
             android:id="@+id/action_onBoardingSecondFragment_to_PureFragment"
             app:destination="@id/PureFragment" />
+        <action
+            android:id="@+id/action_onBoardingSecondFragment_to_speechFragment"
+            app:destination="@id/speechFragment" />
     </fragment>
     <fragment
         android:id="@+id/LoginFragement"
@@ -60,8 +63,11 @@
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
-            android:id="@+id/action_ProfileFragment_to_prepareFragment"
-            app:destination="@id/prepareFragment" />
+            android:id="@+id/action_ProfileFragment_to_pureNoticeFragment"
+            app:destination="@id/pureNoticeFragment" />
+        <action
+            android:id="@+id/action_ProfileFragment_to_speechNoticeFragment"
+            app:destination="@id/speechNoticeFragment" />
     </fragment>
 
     <fragment
@@ -69,4 +75,27 @@
         android:name="com.pipi.pipix.src.main.Fragment.PureFragment"
         android:label="fragment_pure"
         tools:layout="@layout/fragment_pure" />
+    <fragment
+        android:id="@+id/speechNoticeFragment"
+        android:name="com.pipi.pipix.src.main.fragment.SpeechNoticeFragment"
+        android:label="SpeechNoticeFragment"
+        tools:layout="@layout/fragment_speechnotice" >
+        <action
+            android:id="@+id/action_speechNoticeFragment_to_prepareFragment"
+            app:destination="@id/prepareFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pureNoticeFragment"
+        android:name="com.pipi.pipix.src.main.fragment.PureNoticeFragment"
+        android:label="PureNoticeFragment"
+        tools:layout="@layout/fragment_purenotice">
+        <action
+            android:id="@+id/action_pureNoticeFragment_to_prepareFragment"
+            app:destination="@id/prepareFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/speechFragment"
+        android:name="com.pipi.pipix.src.main.fragment.SpeechFragment"
+        android:label="fragment_speech"
+        tools:layout="@layout/fragment_speech" />
 </navigation>
