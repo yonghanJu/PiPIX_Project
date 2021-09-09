@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/speechnotice_button_next"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:paddingVertical="20dp"
+        android:background="@drawable/button_background2"
+        android:paddingHorizontal="130dp"
+        android:text="다음"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/nextbutton" />
+
+    <ImageView
+        android:id="@+id/speechnotice_imageview_image"
+        android:layout_width="259dp"
+        android:layout_height="234dp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/speechnotice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/speechnotice_textview_text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:text="어음청력검사란?"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.177"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/speechnotice_imageview_image" />
+
+    <TextView
+        android:id="@+id/speechnotice_textview_text2"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="어음절의 단어를 사용하여 들을 수 있는 최소 어음 강도를 측정합니다. 검사가 시작되면 단어를 듣게되고 마이크 버튼을 누른 상태에서 단어를 따라 말합니다. 3초 안에 마이크 버튼을 누르지 않으면 듣지 못한것으로 체크됩니다."
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/speechnotice_textview_text1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
