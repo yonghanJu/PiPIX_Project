@@ -1,30 +1,28 @@
 package com.pipi.pipix.src.main
 
 import android.content.Context
-import android.content.Intent
 import android.media.MediaPlayer
-import android.os.SystemClock.sleep
 import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
-import androidx.navigation.Navigation.findNavController
 import com.pipi.pipix.R
+import com.pipi.pipix.data.PRViewModel
+import com.pipi.pipix.data.PureResult
 import com.pipi.pipix.data.PureViewModel
-import com.pipi.pipix.src.main.Fragment.ProfileFragment
-import com.pipi.pipix.src.main.Fragment.PureFragment
 import kotlinx.coroutines.*
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import kotlin.math.abs
 
-class PureTest(var buttonRight: Button,var buttonLeft:Button,var buttonCheck:Button,var textCount: TextView,var viewModel: PureViewModel,var context: Context, var cancel:Boolean) {
+class PureTest(var buttonRight: Button, var buttonLeft:Button, var buttonCheck:Button, var textCount: TextView,var viewModel: PureViewModel, var resultViewModel: PRViewModel, var context: Context, var cancel:Boolean) {
 
     private var r250: Int? = null
     private var r500: Int? = null
     private var r750: Int? = null
     private var r1000: Int? = null
+    private var r1500: Int? = null
     private var r2000: Int? = null
     private var r3000: Int? = null
     private var r4000: Int? = null
@@ -35,6 +33,7 @@ class PureTest(var buttonRight: Button,var buttonLeft:Button,var buttonCheck:But
     private var l500: Int? = null
     private var l750: Int? = null
     private var l1000: Int? = null
+    private var l1500: Int? = null
     private var l2000: Int? = null
     private var l3000: Int? = null
     private var l4000: Int? = null
@@ -118,7 +117,7 @@ class PureTest(var buttonRight: Button,var buttonLeft:Button,var buttonCheck:But
 
             //측정 헤르츠의 데시벨 측정 시작
             while (whileState){
-
+                if(cancel) return
                 startMp(mediaPlayer)
 
             } // 특정 헤르츠 측정 끝
@@ -132,8 +131,10 @@ class PureTest(var buttonRight: Button,var buttonLeft:Button,var buttonCheck:But
         }
         // 모든 테스트 종료
         if(currentDirec==0){
+            pureTestFin()
         }
     }
+
 
 
     // 특정 데시벨 테스트
@@ -202,7 +203,7 @@ class PureTest(var buttonRight: Button,var buttonLeft:Button,var buttonCheck:But
                 if(!isActive) this.cancel()
                 delay(3000)
                 //버튼 기능 끝
-                button!!.setOnClickListener {}
+                button.setOnClickListener {}
 
                 // 첫 데시벨부터 들리지 않을 때 오름차순 검사 시작
                 if(firstTouch && !nowHear) { cantHear = true }
@@ -282,5 +283,37 @@ class PureTest(var buttonRight: Button,var buttonLeft:Button,var buttonCheck:But
 
     private fun setCountGone(){
         viewModel.currentCountVisible.postValue(View.GONE)
+    }
+
+    private fun pureTestFin() {
+
+        r250= result[1]?.get(250)
+        r500= result[1]?.get(500)
+        r750 = result[1]?.get(750)
+        r1000 = result[1]?.get(1000)
+        r1500 = result[1]?.get(1500)
+        r2000 = result[1]?.get(2000)
+        r3000 = result[1]?.get(3000)
+        r4000 = result[1]?.get(4000)
+        r6000 = result[1]?.get(6000)
+        r8000 = result[1]?.get(8000)
+
+        l250 = result[0]?.get(250)
+        l500 = result[0]?.get(500)
+        l750 = result[0]?.get(750)
+        l1000 = result[0]?.get(1000)
+        l1500 = result[0]?.get(1500)
+        l2000 = result[0]?.get(2000)
+        l3000 = result[0]?.get(3000)
+        l4000 = result[0]?.get(4000)
+        l6000 = result[0]?.get(6000)
+        l8000 = result[0]?.get(8000)
+
+        // 검사 결과 생성
+        val date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmm"))
+        val pr = PureResult(0,0,date,r250,r500,r750,r1000, r1500, r2000, r3000,r4000,r6000,r8000,l250,l500,l750,l1000,l1500,l2000,l3000,l4000,l6000,l8000)
+
+        // 검사결과 추가
+        resultViewModel.addPureResult(pr)
     }
 }
