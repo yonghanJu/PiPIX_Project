@@ -1,6 +1,7 @@
 package com.pipi.pipix.src.main
 
 import android.content.Context
+import android.content.Intent
 import android.media.MediaPlayer
 import android.os.SystemClock.sleep
 import android.util.Log
@@ -9,17 +10,16 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.navigation.Navigation.findNavController
 import com.pipi.pipix.R
 import com.pipi.pipix.data.PureViewModel
+import com.pipi.pipix.src.main.Fragment.ProfileFragment
 import com.pipi.pipix.src.main.Fragment.PureFragment
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 import kotlin.math.abs
 
-class PureTest(var buttonRight: Button,var buttonLeft:Button,var buttonCheck:Button,var textCount: TextView,var viewModel: PureViewModel,var context: Context) {
+class PureTest(var buttonRight: Button,var buttonLeft:Button,var buttonCheck:Button,var textCount: TextView,var viewModel: PureViewModel,var context: Context, var cancel:Boolean) {
 
     private var r250: Int? = null
     private var r500: Int? = null
@@ -53,6 +53,8 @@ class PureTest(var buttonRight: Button,var buttonLeft:Button,var buttonCheck:But
     private var resultRight = mutableMapOf<Int,Int>()
     private var resultLeft = mutableMapOf<Int,Int>()
     private var dbSet = mutableSetOf<Int>()
+    private lateinit var job: Job
+    private lateinit var  scope: CoroutineScope
 
     // 1차 테스트 음원 아이디 리스트
     private val resIdList1 = arrayListOf(R.raw.hz1000, R.raw.hz2000,R.raw.hz4000,R.raw.hz8000,R.raw.hz250,R.raw.hz500)
@@ -92,7 +94,7 @@ class PureTest(var buttonRight: Button,var buttonLeft:Button,var buttonCheck:But
             dbSet = mutableSetOf<Int>()
             //측정 헤르츠의 데시벨 측정 시작
             while (whileState){
-
+                if(cancel) return
                 startMp(mediaPlayer)
 
             } // 특정 헤르츠 측정 끝
@@ -130,9 +132,6 @@ class PureTest(var buttonRight: Button,var buttonLeft:Button,var buttonCheck:But
         }
         // 모든 테스트 종료
         if(currentDirec==0){
-            Log.d("tag","fin")
-
-            //findNavController().navigate(R.id.action_prepareFragment_to_onBoardingFirstFragment)
         }
     }
 
@@ -173,55 +172,65 @@ class PureTest(var buttonRight: Button,var buttonLeft:Button,var buttonCheck:But
         mediaPlayer.setVolume(leftDb,rightDb)
 
         // job 스레드 실행
-        val job = GlobalScope.launch(Dispatchers.Default){
-            setImageGone()
-            setCountVisible()
+        //job = GlobalScope.launch(Dispatchers.Default){
+        //thread = Thread{
+        scope = CoroutineScope(CoroutineName("innerScope"))
+        job = scope.launch {
+            if(isActive){
 
-            textCount.text = "3"
-            sleep(1000)
-            textCount.text = "2"
-            sleep(1000)
-            textCount.text = "1"
-            sleep(1000)
+                setImageGone()
+                setCountVisible()
 
-            setCountGone()
-            setImageVisible()
-            mediaPlayer.start()
-            // 버틍 기능 시작
-            button!!.setOnClickListener {
-                Toast.makeText(context,"activate",Toast.LENGTH_SHORT).show()
-                nowHear = true
-            }
-            sleep(3000)
-            //버튼 기능 끝
-            button!!.setOnClickListener {}
+                if(!isActive) return@launch
+                textCount.text = "3"
+                delay(1000)
+                if(!isActive) return@launch
+                textCount.text = "2"
+                delay(1000)
+                if(!isActive) return@launch
+                textCount.text = "1"
+                delay(1000)
 
-            // 첫 데시벨부터 들리지 않을 때 오름차순 검사 시작
-            if(firstTouch && !nowHear) { cantHear = true }
-            firstTouch = false
-
-            // 들었는지 못들었는지 판단
-            when(cantHear){
-                true->{ // 오름 차순 일 때
-                    when(nowHear){
-                        true-> { // 오름차순 중에 들었을 때
-                            result[currentDirec]!![currentHz] = currentDb   // 데시벨 픽스
-                            whileState = false
-                        }
-                        false-> currentDb+=10   // 오름차순 중 못 들었을 때
-                    }
+                setCountGone()
+                setImageVisible()
+                mediaPlayer.start()
+                // 버틍 기능 시작
+                button!!.setOnClickListener {
+                    Toast.makeText(context,"activate",Toast.LENGTH_SHORT).show()
+                    nowHear = true
                 }
-                false->{ // 내림차순인 상황
-                    when(nowHear){
-                        true -> currentDb -= 10 // 내림차순 중 들었을 때
-                        false ->{               // 내림차순 중 못 들었을 때
-                            if(dbSet.contains(currentDb)){
-                                result[currentDirec]!![currentHz] = currentDb   //데시벨 픽스
+                if(!isActive) this.cancel()
+                delay(3000)
+                //버튼 기능 끝
+                button!!.setOnClickListener {}
+
+                // 첫 데시벨부터 들리지 않을 때 오름차순 검사 시작
+                if(firstTouch && !nowHear) { cantHear = true }
+                firstTouch = false
+
+                // 들었는지 못들었는지 판단
+                when(cantHear){
+                    true->{ // 오름 차순 일 때
+                        when(nowHear){
+                            true-> { // 오름차순 중에 들었을 때
+                                result[currentDirec]!![currentHz] = currentDb   // 데시벨 픽스
                                 whileState = false
                             }
-                            else{
-                                dbSet.add(currentDb)
-                                currentDb+=5
+                            false-> currentDb+=10   // 오름차순 중 못 들었을 때
+                        }
+                    }
+                    false->{ // 내림차순인 상황
+                        when(nowHear){
+                            true -> currentDb -= 10 // 내림차순 중 들었을 때
+                            false ->{               // 내림차순 중 못 들었을 때
+                                if(dbSet.contains(currentDb)){
+                                    result[currentDirec]!![currentHz] = currentDb   //데시벨 픽스
+                                    whileState = false
+                                }
+                                else{
+                                    dbSet.add(currentDb)
+                                    currentDb+=5
+                                }
                             }
                         }
                     }
@@ -233,7 +242,6 @@ class PureTest(var buttonRight: Button,var buttonLeft:Button,var buttonCheck:But
             //다시 기본값 설정
             nowHear = false
         }
-
         // job 스레드가 끝나면 실행
         // 지금 startMp() 함수가 끝날때 까지 새로운 startMp()실행 방지
         runBlocking {
@@ -254,6 +262,10 @@ class PureTest(var buttonRight: Button,var buttonLeft:Button,var buttonCheck:But
         return list
     }
 
+    fun cancel(){
+        cancel = true
+        job.cancel()
+    }
 
     // image setting function
     private fun setImageVisible(){
