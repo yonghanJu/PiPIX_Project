@@ -32,7 +32,7 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
             finish()
         }
 
-        val data = intent.getSerializableExtra("test")
+        val data = intent.getSerializableExtra("test") as PureResult
 
         Log.d("test",data.toString())
         var lineChart: LineChart? = null
@@ -44,11 +44,6 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
         lineChart.setTouchEnabled(false) // 차트 터치 막기
 
 
-
-        //예상 데이터 형식 PureResult
-        val testData = PureResult(0,1,1,"dsf",20,30,20,80,25,40,35,10,0,55
-            ,25,25,60,55,20,15,10,0,5,5)
-
         val entries = ArrayList<Entry>()
         val entries2 = ArrayList<Entry>()
 
@@ -56,16 +51,16 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
         //그래프에 들어갈 좌표값 입력
 
         //왼쪽 데이터 리스트
-        entries.add(Entry(1f, testData.L_250!!.toFloat()))
-        entries.add(Entry(2f, testData.L_500!!.toFloat()))
-        entries.add(Entry(3f, testData.L_750!!.toFloat()))
-        entries.add(Entry(4f, testData.L_1000!!.toFloat()))
+        entries.add(Entry(1f, data.L_250!!.toFloat()))
+        entries.add(Entry(2f, data.L_500!!.toFloat()))
+        entries.add(Entry(3f, data.L_750!!.toFloat()))
+        entries.add(Entry(4f, data.L_1000!!.toFloat()))
       //  entries.add(Entry(5f, testData.L_1500!!.toFloat()))
-        entries.add(Entry(6f, testData.L_2000!!.toFloat()))
-        entries.add(Entry(7f, testData.L_3000!!.toFloat()))
-        entries.add(Entry(8f, testData.L_4000!!.toFloat()))
+        entries.add(Entry(6f, data.L_2000!!.toFloat()))
+        entries.add(Entry(7f, data.L_3000!!.toFloat()))
+        entries.add(Entry(8f, data.L_4000!!.toFloat()))
        // entries.add(Entry(9f, testData.L_6000!!.toFloat()))
-        entries.add(Entry(10f, testData.L_8000!!.toFloat()))
+        entries.add(Entry(10f, data.L_8000!!.toFloat()))
 
 
 
