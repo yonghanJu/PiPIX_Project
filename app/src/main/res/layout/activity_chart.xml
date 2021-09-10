@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/chart_textview_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="검사결과지"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginTop="40dp"/>
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/chart"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"/>
+
+    <LinearLayout
+        android:layout_marginLeft="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+       <TextView
+           android:layout_marginLeft="1dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:drawablePadding="13dp"
+           android:gravity="center_vertical"
+           android:textSize="20sp"
+           android:textStyle="bold"
+           android:textColor="@color/black"
+           android:drawableLeft="@drawable/ellipse"
+           android:text=": 왼쪽 귀"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:drawableLeft="@drawable/star"
+            android:text=": 오른쪽 귀"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="40dp"
+        android:id="@+id/chart_textview_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="검사결과"
+        android:gravity="center"
+        android:textSize="35sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        />
+
+    <ImageButton
+        android:layout_marginRight="10dp"
+        android:layout_gravity="end"
+        android:id="@+id/chart_button_back"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/button"
+        android:background="#00FFFFFF"/>
+</LinearLayout>

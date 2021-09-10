@@ -1,24 +1,32 @@
 package com.pipi.pipix.src.main.Fragment
 
+import android.content.Intent
+import android.os.Parcelable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.PrimaryKey
 import com.pipi.pipix.R
 import com.pipi.pipix.data.PureResult
+import com.pipi.pipix.src.chart.ChartActivity
 import kotlinx.coroutines.NonDisposableHandle
 import kotlinx.coroutines.NonDisposableHandle.parent
+import java.io.Serializable
+import java.security.AccessController.getContext
 import java.text.SimpleDateFormat
 
-class ProfileRecyclerviewAdapter2 (val context: ProfileFragment) :  RecyclerView.Adapter<ProfileRecyclerviewAdapter2.ViewHolder>() {
+class ProfileRecyclerviewAdapter (val context: ProfileFragment) :  RecyclerView.Adapter<ProfileRecyclerviewAdapter.ViewHolder>() {
 
     private var userList = emptyList<PureResult>()
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var more: ImageView? = null
         var dateTime: TextView? = null
+        lateinit var data : PureResult
 
 
         init {
@@ -26,11 +34,11 @@ class ProfileRecyclerviewAdapter2 (val context: ProfileFragment) :  RecyclerView
             more = view!!.findViewById(R.id.item_more)
             dateTime = view!!.findViewById(R.id.item_time)
 
-            /* 클릭 리스너 쓰고 싶다면, 예시
-              uriBtn!!.setOnClickListener {
-                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(text4))
-                 view.getContext().startActivity(intent)
-             }  */
+              view.setOnClickListener {
+                  val intent = Intent(view.context, ChartActivity::class.java)
+                  intent.putExtra("test",data)
+                  view.getContext().startActivity(intent)
+             }
         }
     }
     // Create new views (invoked by the layout manager)
@@ -52,12 +60,11 @@ class ProfileRecyclerviewAdapter2 (val context: ProfileFragment) :  RecyclerView
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        //val sdf = SimpleDateFormat("yyyy.mm.dd hh:mm")
-        val currentItem = userList[position]
-        val time = "${currentItem.year}.${currentItem.month}.${currentItem.date}.${currentItem.time}"
+
+        var currentItem = userList[position]
+        val time = currentItem.date
         viewHolder.dateTime?.setText(time)
-
-
+        viewHolder.data = userList[position]
     }
 
 
@@ -66,6 +73,5 @@ class ProfileRecyclerviewAdapter2 (val context: ProfileFragment) :  RecyclerView
         this.userList = user
         notifyDataSetChanged()
     }
-
 
 }
