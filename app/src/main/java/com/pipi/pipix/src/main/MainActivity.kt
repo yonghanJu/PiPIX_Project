@@ -6,6 +6,7 @@ import androidx.navigation.ui.NavigationUI
 import com.pipi.pipix.R
 import com.pipi.pipix.config.BaseActivity
 import com.pipi.pipix.databinding.ActivityMainBinding
+import com.pipi.pipix.src.main.SoundController.init
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate)  {
 
@@ -13,7 +14,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
+        //SoundController init
+        init(applicationContext)
 
         //JetPack navigation
         val navController = Navigation.findNavController(this, R.id.fragment)
