@@ -9,6 +9,7 @@ import java.io.Serializable
 data class PureResult (
     @PrimaryKey(autoGenerate = true)
     val id: Int,
+    val testType: Int,
     val tpaRight: Int,
     val tpaLeft: Int,
     val date: String,
