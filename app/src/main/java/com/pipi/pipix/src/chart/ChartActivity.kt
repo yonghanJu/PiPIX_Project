@@ -46,8 +46,8 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
 
 
         //예상 데이터 형식 PureResult
-        val testData = PureResult(0,1,"test",100,20,30,20,80,25,40,35,10,0,55
-            ,25,25,60,55,20,15,10,0,5)
+        val testData = PureResult(0,1,1,"dsf",20,30,20,80,25,40,35,10,0,55
+            ,25,25,60,55,20,15,10,0,5,5)
 
         val entries = ArrayList<Entry>()
         val entries2 = ArrayList<Entry>()
