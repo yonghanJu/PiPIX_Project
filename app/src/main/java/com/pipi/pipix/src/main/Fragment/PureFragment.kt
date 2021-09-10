@@ -75,8 +75,7 @@ class PureFragment : BaseFragment<FragmentPureBinding>(FragmentPureBinding::bind
         //// 코루틴스코프안에서 테스트 진행
         val scope = CoroutineScope(CoroutineName("PureTest"))
         val testInCoroutine = scope.launch {
-            pureTest?.doTest()
-            findNavController().navigate(R.id.action_PureFragment_to_ProfileFragment)
+            if(pureTest?.doTest() == true)findNavController().navigate(R.id.action_PureFragment_to_ProfileFragment)
         }
         testInCoroutine.start()
 
