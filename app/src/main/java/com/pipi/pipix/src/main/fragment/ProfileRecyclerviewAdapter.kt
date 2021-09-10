@@ -65,6 +65,8 @@ class ProfileRecyclerviewAdapter (val context: ProfileFragment) :  RecyclerView.
         val time = currentItem.date
         viewHolder.dateTime?.setText(time)
         viewHolder.data = userList[position]
+
+        Log.d("test",userList[position].toString())
     }
 
 
