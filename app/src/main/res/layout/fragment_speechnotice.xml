@@ -29,7 +29,7 @@
         android:layout_width="259dp"
         android:layout_height="234dp"
         android:layout_marginTop="100dp"
-        android:src="@drawable/speechnotice"
+        android:src="@drawable/noticeicon1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
