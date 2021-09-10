@@ -80,7 +80,7 @@ class PureTest(var buttonRight: Button, var buttonLeft:Button, var buttonCheck:B
 
 
 
-    fun doTest(){
+    fun doTest(): Boolean{
 
         for(i in 0..5){ // start of first test For
 
@@ -96,7 +96,7 @@ class PureTest(var buttonRight: Button, var buttonLeft:Button, var buttonCheck:B
             dbSet = mutableSetOf<Int>()
             //측정 헤르츠의 데시벨 측정 시작
             while (whileState){
-                if(cancel) return
+                if(cancel) return false
                 startMp(mediaPlayer)
 
             } // 특정 헤르츠 측정 끝
@@ -120,7 +120,7 @@ class PureTest(var buttonRight: Button, var buttonLeft:Button, var buttonCheck:B
 
             //측정 헤르츠의 데시벨 측정 시작
             while (whileState){
-                if(cancel) return
+                if(cancel) return false
                 startMp(mediaPlayer)
 
             } // 특정 헤르츠 측정 끝
@@ -136,6 +136,7 @@ class PureTest(var buttonRight: Button, var buttonLeft:Button, var buttonCheck:B
         if(currentDirec==0){
             pureTestFin()
         }
+        return true
     }
 
 
@@ -317,7 +318,7 @@ class PureTest(var buttonRight: Button, var buttonLeft:Button, var buttonCheck:B
 
         // 검사 결과 생성
         val date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmm"))
-        val pr = PureResult(0,tpaRight, tpaLeft,date,r250,r500,r750,r1000, r1500, r2000, r3000,r4000,r6000,r8000,l250,l500,l750,l1000,l1500,l2000,l3000,l4000,l6000,l8000)
+        val pr = PureResult(0,0,tpaRight, tpaLeft,date,r250,r500,r750,r1000, r1500, r2000, r3000,r4000,r6000,r8000,l250,l500,l750,l1000,l1500,l2000,l3000,l4000,l6000,l8000)
 
         // 검사결과 추가
         resultViewModel.addPureResult(pr)
