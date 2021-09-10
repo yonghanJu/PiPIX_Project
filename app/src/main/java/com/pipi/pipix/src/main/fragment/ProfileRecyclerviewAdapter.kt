@@ -1,12 +1,15 @@
 package com.pipi.pipix.src.main.Fragment
 
 import android.content.Intent
+import android.os.Parcelable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.PrimaryKey
 import com.pipi.pipix.R
 import com.pipi.pipix.data.PureResult
 import com.pipi.pipix.src.chart.ChartActivity
@@ -18,13 +21,13 @@ import java.text.SimpleDateFormat
 
 class ProfileRecyclerviewAdapter (val context: ProfileFragment) :  RecyclerView.Adapter<ProfileRecyclerviewAdapter.ViewHolder>() {
 
-
     private var userList = emptyList<PureResult>()
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var more: ImageView? = null
         var dateTime: TextView? = null
         lateinit var data : PureResult
+
 
 
 
@@ -35,8 +38,8 @@ class ProfileRecyclerviewAdapter (val context: ProfileFragment) :  RecyclerView.
 
               view.setOnClickListener {
                   val intent = Intent(view.context, ChartActivity::class.java)
-                  //intent.putExtra("data",data as Serializable) 데이터 보내는 방법 찾아야함
-                  view.getContext().startActivity(intent)
+                //  intent.putExtra("test",data) PureResult 데이터 클래스 끝에 : Serializable 추가 시켜도 되는지 물어보고 사용
+                 view.getContext().startActivity(intent)
              }
         }
     }
@@ -60,11 +63,10 @@ class ProfileRecyclerviewAdapter (val context: ProfileFragment) :  RecyclerView.
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
 
-        val currentItem = userList[position]
+        var currentItem = userList[position]
         val time = currentItem.date
         viewHolder.dateTime?.setText(time)
-        viewHolder.data = currentItem
-
+        viewHolder.data = userList[position]
     }
 
 
@@ -73,6 +75,5 @@ class ProfileRecyclerviewAdapter (val context: ProfileFragment) :  RecyclerView.
         this.userList = user
         notifyDataSetChanged()
     }
-
 
 }
