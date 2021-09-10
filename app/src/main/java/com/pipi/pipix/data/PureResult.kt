@@ -12,6 +12,7 @@ data class PureResult (
     val tpaLeft: Int,
     val date: String,
 
+    
     val R_250: Int? = null,
     val R_500: Int? = null,
     val R_750: Int? = null,
