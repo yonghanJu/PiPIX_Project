@@ -73,9 +73,10 @@ class PureFragment : BaseFragment<FragmentPureBinding>(FragmentPureBinding::bind
         val pureTest = context?.let { PureTest(buttonRight,buttonLeft,buttonCheck,textCount,viewModel,resultViewModel, it,false) }
 
         //// 코루틴스코프안에서 테스트 진행
+        //val scope = CoroutineScope(CoroutineName("PureTest"))
         val scope = CoroutineScope(CoroutineName("PureTest"))
         val testInCoroutine = scope.launch {
-            if(pureTest?.doTest() == true)findNavController().navigate(R.id.action_PureFragment_to_ProfileFragment)
+            if(pureTest!!.doTest()) activity?.runOnUiThread { findNavController().navigate(R.id.action_PureFragment_to_ProfileFragment) }
         }
         testInCoroutine.start()
 
