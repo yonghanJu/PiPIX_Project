@@ -28,9 +28,7 @@ class ProfileRecyclerviewAdapter (val context: ProfileFragment) :  RecyclerView.
         var dateTime: TextView? = null
         lateinit var data : PureResult
 
-
-
-
+        
         init {
             // Define click listener for the ViewHolder's View.
             more = view!!.findViewById(R.id.item_more)
@@ -38,8 +36,8 @@ class ProfileRecyclerviewAdapter (val context: ProfileFragment) :  RecyclerView.
 
               view.setOnClickListener {
                   val intent = Intent(view.context, ChartActivity::class.java)
-                //  intent.putExtra("test",data) PureResult 데이터 클래스 끝에 : Serializable 추가 시켜도 되는지 물어보고 사용
-                 view.getContext().startActivity(intent)
+                  intent.putExtra("test",data)
+                  view.getContext().startActivity(intent)
              }
         }
     }
