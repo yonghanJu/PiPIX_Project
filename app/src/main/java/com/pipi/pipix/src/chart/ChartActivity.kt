@@ -65,16 +65,16 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
 
 
         //오른쪽 데이터 리스트
-        entries2.add(Entry(1f, testData.R_250!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
-        entries2.add(Entry(2f, testData.R_500!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        entries2.add(Entry(1f, data.R_250!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        entries2.add(Entry(2f, data.R_500!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
        // entries2.add(Entry(3f, testData.R_750!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
-        entries2.add(Entry(4f, testData.R_1000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
-        entries2.add(Entry(5f, testData.R_1500!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
-        entries2.add(Entry(6f, testData.R_2000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        entries2.add(Entry(4f, data.R_1000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        entries2.add(Entry(5f, data.R_1500!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        entries2.add(Entry(6f, data.R_2000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
        // entries2.add(Entry(7f, testData.R_3000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
-        entries2.add(Entry(8f, testData.R_4000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
-        entries2.add(Entry(9f, testData.R_6000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
-        entries2.add(Entry(10f, testData.R_8000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        entries2.add(Entry(8f, data.R_4000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        entries2.add(Entry(9f, data.R_6000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        entries2.add(Entry(10f, data.R_8000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
 
 
         //entry add는 if문 사용 null check
