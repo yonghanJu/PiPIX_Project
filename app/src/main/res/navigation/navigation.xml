@@ -42,7 +42,9 @@
         tools:layout="@layout/fragment_on_boarding_second" >
         <action
             android:id="@+id/action_onBoardingSecondFragment_to_PureFragment"
-            app:destination="@id/PureFragment" />
+            app:destination="@id/PureFragment"
+            app:popUpTo="@id/pureNoticeFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_onBoardingSecondFragment_to_speechFragment"
             app:destination="@id/speechFragment" />
@@ -74,7 +76,12 @@
         android:id="@+id/PureFragment"
         android:name="com.pipi.pipix.src.main.Fragment.PureFragment"
         android:label="fragment_pure"
-        tools:layout="@layout/fragment_pure" />
+        tools:layout="@layout/fragment_pure" >
+        <action
+            android:id="@+id/action_PureFragment_to_ProfileFragment"
+            app:destination="@id/ProfileFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/speechNoticeFragment"
         android:name="com.pipi.pipix.src.main.fragment.SpeechNoticeFragment"
