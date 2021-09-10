@@ -1,22 +1,20 @@
 package com.pipi.pipix.src.main
 
 import android.content.Context
-import android.content.Intent
+import android.icu.text.SimpleDateFormat
 import android.media.MediaPlayer
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import com.pipi.pipix.R
 import com.pipi.pipix.data.PRViewModel
 import com.pipi.pipix.data.PureResult
 import com.pipi.pipix.data.PureViewModel
-import com.pipi.pipix.src.main.Fragment.ProfileFragment
 import kotlinx.coroutines.*
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
+import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.math.abs
 
 class PureTest(var buttonRight: Button, var buttonLeft:Button, var buttonCheck:Button, var textCount: TextView,var viewModel: PureViewModel, var resultViewModel: PRViewModel, var context: Context, var cancel:Boolean) {
@@ -130,12 +128,13 @@ class PureTest(var buttonRight: Button, var buttonLeft:Button, var buttonCheck:B
         // 왼쪽 제 실행
         if(currentDirec==1){
             currentDirec=0
-            doTest()
+            doTest()//1번스택
         }
         // 모든 테스트 종료
         if(currentDirec==0){
             pureTestFin()
         }
+        currentDirec=1
         return true
     }
 
@@ -317,8 +316,11 @@ class PureTest(var buttonRight: Button, var buttonLeft:Button, var buttonCheck:B
         val tpaLeft = (l500!!+2*l1000!!+2*l2000!!+l4000!!)/6
 
         // 검사 결과 생성
-        val date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmm"))
-        val pr = PureResult(0,0,tpaRight, tpaLeft,date,r250,r500,r750,r1000, r1500, r2000, r3000,r4000,r6000,r8000,l250,l500,l750,l1000,l1500,l2000,l3000,l4000,l6000,l8000)
+        val now = System.currentTimeMillis()
+        val date =  Date(now)
+        val sdf =  SimpleDateFormat("yyyy.MM.dd a hh시 mm분")
+        val getTime = sdf.format(date)
+        val pr = PureResult(0,0,tpaRight, tpaLeft,getTime,r250,r500,r750,r1000, r1500, r2000, r3000,r4000,r6000,r8000,l250,l500,l750,l1000,l1500,l2000,l3000,l4000,l6000,l8000)
 
         // 검사결과 추가
         resultViewModel.addPureResult(pr)
