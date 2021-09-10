@@ -57,11 +57,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
         val sdf =  SimpleDateFormat("yyyy.MM.dd a hh시 mm분")
         val getTime = sdf.format(date)
 
-        val testPureData = PureResult(0,0,getTime,0,0,0,0,0,0,0,0,0,0,
-                0,0,0,0,0,0,0,0,0,0)
-
-
-        mUserViewModel.addPureResult(testPureData)
 
 
 

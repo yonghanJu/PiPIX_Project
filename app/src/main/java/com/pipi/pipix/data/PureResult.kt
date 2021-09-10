@@ -2,6 +2,7 @@ package com.pipi.pipix.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 
 @Entity(tableName = "pure_result_table")
@@ -34,4 +35,4 @@ data class PureResult (
     val L_4000: Int? = null,
     val L_6000: Int? = null,
     val L_8000: Int? = null
-)
+) : Serializable
