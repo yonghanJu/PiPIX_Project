@@ -28,7 +28,7 @@ class ProfileRecyclerviewAdapter (val context: ProfileFragment) :  RecyclerView.
         var dateTime: TextView? = null
         lateinit var data : PureResult
 
-        
+
         init {
             // Define click listener for the ViewHolder's View.
             more = view!!.findViewById(R.id.item_more)
