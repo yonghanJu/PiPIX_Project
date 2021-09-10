@@ -51,29 +51,49 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
         //그래프에 들어갈 좌표값 입력
 
         //왼쪽 데이터 리스트
+        if(data.L_250 != null)
         entries.add(Entry(1f, data.L_250!!.toFloat()))
+        if(data.L_500 != null)
         entries.add(Entry(2f, data.L_500!!.toFloat()))
+        if(data.L_750 != null)
         entries.add(Entry(3f, data.L_750!!.toFloat()))
+        if(data.L_1000 != null)
         entries.add(Entry(4f, data.L_1000!!.toFloat()))
-      //  entries.add(Entry(5f, testData.L_1500!!.toFloat()))
+        if(data.L_1500 != null)
+        entries.add(Entry(5f, data.L_1500!!.toFloat()))
+        if(data.L_2000 != null)
         entries.add(Entry(6f, data.L_2000!!.toFloat()))
+        if(data.L_3000 != null)
         entries.add(Entry(7f, data.L_3000!!.toFloat()))
+        if(data.L_4000 != null)
         entries.add(Entry(8f, data.L_4000!!.toFloat()))
-       // entries.add(Entry(9f, testData.L_6000!!.toFloat()))
+        if(data.L_6000 != null)
+        entries.add(Entry(9f, data.L_6000!!.toFloat()))
+        if(data.L_8000 != null)
         entries.add(Entry(10f, data.L_8000!!.toFloat()))
 
 
 
         //오른쪽 데이터 리스트
+        if(data.R_250 != null)
         entries2.add(Entry(1f, data.R_250!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        if(data.R_500 != null)
         entries2.add(Entry(2f, data.R_500!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
-       // entries2.add(Entry(3f, testData.R_750!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        if(data.R_750 != null)
+        entries2.add(Entry(3f, data.R_750!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        if(data.R_1000 != null)
         entries2.add(Entry(4f, data.R_1000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        if(data.R_1500 != null)
         entries2.add(Entry(5f, data.R_1500!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        if(data.R_2000!= null)
         entries2.add(Entry(6f, data.R_2000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
-       // entries2.add(Entry(7f, testData.R_3000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        if(data.R_3000 != null)
+        entries2.add(Entry(7f, data.R_3000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        if(data.R_4000 != null)
         entries2.add(Entry(8f, data.R_4000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        if(data.R_6000!= null)
         entries2.add(Entry(9f, data.R_6000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        if(data.R_8000 != null)
         entries2.add(Entry(10f, data.R_8000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
 
 
