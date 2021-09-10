@@ -17,7 +17,6 @@ import com.pipi.pipix.R
 import com.pipi.pipix.config.BaseActivity
 import com.pipi.pipix.data.PureResult
 import com.pipi.pipix.databinding.ActivityChartBinding
-import com.pipi.pipix.databinding.ActivityMainBinding
 import java.security.AccessController.getContext
 
 class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::inflate)  {
@@ -32,7 +31,11 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
             finish()
         }
 
+
+
         val data = intent.getSerializableExtra("test") as PureResult
+
+
 
         Log.d("test",data.toString())
         var lineChart: LineChart? = null
@@ -95,12 +98,10 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
         entries2.add(Entry(9f, data.R_6000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
         if(data.R_8000 != null)
         entries2.add(Entry(10f, data.R_8000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
-
-
         //entry add는 if문 사용 null check
 
 
-
+        //디자인 부분
 
         val chartData = LineData()
         val set1 = LineDataSet(entries, " : 왼쪽 귀")
@@ -115,10 +116,6 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
         set1.valueTextColor = Color.RED
 
 
-
-
-
-
         val set2 = LineDataSet(entries2, " : 오른쪽 귀")
         chartData.addDataSet(set2)
         set2.setColor(ContextCompat.getColor(this, R.color.transparency))
@@ -130,6 +127,28 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
         set2.setDrawIcons(set2.isDrawIconsEnabled())
 
 
+        //Y축 레이블을 모두 나타내기 위한 틀
+        val entries3 = ArrayList<Entry>()
+
+        entries3.add(Entry(1f, 100f))
+        entries3.add(Entry(1f, 90f))
+        entries3.add(Entry(1f, 80f))
+        entries3.add(Entry(1f, 70f))
+        entries3.add(Entry(1f, 60f))
+        entries3.add(Entry(1f, 50f))
+        entries3.add(Entry(1f, 40f))
+        entries3.add(Entry(1f, 30f))
+        entries3.add(Entry(1f, 20f))
+        entries3.add(Entry(1f, 10f))
+        entries3.add(Entry(1f, 0f))
+        entries3.add(Entry(1f, -10f))
+
+        val set3 = LineDataSet(entries3,"test")
+        chartData.addDataSet(set3)
+        set3.setColor(ContextCompat.getColor(this, R.color.transparency))
+        set3.setDrawCircles(false)
+        set3.setDrawCircleHole(false)
+        set3.valueTextColor = ContextCompat.getColor(this, R.color.transparency)
 
 
 
@@ -143,8 +162,7 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
         lineChart.setDescription(null) //차트에서 Description 설정 저는 따로 안했습니다.
 
 
-        //legend set
-
+        // Legend set
         lineChart.getLegend().setEnabled(false)
         //var legend = lineChart.legend
         //legend.setTextColor(Color.BLACK)
@@ -153,10 +171,10 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
         //legend.orientation = Legend.LegendOrientation.VERTICAL
         //legend.setForm(Legend.LegendForm.CIRCLE)
 
-        //Axis set
+        // Axis set
         val xAxis = lineChart.xAxis
         xAxis.setLabelCount(10, true)
-        xAxis.setDrawGridLines(false) // 격자
+        xAxis.setDrawGridLines(true) // 격자
 
         val yAxisRight =lineChart.axisRight
         val yAxisLeft = lineChart.axisLeft
@@ -166,11 +184,13 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
         yAxisLeft.setDrawAxisLine(false)
         yAxisLeft.setDrawGridLines(false)
 
-        yAxisRight.setDrawGridLines(true) // 격자
-        //yAxisRight.axisMaximum = 100f
-        //yAxisRight.axisMinimum = 0f // 최소값 0
-        yAxisRight.granularity = 10f // 10 단위마다 선을 그리려고 granularity 설정 해 주었다.
-        //yAxisRight.setLabelCount(10)
+        yAxisRight.setDrawLabels(true)
+        //yAxisRight.setDrawGridLines(true) // 격자
+        yAxisRight.axisMaximum = 109f
+        yAxisRight.axisMinimum = -19f // 최소값 0
+        //yAxisRight.granularity = 10f // 10 단위마다 선을 그리려고 granularity 설정 해 주었다.
+        yAxisRight.setLabelCount(12)
+
 
 
         xAxis.valueFormatter = MyXAxisFormatter()
@@ -185,12 +205,12 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
     inner class MyXAxisFormatter : ValueFormatter() {
         private val Hz = arrayOf("250", "500", "750", "1000","1500", "2000","3000", "4000","6000", "8000")
         override fun getAxisLabel(value: Float, axis: AxisBase?): String {
-            return Hz.getOrNull(value.toInt() - 1) ?: Hz.toString()
+            return Hz.getOrNull(value.toInt() - 1) ?:value.toInt().toString()
         }
     }
 
     inner class MyYAxisFormatter : ValueFormatter() {
-        private val dB = arrayOf("0", "10", "20", "30", "40", "50", "60", "70","80","90","100")
+        private val dB = arrayOf("100dB","90dB","80dB","70dB","60dB","50dB","40dB","30dB","20dB","10dB","0dB","-10dB")
         override fun getAxisLabel(value: Float, axis: AxisBase?): String {
             return dB.getOrNull(value.toInt() - 1) ?: value.toInt().toString() + "dB"
         }
