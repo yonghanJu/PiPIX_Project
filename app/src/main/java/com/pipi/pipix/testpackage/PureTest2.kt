@@ -7,11 +7,11 @@ import android.widget.Button
 import com.pipi.pipix.R
 import kotlinx.coroutines.*
 import java.lang.Thread.sleep
+import kotlin.concurrent.thread
 import kotlin.math.roundToInt
 
-class PureTest2(private val btnYes:Button, private val btnNo: Button, var context: Context) {
-    private var rightFin = false
-    private var leftFin = false
+class PureTest2(private val btnYes:Button, private val btnNo: Button, var context: Context, var ptViewModel: PureTest2ViewModel) {
+    private  var progress: Int = 0
     private var mediaPlayer: MediaPlayer? = null
     private var isPaused = false
 
@@ -31,9 +31,17 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
                 // 초기 설정
                 mediaPlayer = MediaPlayer.create(context, resIdList1[position])
                 mediaPlayer!!.isLooping = true
+                ptViewModel.setHz(dbList[position])
+                ptViewModel.setDirec(direc)
 
                 testDb(direc, position,mediaPlayer!!)
 
+                val job = thread{ for(i in 0..16){
+                    sleep(15)
+                    ptViewModel.setProgress(++progress)
+                }}
+                runBlocking { if(!isPaused) job.join()  }
+                mediaPlayer!!.release()
             }else return false
         }
         return true
@@ -45,17 +53,18 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
         var isFin: Boolean = false
 
         fun play(){
-            if(currentDb in 0..100){
+            if(currentDb in 0..100 && mediaPlayer != null){
                 mediaPlayer.setVolume((1-direc)*dbMap[currentDb]!!, direc*dbMap[currentDb]!!)
-                mediaPlayer?.start()
+                mediaPlayer.start()
             }
         }
 
         btnYes.setOnClickListener {
             when(currentDb){
                 in -15..0 ->{result[direc][position] = 0
-                    mediaPlayer.release()
-                    isFin = true}
+                    mediaPlayer.stop()
+                    isFin = true
+                }
                 else ->{
                     currentDb-=10
                     play()
@@ -64,11 +73,11 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
         }
         btnNo.setOnClickListener {
             if(currentDb>=100){
-                mediaPlayer.release()
+                mediaPlayer.stop()
                 result[direc][position] = 100
                 isFin = true
             }else if(dbSet.contains(currentDb)){
-                mediaPlayer.release()
+                mediaPlayer.stop()
                 result[direc][position] = currentDb
                 isFin = true
             }else{
