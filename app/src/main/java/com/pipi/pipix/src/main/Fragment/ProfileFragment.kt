@@ -1,5 +1,6 @@
 package com.pipi.pipix.src.main.Fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
@@ -11,7 +12,11 @@ import com.pipi.pipix.config.ApplicationClass
 import com.pipi.pipix.config.BaseFragment
 import com.pipi.pipix.data.PRViewModel
 import com.pipi.pipix.data.PureResult
+import com.pipi.pipix.databinding.ActivityWarningBinding
 import com.pipi.pipix.databinding.FragmentProfileBinding
+import com.pipi.pipix.src.chart.ChartActivity
+import com.pipi.pipix.src.main.Fragment.ProfileRecyclerviewAdapter.Companion.userList
+import com.pipi.pipix.src.warning.WarningActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,10 +26,11 @@ import java.util.*
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBinding::bind, R.layout.fragment_profile) {
 
-    private  lateinit var mUserViewModel : PRViewModel
+
 
     companion object {
         var testType : Int? = null // 1이면 순음 2이면 어음
+        lateinit var mUserViewModel : PRViewModel
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,7 +62,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
         val date =  Date(now)
         val sdf =  SimpleDateFormat("yyyy.MM.dd a hh시 mm분")
         val getTime = sdf.format(date)
-
+        val testdata = PureResult(0,1,1,1,getTime,1,1,0,10,20,10,70,0,40,20,10,0,80,60)
+        mUserViewModel.addPureResult(testdata)
 
 
 
@@ -67,10 +74,14 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
             testType = 1
         }
         binding.profileButtonTest2.setOnClickListener {
-            findNavController().navigate(R.id.action_ProfileFragment_to_speechNoticeFragment)
-            testType = 2
+            //userList는 리사이클러뷰어댑터에 있는 전역 변수, 해당 코드는 데이터리스트가 비어있으면 순음 검사를 진행하지 않았다고 판단 -> 수정 필요!
+            if(userList.isEmpty()){
+                val intent = Intent(context, WarningActivity::class.java)
+                startActivity(intent)}
+                else{
+                findNavController().navigate(R.id.action_ProfileFragment_to_speechNoticeFragment)
+                testType = 2
+                }
+            }
         }
     }
-
-
-}
