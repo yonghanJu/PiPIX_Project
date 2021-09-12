@@ -59,9 +59,6 @@ class PureTest(var buttonRight: Button, var buttonLeft:Button, var buttonCheck:B
     // 1차 테스트 음원 아이디 리스트
     private val resIdList1 = arrayListOf(R.raw.hz1000, R.raw.hz2000,R.raw.hz4000,R.raw.hz8000,R.raw.hz250,R.raw.hz500)
     private val dbList = arrayListOf(1000, 2000, 4000, 8000, 250, 500)
-    // 2차 테스트 음원 아이디 리스트
-    private val resIdList2 = arrayListOf(R.raw.hz750, R.raw.hz1500, R.raw.hz3000, R.raw.hz6000)
-    private val dbList2 = arrayListOf(750, 1500, 3000, 6000)
     // 데시벨 맵
     private val dbMap = mutableMapOf<Int,Float>()
     //데시벨 맵핑
@@ -106,10 +103,10 @@ class PureTest(var buttonRight: Button, var buttonLeft:Button, var buttonCheck:B
         for(i in testAgainList()){
 
             // 해당 헤르츠의 음원 준비
-            val mediaPlayer = MediaPlayer.create(context, resIdList2[i])
+            //val mediaPlayer = MediaPlayer.create(context, resIdList2[i])
 
             //해당 헤르츠 테스트 초기 세팅
-            currentHz = dbList2[i]
+            //currentHz = dbList2[i]
             currentDb = 30
             cantHear = false
             firstTouch = true
@@ -119,7 +116,7 @@ class PureTest(var buttonRight: Button, var buttonLeft:Button, var buttonCheck:B
             //측정 헤르츠의 데시벨 측정 시작
             while (whileState){
                 if(cancel) return false
-                startMp(mediaPlayer)
+             //   startMp(mediaPlayer)
 
             } // 특정 헤르츠 측정 끝
 

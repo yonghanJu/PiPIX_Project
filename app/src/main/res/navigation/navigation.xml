@@ -111,5 +111,10 @@
     <fragment
         android:id="@+id/pureFragment2"
         android:name="com.pipi.pipix.src.main.fragment.PureFragment2"
-        android:label="PureFragment2" />
+        android:label="PureFragment2" >
+        <action
+            android:id="@+id/action_pureFragment2_to_ProfileFragment"
+            app:destination="@id/ProfileFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>
