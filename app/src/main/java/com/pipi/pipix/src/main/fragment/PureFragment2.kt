@@ -1,8 +1,11 @@
 package com.pipi.pipix.src.main.fragment
 
 import android.icu.text.SimpleDateFormat
+import android.media.AudioManager
 import android.os.Bundle
 import android.view.View
+import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.lifecycle.ViewModelProvider
@@ -12,17 +15,25 @@ import com.pipi.pipix.config.BaseFragment
 import com.pipi.pipix.data.PRViewModel
 import com.pipi.pipix.data.PureResult
 import com.pipi.pipix.databinding.FragmentPure2Binding
+import com.pipi.pipix.src.main.SoundController
 import com.pipi.pipix.testpackage.PureTest2
+import com.pipi.pipix.testpackage.PureTest2ViewModel
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import androidx.lifecycle.Observer
 import java.util.*
 
 class PureFragment2  : BaseFragment<FragmentPure2Binding>(FragmentPure2Binding::bind, R.layout.fragment_pure2) {
 
     private lateinit var result: MutableList<MutableList<Int>>
     private lateinit var viewModel: PRViewModel
+    private lateinit var ptViewModel: PureTest2ViewModel
     private lateinit var pureTest: PureTest2
+    private lateinit var hzText: TextView
+    private lateinit var direcText: TextView
+    private lateinit var progressBar: ProgressBar
+    private lateinit var progressText: TextView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -30,8 +41,42 @@ class PureFragment2  : BaseFragment<FragmentPure2Binding>(FragmentPure2Binding::
 
         binding.pure2Animation.loop(true)
 
-        pureTest = PureTest2(binding.pure2ButtonYes,binding.pure2ButtonNo,requireContext())
+        SoundController.isStopMusicOfOtherApps()
+
+
         viewModel = ViewModelProvider(this).get(PRViewModel::class.java)
+        ptViewModel = ViewModelProvider(this).get(PureTest2ViewModel::class.java)
+        pureTest = PureTest2(binding.pure2ButtonYes,binding.pure2ButtonNo,requireContext(), ptViewModel)
+
+        // 볼륨 조절
+        val st = AudioManager.STREAM_MUSIC
+        SoundController.mAudioManager.setStreamVolume(st,15,1)
+
+        hzText = binding.pure2TextviewText2
+        direcText = binding.pure2TextviewText3
+        progressBar = binding.progress2
+        progressText = binding.pure2TextviewProgress
+
+        ptViewModel.hzText.observe(viewLifecycleOwner, Observer {
+            hzText.text = it
+        })
+
+        ptViewModel.direcText.observe(viewLifecycleOwner, Observer {
+            direcText.text = it
+        })
+
+        ptViewModel.progress.observe(viewLifecycleOwner, Observer {
+            if(it<100){
+                progressBar.progress = it
+                progressText.text = "${it}%"
+            }else {
+                progressBar.progress = 100
+                progressText.text = "100%"
+            }
+        })
+
+        ptViewModel.setProgress(0)
+
 
         val scope = CoroutineScope(CoroutineName("scope"))
         val testJob = scope.launch {
