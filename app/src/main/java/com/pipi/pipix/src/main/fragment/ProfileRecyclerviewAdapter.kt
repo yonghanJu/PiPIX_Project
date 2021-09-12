@@ -39,6 +39,8 @@ class ProfileRecyclerviewAdapter (val context: ProfileFragment) :  RecyclerView.
                   intent.putExtra("test",data)
                   view.getContext().startActivity(intent)
              }
+
+
         }
     }
     // Create new views (invoked by the layout manager)
@@ -67,6 +69,10 @@ class ProfileRecyclerviewAdapter (val context: ProfileFragment) :  RecyclerView.
         viewHolder.data = userList[position]
 
         Log.d("test",userList[position].toString())
+
+        viewHolder.more!!.setOnClickListener {
+            //아이템 삭제
+        }
     }
 
 
