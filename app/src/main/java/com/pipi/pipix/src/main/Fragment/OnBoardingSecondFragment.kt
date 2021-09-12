@@ -13,6 +13,8 @@ class OnBoardingSecondFragment : BaseFragment<FragmentOnBoardingSecondBinding>(F
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.onBoardingSecondAnimation.loop(true)
+
         binding.onBoardingSecondButtonNext.setOnClickListener {
 
             if(ProfileFragment.testType == 1){
