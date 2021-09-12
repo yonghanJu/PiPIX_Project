@@ -56,48 +56,32 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
         //왼쪽 데이터 리스트
         if(data.L_8000 != null)
         entries.add(Entry(1f, data.L_8000!!.toFloat()))
-        if(data.L_6000 != null)
-        entries.add(Entry(2f, data.L_6000!!.toFloat()))
         if(data.L_4000 != null)
-        entries.add(Entry(3f, data.L_4000!!.toFloat()))
-        if(data.L_3000 != null)
-        entries.add(Entry(4f, data.L_3000!!.toFloat()))
+        entries.add(Entry(2f, data.L_4000!!.toFloat()))
         if(data.L_2000 != null)
-        entries.add(Entry(5f, data.L_2000!!.toFloat()))
-        if(data.L_1500 != null)
-        entries.add(Entry(6f, data.L_1500!!.toFloat()))
+        entries.add(Entry(3f, data.L_2000!!.toFloat()))
         if(data.L_1000 != null)
-        entries.add(Entry(7f, data.L_1000!!.toFloat()))
-        if(data.L_750 != null)
-        entries.add(Entry(8f, data.L_750!!.toFloat()))
+        entries.add(Entry(4f, data.L_1000!!.toFloat()))
         if(data.L_500 != null)
-        entries.add(Entry(9f, data.L_500!!.toFloat()))
+        entries.add(Entry(5f, data.L_500!!.toFloat()))
         if(data.L_250 != null)
-        entries.add(Entry(10f, data.L_250!!.toFloat()))
+        entries.add(Entry(6f, data.L_250!!.toFloat()))
 
 
 
         //오른쪽 데이터 리스트
         if(data.R_8000 != null)
         entries2.add(Entry(1f, data.R_8000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
-        if(data.R_6000 != null)
-        entries2.add(Entry(2f, data.R_6000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
         if(data.R_4000 != null)
-        entries2.add(Entry(3f, data.R_4000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
-        if(data.R_3000 != null)
-        entries2.add(Entry(4f, data.R_3000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        entries2.add(Entry(2f, data.R_4000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
         if(data.R_2000 != null)
-        entries2.add(Entry(5f, data.R_2000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
-        if(data.R_1500!= null)
-        entries2.add(Entry(6f, data.R_1500!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        entries2.add(Entry(3f, data.R_2000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
         if(data.R_1000 != null)
-        entries2.add(Entry(7f, data.R_1000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
-        if(data.R_750 != null)
-        entries2.add(Entry(8f, data.R_750!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        entries2.add(Entry(4f, data.R_1000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
         if(data.R_500!= null)
-        entries2.add(Entry(9f, data.R_500!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        entries2.add(Entry(5f, data.R_500!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
         if(data.R_250 != null)
-        entries2.add(Entry(10f, data.R_250!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        entries2.add(Entry(6f, data.R_250!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
         //entry add는 if문 사용 null check
 
 
@@ -145,7 +129,7 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
         entries3.add(Entry(1f, 60f))
         entries3.add(Entry(1f, 70f))
         entries3.add(Entry(1f, 80f))
-        entries3.add(Entry(1f, 9f))
+        entries3.add(Entry(1f, 90f))
         entries3.add(Entry(1f, 100f))
 
         val set3 = LineDataSet(entries3,"test")
@@ -219,7 +203,7 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
     }
 
     inner class MyXAxisFormatter : ValueFormatter() {
-        private val Hz = arrayOf("250", "500", "750", "1000","1500", "2000","3000", "4000","6000", "8000")
+        private val Hz = arrayOf("250", "500","1000","2000", "4000", "8000")
         override fun getAxisLabel(value: Float, axis: AxisBase?): String {
             return Hz.getOrNull(value.toInt() - 1) ?:value.toInt().toString()
         }
