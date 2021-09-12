@@ -36,11 +36,11 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
 
                 testDb(direc, position,mediaPlayer!!)
 
-                val job = thread{ for(i in 0..16){
+                val job = thread{ for(i in 0..8){
                     sleep(15)
                     ptViewModel.setProgress(++progress)
                 }}
-                runBlocking { if(!isPaused) job.join()  }
+                if(direc==0 && position == 5) runBlocking { if(!isPaused) job.join()  }
                 mediaPlayer!!.release()
             }else return false
         }
@@ -52,6 +52,7 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
         var dbSet = mutableSetOf<Int>()
         var isFin: Boolean = false
 
+        // 버그 수정 필요
         fun play(){
             if(currentDb in 0..100 && mediaPlayer != null){
                 mediaPlayer.setVolume((1-direc)*dbMap[currentDb]!!, direc*dbMap[currentDb]!!)
