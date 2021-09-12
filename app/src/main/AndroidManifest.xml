@@ -30,6 +30,15 @@
         </activity>
         <activity android:name=".src.chart.ChartActivity"
             android:theme="@style/Theme.AppCompat.Light"/>
+        <activity android:name=".src.consent.ConsentActivity"
+            android:theme="@style/DialogTheme" />
+        <activity android:name=".src.consent.contents.ContentsActivity"
+            android:theme="@style/DialogTheme" />
+        <activity android:name=".src.warning.WarningActivity"
+            android:theme="@style/DialogTheme" />
+        <activity android:name=".src.speechresult.SpeechResultActivity"
+            android:theme="@style/Theme.AppCompat.Light"/>
+
     </application>
 
 </manifest>
