@@ -12,5 +12,10 @@ class Prefs(context: Context) {
         set(value){
             prefs.edit().putString("userNickName",value).apply()
         }
+    var consent:Boolean
+        get() = prefs.getBoolean("consent",false)
+        set(value){
+            prefs.edit().putBoolean("consent", value).apply()
+        }
 
 }
