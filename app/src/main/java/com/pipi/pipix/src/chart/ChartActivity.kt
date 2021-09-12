@@ -54,50 +54,50 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
         //그래프에 들어갈 좌표값 입력
 
         //왼쪽 데이터 리스트
-        if(data.L_250 != null)
-        entries.add(Entry(1f, data.L_250!!.toFloat()))
-        if(data.L_500 != null)
-        entries.add(Entry(2f, data.L_500!!.toFloat()))
-        if(data.L_750 != null)
-        entries.add(Entry(3f, data.L_750!!.toFloat()))
-        if(data.L_1000 != null)
-        entries.add(Entry(4f, data.L_1000!!.toFloat()))
-        if(data.L_1500 != null)
-        entries.add(Entry(5f, data.L_1500!!.toFloat()))
-        if(data.L_2000 != null)
-        entries.add(Entry(6f, data.L_2000!!.toFloat()))
-        if(data.L_3000 != null)
-        entries.add(Entry(7f, data.L_3000!!.toFloat()))
-        if(data.L_4000 != null)
-        entries.add(Entry(8f, data.L_4000!!.toFloat()))
-        if(data.L_6000 != null)
-        entries.add(Entry(9f, data.L_6000!!.toFloat()))
         if(data.L_8000 != null)
-        entries.add(Entry(10f, data.L_8000!!.toFloat()))
+        entries.add(Entry(1f, data.L_8000!!.toFloat()))
+        if(data.L_6000 != null)
+        entries.add(Entry(2f, data.L_6000!!.toFloat()))
+        if(data.L_4000 != null)
+        entries.add(Entry(3f, data.L_4000!!.toFloat()))
+        if(data.L_3000 != null)
+        entries.add(Entry(4f, data.L_3000!!.toFloat()))
+        if(data.L_2000 != null)
+        entries.add(Entry(5f, data.L_2000!!.toFloat()))
+        if(data.L_1500 != null)
+        entries.add(Entry(6f, data.L_1500!!.toFloat()))
+        if(data.L_1000 != null)
+        entries.add(Entry(7f, data.L_1000!!.toFloat()))
+        if(data.L_750 != null)
+        entries.add(Entry(8f, data.L_750!!.toFloat()))
+        if(data.L_500 != null)
+        entries.add(Entry(9f, data.L_500!!.toFloat()))
+        if(data.L_250 != null)
+        entries.add(Entry(10f, data.L_250!!.toFloat()))
 
 
 
         //오른쪽 데이터 리스트
-        if(data.R_250 != null)
-        entries2.add(Entry(1f, data.R_250!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
-        if(data.R_500 != null)
-        entries2.add(Entry(2f, data.R_500!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
-        if(data.R_750 != null)
-        entries2.add(Entry(3f, data.R_750!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
-        if(data.R_1000 != null)
-        entries2.add(Entry(4f, data.R_1000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
-        if(data.R_1500 != null)
-        entries2.add(Entry(5f, data.R_1500!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
-        if(data.R_2000!= null)
-        entries2.add(Entry(6f, data.R_2000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
-        if(data.R_3000 != null)
-        entries2.add(Entry(7f, data.R_3000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
-        if(data.R_4000 != null)
-        entries2.add(Entry(8f, data.R_4000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
-        if(data.R_6000!= null)
-        entries2.add(Entry(9f, data.R_6000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
         if(data.R_8000 != null)
-        entries2.add(Entry(10f, data.R_8000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        entries2.add(Entry(1f, data.R_8000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        if(data.R_6000 != null)
+        entries2.add(Entry(2f, data.R_6000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        if(data.R_4000 != null)
+        entries2.add(Entry(3f, data.R_4000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        if(data.R_3000 != null)
+        entries2.add(Entry(4f, data.R_3000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        if(data.R_2000 != null)
+        entries2.add(Entry(5f, data.R_2000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        if(data.R_1500!= null)
+        entries2.add(Entry(6f, data.R_1500!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        if(data.R_1000 != null)
+        entries2.add(Entry(7f, data.R_1000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        if(data.R_750 != null)
+        entries2.add(Entry(8f, data.R_750!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        if(data.R_500!= null)
+        entries2.add(Entry(9f, data.R_500!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        if(data.R_250 != null)
+        entries2.add(Entry(10f, data.R_250!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
         //entry add는 if문 사용 null check
 
 
@@ -116,9 +116,13 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
         set1.valueTextColor = Color.RED
 
 
+
+
+
         val set2 = LineDataSet(entries2, " : 오른쪽 귀")
         chartData.addDataSet(set2)
-        set2.setColor(ContextCompat.getColor(this, R.color.transparency))
+        set2.setColor(Color.BLUE)
+        set2.lineWidth = 1F
         set2.circleSize = 0f
         set2.setDrawCircles(false)
         set2.setDrawCircleHole(false)
@@ -127,21 +131,22 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
         set2.setDrawIcons(set2.isDrawIconsEnabled())
 
 
+
         //Y축 레이블을 모두 나타내기 위한 틀
         val entries3 = ArrayList<Entry>()
 
-        entries3.add(Entry(1f, 100f))
-        entries3.add(Entry(1f, 90f))
-        entries3.add(Entry(1f, 80f))
-        entries3.add(Entry(1f, 70f))
-        entries3.add(Entry(1f, 60f))
-        entries3.add(Entry(1f, 50f))
-        entries3.add(Entry(1f, 40f))
-        entries3.add(Entry(1f, 30f))
-        entries3.add(Entry(1f, 20f))
-        entries3.add(Entry(1f, 10f))
-        entries3.add(Entry(1f, 0f))
         entries3.add(Entry(1f, -10f))
+        entries3.add(Entry(1f, 0f))
+        entries3.add(Entry(1f, 10f))
+        entries3.add(Entry(1f, 20f))
+        entries3.add(Entry(1f, 30f))
+        entries3.add(Entry(1f, 40f))
+        entries3.add(Entry(1f, 50f))
+        entries3.add(Entry(1f, 60f))
+        entries3.add(Entry(1f, 70f))
+        entries3.add(Entry(1f, 80f))
+        entries3.add(Entry(1f, 9f))
+        entries3.add(Entry(1f, 100f))
 
         val set3 = LineDataSet(entries3,"test")
         chartData.addDataSet(set3)
@@ -178,6 +183,8 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
 
         val yAxisRight =lineChart.axisRight
         val yAxisLeft = lineChart.axisLeft
+        yAxisRight.isInverted = true
+        yAxisLeft.isInverted = true
 
 
         yAxisLeft.setDrawLabels(false)
@@ -193,11 +200,20 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
 
 
 
+
+
+
         xAxis.valueFormatter = MyXAxisFormatter()
         yAxisRight.valueFormatter = MyYAxisFormatter()
 
 
+
+
+        lineChart.animateX(1000) //X축 애니메이션
+        //lineChart.animateY(1000) //Y축 애니메이션
+
         lineChart.invalidate()
+
 
 
     }
