@@ -32,7 +32,7 @@
         android:layout_height="200dp"
         app:lottie_rawRes="@raw/speaker"
         app:lottie_autoPlay="true"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="120dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -41,7 +41,7 @@
         android:id="@+id/on_boarding_second_textview_text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:text="주변 소음을 측정중입니다"
         android:textColor="@color/black"
         android:textSize="25sp"
