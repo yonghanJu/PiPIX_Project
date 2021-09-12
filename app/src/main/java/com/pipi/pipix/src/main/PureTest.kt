@@ -320,9 +320,9 @@ class PureTest(var buttonRight: Button, var buttonLeft:Button, var buttonCheck:B
         val date =  Date(now)
         val sdf =  SimpleDateFormat("yyyy.MM.dd a hh시 mm분")
         val getTime = sdf.format(date)
-        val pr = PureResult(0,0,tpaRight, tpaLeft,getTime,r250,r500,r750,r1000, r1500, r2000, r3000,r4000,r6000,r8000,l250,l500,l750,l1000,l1500,l2000,l3000,l4000,l6000,l8000)
-
-        // 검사결과 추가
-        resultViewModel.addPureResult(pr)
+//        val pr = PureResult(0,0,tpaRight, tpaLeft,getTime,r250,r500,r750,r1000, r1500, r2000, r3000,r4000,r6000,r8000,l250,l500,l750,l1000,l1500,l2000,l3000,l4000,l6000,l8000)
+//
+//        // 검사결과 추가
+//        resultViewModel.addPureResult(pr)
     }
 }
