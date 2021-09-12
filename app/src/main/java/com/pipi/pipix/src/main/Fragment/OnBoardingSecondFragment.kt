@@ -18,7 +18,8 @@ class OnBoardingSecondFragment : BaseFragment<FragmentOnBoardingSecondBinding>(F
         binding.onBoardingSecondButtonNext.setOnClickListener {
 
             if(ProfileFragment.testType == 1){
-                findNavController().navigate(R.id.action_onBoardingSecondFragment_to_PureFragment)}
+               // findNavController().navigate(R.id.action_onBoardingSecondFragment_to_PureFragment)
+                findNavController().navigate(R.id.action_onBoardingSecondFragment_to_pureFragment2)}
             else{
                 findNavController().navigate(R.id.action_onBoardingSecondFragment_to_speechFragment)}
             }
