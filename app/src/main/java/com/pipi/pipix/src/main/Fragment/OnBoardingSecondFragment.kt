@@ -13,10 +13,13 @@ class OnBoardingSecondFragment : BaseFragment<FragmentOnBoardingSecondBinding>(F
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.onBoardingSecondAnimation.loop(true)
+
         binding.onBoardingSecondButtonNext.setOnClickListener {
 
             if(ProfileFragment.testType == 1){
-                findNavController().navigate(R.id.action_onBoardingSecondFragment_to_PureFragment)}
+               // findNavController().navigate(R.id.action_onBoardingSecondFragment_to_PureFragment)
+                findNavController().navigate(R.id.action_onBoardingSecondFragment_to_pureFragment2)}
             else{
                 findNavController().navigate(R.id.action_onBoardingSecondFragment_to_speechFragment)}
             }

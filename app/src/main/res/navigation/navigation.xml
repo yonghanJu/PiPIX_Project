@@ -48,6 +48,9 @@
         <action
             android:id="@+id/action_onBoardingSecondFragment_to_speechFragment"
             app:destination="@id/speechFragment" />
+        <action
+            android:id="@+id/action_onBoardingSecondFragment_to_pureFragment2"
+            app:destination="@id/pureFragment2" />
     </fragment>
     <fragment
         android:id="@+id/LoginFragement"
@@ -105,4 +108,13 @@
         android:name="com.pipi.pipix.src.main.fragment.SpeechFragment"
         android:label="fragment_speech"
         tools:layout="@layout/fragment_speech" />
+    <fragment
+        android:id="@+id/pureFragment2"
+        android:name="com.pipi.pipix.src.main.fragment.PureFragment2"
+        android:label="PureFragment2" >
+        <action
+            android:id="@+id/action_pureFragment2_to_ProfileFragment"
+            app:destination="@id/ProfileFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>
