@@ -14,8 +14,8 @@ data class PureResult (
     val tpaLeft: Int,
     val date: String,
 
-    val totalCount: Int,
-    val correctCount: Int,
+    val totalCount: Int? = null,
+    val correctCount: Int? = null,
 
     
     val R_250: Int? = null,
