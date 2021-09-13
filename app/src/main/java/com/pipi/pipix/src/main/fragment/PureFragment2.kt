@@ -18,10 +18,8 @@ import com.pipi.pipix.databinding.FragmentPure2Binding
 import com.pipi.pipix.src.main.SoundController
 import com.pipi.pipix.testpackage.PureTest2
 import com.pipi.pipix.testpackage.PureTest2ViewModel
-import kotlinx.coroutines.CoroutineName
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 import androidx.lifecycle.Observer
+import kotlinx.coroutines.*
 import java.util.*
 
 class PureFragment2  : BaseFragment<FragmentPure2Binding>(FragmentPure2Binding::bind, R.layout.fragment_pure2) {
@@ -34,6 +32,8 @@ class PureFragment2  : BaseFragment<FragmentPure2Binding>(FragmentPure2Binding::
     private lateinit var direcText: TextView
     private lateinit var progressBar: ProgressBar
     private lateinit var progressText: TextView
+    private lateinit var scope: CoroutineScope
+    private  var isPause:Boolean = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -78,7 +78,7 @@ class PureFragment2  : BaseFragment<FragmentPure2Binding>(FragmentPure2Binding::
         ptViewModel.setProgress(0)
 
 
-        val scope = CoroutineScope(CoroutineName("scope"))
+        scope = CoroutineScope(CoroutineName("scope"))
         val testJob = scope.launch {
             if(pureTest.doTest(1) && pureTest.doTest(0)) {
                 result = pureTest.getResult()
@@ -89,7 +89,10 @@ class PureFragment2  : BaseFragment<FragmentPure2Binding>(FragmentPure2Binding::
                     ,null,null, result[1][4], result[1][5], result[1][0],result[1][1],result[1][2],result[1][3]
                     , result[0][4], result[0][5], result[0][0],result[0][1],result[0][2],result[0][3])
                 viewModel.addPureResult(pr)
-                activity?.runOnUiThread { findNavController().navigate(R.id.action_pureFragment2_to_ProfileFragment) }
+                activity?.runOnUiThread {
+                    isPause = true
+                    findNavController().navigate(R.id.action_pureFragment2_to_ProfileFragment) }
+
             }
         }
 
@@ -98,21 +101,25 @@ class PureFragment2  : BaseFragment<FragmentPure2Binding>(FragmentPure2Binding::
 
         binding.pure2ButtonPause.setOnClickListener {
             pureTest.pause()
+            isPause = true
             findNavController().navigate(R.id.action_pureFragment2_to_ProfileFragment)
-            Toast.makeText(context,"순음청력검사가 취소 되었습니다.",Toast.LENGTH_LONG).show()
+            showCustomToast("순음청력검사가 취소 되었습니다.")
         }
 
         // backButton Pressed handle
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             pureTest.pause()
+            isPause = true
             findNavController().navigate(R.id.action_pureFragment2_to_ProfileFragment)
-            Toast.makeText(context,"순음청력검사가 취소 되었습니다.",Toast.LENGTH_LONG).show()
+            showCustomToast("순음청력검사가 취소 되었습니다.")
         }
 
     }
 
     override fun onPause() {
         pureTest.pause()
+        if(!isPause)findNavController().navigate(R.id.action_pureFragment2_to_ProfileFragment)
+        showCustomToast("순음청력검사가 취소 되었습니다.")
         super.onPause()
     }
 }
