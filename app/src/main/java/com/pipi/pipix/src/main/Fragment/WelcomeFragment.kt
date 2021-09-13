@@ -25,10 +25,13 @@ class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>(
 
 
         buttonstart.setOnClickListener {
-            if(ApplicationClass.prefs.userNickName == null){
-                findNavController().navigate(R.id.action_welcomeFragment_to_LoginFragement)}
-            else{
-                findNavController().navigate(R.id.action_welcomeFragment_to_ProfileFragment)}
+            if (ApplicationClass.prefs.consent) {
+                if (ApplicationClass.prefs.userNickName == null) {
+                    findNavController().navigate(R.id.action_welcomeFragment_to_LoginFragement)
+                } else {
+                    findNavController().navigate(R.id.action_welcomeFragment_to_ProfileFragment)
+                }
+            }
         }
 
     }
