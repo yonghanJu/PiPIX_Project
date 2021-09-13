@@ -43,6 +43,8 @@
             android:theme="@style/DialogTheme" />
         <activity android:name=".src.speechresult.SpeechResultActivity"
             android:theme="@style/Theme.AppCompat.Light"/>
+        <activity android:name=".src.deleteitem.DeleteItemActivity"
+            android:theme="@style/DialogTheme" />
 
     </application>
 

@@ -162,7 +162,7 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
 
         // Axis set
         val xAxis = lineChart.xAxis
-        xAxis.setLabelCount(10, true)
+        xAxis.setLabelCount(6, true)
         xAxis.setDrawGridLines(true) // 격자
 
         val yAxisRight =lineChart.axisRight

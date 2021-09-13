@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".src.main.Fragment.OnBoardingSecondFragment">
+    tools:context=".src.main.fragment.OnBoardingSecondFragment">
 
     <Button
         android:id="@+id/on_boarding_second_button_next"
@@ -32,6 +32,7 @@
         android:layout_height="200dp"
         app:lottie_rawRes="@raw/speaker"
         app:lottie_autoPlay="true"
+        app:lottie_loop="true"
         android:layout_marginTop="120dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,4 +1,4 @@
-package com.pipi.pipix.src.main.Fragment
+package com.pipi.pipix.src.main.fragment
 
 import android.os.Bundle
 import android.view.View

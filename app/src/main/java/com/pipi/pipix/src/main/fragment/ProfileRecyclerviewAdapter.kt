@@ -1,4 +1,4 @@
-package com.pipi.pipix.src.main.Fragment
+package com.pipi.pipix.src.main.fragment
 
 import android.content.Intent
 import android.os.Parcelable
@@ -8,11 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.PrimaryKey
 import com.pipi.pipix.R
+import com.pipi.pipix.data.PRViewModel
 import com.pipi.pipix.data.PureResult
 import com.pipi.pipix.src.chart.ChartActivity
+import com.pipi.pipix.src.deleteitem.DeleteItemActivity
 import kotlinx.coroutines.NonDisposableHandle
 import kotlinx.coroutines.NonDisposableHandle.parent
 import java.io.Serializable
@@ -21,11 +24,14 @@ import java.text.SimpleDateFormat
 
 class ProfileRecyclerviewAdapter (val context: ProfileFragment) :  RecyclerView.Adapter<ProfileRecyclerviewAdapter.ViewHolder>() {
 
-    private var userList = emptyList<PureResult>()
+    companion object{
+        var dataList = emptyList<PureResult>()
+    }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var more: ImageView? = null
         var dateTime: TextView? = null
+        var itemPosition : Int? = null
         lateinit var data : PureResult
 
 
@@ -39,6 +45,11 @@ class ProfileRecyclerviewAdapter (val context: ProfileFragment) :  RecyclerView.
                   intent.putExtra("test",data)
                   view.getContext().startActivity(intent)
              }
+            more!!.setOnClickListener {
+                val intent2 = Intent(view.context, DeleteItemActivity::class.java)
+                intent2.putExtra("delete",itemPosition)
+                view.getContext().startActivity(intent2)
+            }
 
 
         }
@@ -53,7 +64,7 @@ class ProfileRecyclerviewAdapter (val context: ProfileFragment) :  RecyclerView.
     }
 
     override fun getItemCount(): Int {
-        return  userList.size
+        return  dataList.size
     }
 
 
@@ -63,22 +74,18 @@ class ProfileRecyclerviewAdapter (val context: ProfileFragment) :  RecyclerView.
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
 
-        var currentItem = userList[position]
+        var currentItem = dataList[position]
         val time = currentItem.date
         viewHolder.dateTime?.setText(time)
-        viewHolder.data = userList[position]
+        viewHolder.data = dataList[position]
+        viewHolder.itemPosition = position
 
-        Log.d("test",userList[position].toString())
-
-        viewHolder.more!!.setOnClickListener {
-            //아이템 삭제
-        }
     }
 
 
 
     fun setData(user : List<PureResult>){
-        this.userList = user
+        dataList = user
         notifyDataSetChanged()
     }
 
