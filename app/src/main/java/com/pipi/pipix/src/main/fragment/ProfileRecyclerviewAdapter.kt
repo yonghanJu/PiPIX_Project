@@ -25,7 +25,7 @@ import java.text.SimpleDateFormat
 class ProfileRecyclerviewAdapter (val context: ProfileFragment) :  RecyclerView.Adapter<ProfileRecyclerviewAdapter.ViewHolder>() {
 
     companion object{
-        var userList = emptyList<PureResult>()
+        var dataList = emptyList<PureResult>()
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -64,7 +64,7 @@ class ProfileRecyclerviewAdapter (val context: ProfileFragment) :  RecyclerView.
     }
 
     override fun getItemCount(): Int {
-        return  userList.size
+        return  dataList.size
     }
 
 
@@ -74,10 +74,10 @@ class ProfileRecyclerviewAdapter (val context: ProfileFragment) :  RecyclerView.
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
 
-        var currentItem = userList[position]
+        var currentItem = dataList[position]
         val time = currentItem.date
         viewHolder.dateTime?.setText(time)
-        viewHolder.data = userList[position]
+        viewHolder.data = dataList[position]
         viewHolder.itemPosition = position
 
     }
@@ -85,7 +85,7 @@ class ProfileRecyclerviewAdapter (val context: ProfileFragment) :  RecyclerView.
 
 
     fun setData(user : List<PureResult>){
-        userList = user
+        dataList = user
         notifyDataSetChanged()
     }
 
