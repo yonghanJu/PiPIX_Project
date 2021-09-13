@@ -42,7 +42,7 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
                 runBlocking { test.join() }
 
                 thread{ for(i in 0..8){
-                    sleep(15)
+                    sleep(30)
                     ptViewModel.setProgress(++progress)
                 }}
                 val release = thread { mediaPlayer!!.release() }
