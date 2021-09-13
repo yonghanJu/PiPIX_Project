@@ -39,8 +39,6 @@ class PureFragment2  : BaseFragment<FragmentPure2Binding>(FragmentPure2Binding::
         super.onViewCreated(view, savedInstanceState)
 
 
-        binding.pure2Animation.loop(true)
-
         SoundController.isStopMusicOfOtherApps()
 
 
