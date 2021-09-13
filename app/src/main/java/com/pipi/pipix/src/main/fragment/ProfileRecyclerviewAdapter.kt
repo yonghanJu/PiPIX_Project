@@ -1,4 +1,4 @@
-package com.pipi.pipix.src.main.Fragment
+package com.pipi.pipix.src.main.fragment
 
 import android.content.Intent
 import android.os.Parcelable
