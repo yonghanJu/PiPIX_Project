@@ -59,10 +59,6 @@ class SpeechFragment : BaseFragment<FragmentSpeechBinding>(
         }
     }
 
-
-
-
-
     private fun requestPermissions() {
         if(Build.VERSION.SDK_INT >= 23 && context?.let {
                 ContextCompat.checkSelfPermission(
