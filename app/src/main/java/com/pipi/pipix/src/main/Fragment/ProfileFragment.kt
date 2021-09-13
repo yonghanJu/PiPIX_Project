@@ -1,4 +1,4 @@
-package com.pipi.pipix.src.main.Fragment
+package com.pipi.pipix.src.main.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -15,7 +15,7 @@ import com.pipi.pipix.data.PureResult
 import com.pipi.pipix.databinding.ActivityWarningBinding
 import com.pipi.pipix.databinding.FragmentProfileBinding
 import com.pipi.pipix.src.chart.ChartActivity
-import com.pipi.pipix.src.main.Fragment.ProfileRecyclerviewAdapter.Companion.dataList
+import com.pipi.pipix.src.main.fragment.ProfileRecyclerviewAdapter.Companion.dataList
 import com.pipi.pipix.src.warning.WarningActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
