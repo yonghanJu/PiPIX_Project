@@ -22,7 +22,7 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
     private val dbMap = mutableMapOf<Int,Float>()
     private var result = mutableListOf(mutableListOf(0,0,0,0,0,0), mutableListOf(0,0,0,0,0,0))
     init {
-        for(i in 0..100 step 5) dbMap[i] = (1/10000f)*i + 0.00003f
+        for(i in 0..100 step 5) dbMap[i] = (1/10000f)*i + 0.00008f
     }
 
     fun doTest(direc: Int): Boolean {
