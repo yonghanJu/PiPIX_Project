@@ -4,6 +4,7 @@ import android.content.Context
 import android.media.MediaPlayer
 import android.util.Log
 import android.widget.Button
+import android.widget.Toast
 import com.pipi.pipix.R
 import kotlinx.coroutines.*
 import java.lang.Thread.sleep
@@ -82,6 +83,7 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
             }
             btnNo.isClickable = true
         }
+
         btnNo.setOnClickListener {
             btnYes.isClickable = false
             if(currentDb>=100){
