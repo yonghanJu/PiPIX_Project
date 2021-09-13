@@ -38,9 +38,7 @@ class PureFragment2  : BaseFragment<FragmentPure2Binding>(FragmentPure2Binding::
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         SoundController.isStopMusicOfOtherApps()
-
 
         viewModel = ViewModelProvider(this).get(PRViewModel::class.java)
         ptViewModel = ViewModelProvider(this).get(PureTest2ViewModel::class.java)
@@ -74,7 +72,6 @@ class PureFragment2  : BaseFragment<FragmentPure2Binding>(FragmentPure2Binding::
         })
 
         ptViewModel.setProgress(0)
-
 
         scope = CoroutineScope(CoroutineName("scope"))
         val testJob = scope.launch {
