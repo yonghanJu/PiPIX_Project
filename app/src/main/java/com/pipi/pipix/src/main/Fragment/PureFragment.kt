@@ -1,4 +1,4 @@
-package com.pipi.pipix.src.main.Fragment
+package com.pipi.pipix.src.main.fragment
 
 import android.annotation.SuppressLint
 import android.media.*
