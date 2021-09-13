@@ -116,6 +116,7 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
 
     fun pause(){
         isPaused=true
+        mediaPlayer?.release()
     }
 
     fun getResult(): MutableList<MutableList<Int>> {
