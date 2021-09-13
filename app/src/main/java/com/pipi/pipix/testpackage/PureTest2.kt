@@ -39,6 +39,7 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
                     ptViewModel.setHz(dbList[position])
                     ptViewModel.setDirec(direc)
                 }
+
                 runBlocking {
                     set.join()
                     btnNo.isClickable = true
