@@ -14,6 +14,7 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
     private  var progress: Int = 0
     private var mediaPlayer: MediaPlayer? = null
     private var isPaused = false
+    private var lock = false
 
     private val scope = CoroutineScope(CoroutineName("innerScope"))
     private val resIdList1 = arrayListOf(R.raw.hz1000, R.raw.hz2000, R.raw.hz4000, R.raw.hz8000, R.raw.hz250, R.raw.hz500)
@@ -28,20 +29,24 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
         for(position in 0..5){
             if(!isPaused){
 
-                // 초기 설정
-                mediaPlayer = MediaPlayer.create(context, resIdList1[position])
-                mediaPlayer!!.isLooping = true
-                ptViewModel.setHz(dbList[position])
-                ptViewModel.setDirec(direc)
+                val set = thread{
+                    // 초기 설정
+                    mediaPlayer = MediaPlayer.create(context, resIdList1[position])
+                    mediaPlayer!!.isLooping = true
+                    ptViewModel.setHz(dbList[position])
+                    ptViewModel.setDirec(direc)
+                }
+                runBlocking { set.join() }
 
-                testDb(direc, position,mediaPlayer!!)
+                val test = thread { testDb(direc, position,mediaPlayer!!) }
+                runBlocking { test.join() }
 
-                val job = thread{ for(i in 0..8){
+                thread{ for(i in 0..8){
                     sleep(15)
                     ptViewModel.setProgress(++progress)
                 }}
-                if(direc==0 && position == 5) runBlocking { if(!isPaused) job.join()  }
-                mediaPlayer!!.release()
+                val release = thread { mediaPlayer!!.release() }
+                runBlocking { release.join() }
             }else return false
         }
         return true
@@ -51,7 +56,8 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
         var currentDb = 30
         var dbSet = mutableSetOf<Int>()
         var isFin: Boolean = false
-
+        btnYes.isClickable = true
+        btnNo.isClickable = true
         // 버그 수정 필요
         fun play(){
             if(currentDb in 0..100 && mediaPlayer != null){
@@ -61,6 +67,8 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
         }
 
         btnYes.setOnClickListener {
+            btnNo.isClickable = false
+            lock = true
             when(currentDb){
                 in -15..0 ->{result[direc][position] = 0
                     mediaPlayer.stop()
@@ -71,8 +79,10 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
                     play()
                 }
             }
+            btnNo.isClickable = true
         }
         btnNo.setOnClickListener {
+            btnYes.isClickable = false
             if(currentDb>=100){
                 mediaPlayer.stop()
                 result[direc][position] = 100
@@ -87,6 +97,7 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
                 currentDb+=5
                 play()
             }
+            btnYes.isClickable = true
         }
 
         // 첫 실행
@@ -99,6 +110,8 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
             }
         }
         runBlocking { job.join() }
+        btnYes.isClickable = false
+        btnNo.isClickable = false
     }
 
     fun pause(){
