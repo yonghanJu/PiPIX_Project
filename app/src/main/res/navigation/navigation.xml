@@ -127,6 +127,7 @@
         <action
             android:id="@+id/action_pureFragment2_to_ProfileFragment"
             app:destination="@id/ProfileFragment"
+            app:popUpTo="@id/ProfileFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_pureFragment2_self"
