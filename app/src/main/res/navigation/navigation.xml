@@ -12,10 +12,12 @@
         tools:layout="@layout/fragment_welcome" >
         <action
             android:id="@+id/action_welcomeFragment_to_LoginFragement"
-            app:destination="@id/LoginFragement" />
+            app:destination="@id/LoginFragement"
+            app:enterAnim="@android:anim/fade_in" />
         <action
             android:id="@+id/action_welcomeFragment_to_ProfileFragment"
-            app:destination="@id/ProfileFragment" />
+            app:destination="@id/ProfileFragment"
+            app:enterAnim="@android:anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/prepareFragment"
@@ -24,7 +26,8 @@
         tools:layout="@layout/fragment_prepare" >
         <action
             android:id="@+id/action_prepareFragment_to_onBoardingFirstFragment"
-            app:destination="@id/onBoardingFirstFragment" />
+            app:destination="@id/onBoardingFirstFragment"
+            app:enterAnim="@android:anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/onBoardingFirstFragment"
@@ -33,7 +36,8 @@
         tools:layout="@layout/fragment_on_boarding_first" >
         <action
             android:id="@+id/action_onBoardingFirstFragment_to_onBoardingSecondFragment"
-            app:destination="@id/onBoardingSecondFragment" />
+            app:destination="@id/onBoardingSecondFragment"
+            app:enterAnim="@android:anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/onBoardingSecondFragment"
@@ -43,14 +47,17 @@
         <action
             android:id="@+id/action_onBoardingSecondFragment_to_PureFragment"
             app:destination="@id/PureFragment"
+            app:enterAnim="@android:anim/fade_in"
             app:popUpTo="@id/pureNoticeFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_onBoardingSecondFragment_to_speechFragment"
-            app:destination="@id/speechFragment" />
+            app:destination="@id/speechFragment"
+            app:enterAnim="@android:anim/fade_in" />
         <action
             android:id="@+id/action_onBoardingSecondFragment_to_pureFragment2"
-            app:destination="@id/pureFragment2" />
+            app:destination="@id/pureFragment2"
+            app:enterAnim="@android:anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/LoginFragement"
@@ -59,7 +66,8 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_LoginFragement_to_ProfileFragment"
-            app:destination="@id/ProfileFragment" />
+            app:destination="@id/ProfileFragment"
+            app:enterAnim="@android:anim/fade_in" />
     </fragment>
 
     <fragment
@@ -69,10 +77,12 @@
         tools:layout="@layout/fragment_profile" >
         <action
             android:id="@+id/action_ProfileFragment_to_pureNoticeFragment"
-            app:destination="@id/pureNoticeFragment" />
+            app:destination="@id/pureNoticeFragment"
+            app:enterAnim="@android:anim/fade_in" />
         <action
             android:id="@+id/action_ProfileFragment_to_speechNoticeFragment"
-            app:destination="@id/speechNoticeFragment" />
+            app:destination="@id/speechNoticeFragment"
+            app:enterAnim="@android:anim/fade_in" />
     </fragment>
 
     <fragment
@@ -92,7 +102,8 @@
         tools:layout="@layout/fragment_speechnotice" >
         <action
             android:id="@+id/action_speechNoticeFragment_to_prepareFragment"
-            app:destination="@id/prepareFragment" />
+            app:destination="@id/prepareFragment"
+            app:enterAnim="@android:anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/pureNoticeFragment"
@@ -101,7 +112,8 @@
         tools:layout="@layout/fragment_purenotice">
         <action
             android:id="@+id/action_pureNoticeFragment_to_prepareFragment"
-            app:destination="@id/prepareFragment" />
+            app:destination="@id/prepareFragment"
+            app:enterAnim="@android:anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/speechFragment"
