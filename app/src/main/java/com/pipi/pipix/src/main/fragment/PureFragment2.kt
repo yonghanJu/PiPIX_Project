@@ -117,7 +117,6 @@ class PureFragment2  : BaseFragment<FragmentPure2Binding>(FragmentPure2Binding::
     override fun onPause() {
         pureTest.pause()
         if(!isPause)findNavController().navigate(R.id.action_pureFragment2_to_ProfileFragment)
-        showCustomToast("순음청력검사가 취소 되었습니다.")
         super.onPause()
     }
 }
