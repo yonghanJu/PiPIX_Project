@@ -68,15 +68,16 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
 
         btnYes.setOnClickListener {
             btnNo.isClickable = false
-            lock = true
             when(currentDb){
                 in -15..0 ->{result[direc][position] = 0
                     mediaPlayer.stop()
                     isFin = true
+                    Log.d("tag","75")
                 }
                 else ->{
                     currentDb-=10
                     play()
+                    Log.d("tag","80")
                 }
             }
             btnNo.isClickable = true
@@ -87,15 +88,17 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
                 mediaPlayer.stop()
                 result[direc][position] = 100
                 isFin = true
+                Log.d("tag","91")
             }else if(dbSet.contains(currentDb)){
                 mediaPlayer.stop()
                 result[direc][position] = currentDb
                 isFin = true
+                Log.d("tag","96")
             }else{
                 dbSet.add(currentDb)
-                Log.d("tag",dbSet.size.toString())
                 currentDb+=5
                 play()
+                Log.d("tag","101")
             }
             btnYes.isClickable = true
         }
