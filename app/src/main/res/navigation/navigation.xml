@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="com.pipi.pipix.src.main.Fragment.WelcomeFragment"
+        android:name="com.pipi.pipix.src.main.fragment.WelcomeFragment"
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/prepareFragment"
-        android:name="com.pipi.pipix.src.main.Fragment.PrepareFragment"
+        android:name="com.pipi.pipix.src.main.fragment.PrepareFragment"
         android:label="fragment_prepare"
         tools:layout="@layout/fragment_prepare" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/onBoardingFirstFragment"
-        android:name="com.pipi.pipix.src.main.Fragment.OnBoardingFirstFragment"
+        android:name="com.pipi.pipix.src.main.fragment.OnBoardingFirstFragment"
         android:label="fragment_on_boarding_first"
         tools:layout="@layout/fragment_on_boarding_first" >
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/onBoardingSecondFragment"
-        android:name="com.pipi.pipix.src.main.Fragment.OnBoardingSecondFragment"
+        android:name="com.pipi.pipix.src.main.fragment.OnBoardingSecondFragment"
         android:label="fragment_on_boarding_second"
         tools:layout="@layout/fragment_on_boarding_second" >
         <action
@@ -54,7 +54,7 @@
     </fragment>
     <fragment
         android:id="@+id/LoginFragement"
-        android:name="com.pipi.pipix.src.main.Fragment.LoginFragment"
+        android:name="com.pipi.pipix.src.main.fragment.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -64,7 +64,7 @@
 
     <fragment
         android:id="@+id/ProfileFragment"
-        android:name="com.pipi.pipix.src.main.Fragment.ProfileFragment"
+        android:name="com.pipi.pipix.src.main.fragment.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -77,7 +77,7 @@
 
     <fragment
         android:id="@+id/PureFragment"
-        android:name="com.pipi.pipix.src.main.Fragment.PureFragment"
+        android:name="com.pipi.pipix.src.main.fragment.PureFragment"
         android:label="fragment_pure"
         tools:layout="@layout/fragment_pure" >
         <action
