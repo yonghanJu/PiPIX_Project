@@ -4,6 +4,7 @@ import android.content.Context
 import android.media.MediaPlayer
 import android.util.Log
 import android.widget.Button
+import android.widget.Toast
 import com.pipi.pipix.R
 import kotlinx.coroutines.*
 import java.lang.Thread.sleep
@@ -22,7 +23,7 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
     private val dbMap = mutableMapOf<Int,Float>()
     private var result = mutableListOf(mutableListOf(0,0,0,0,0,0), mutableListOf(0,0,0,0,0,0))
     init {
-        for(i in 0..100 step 5) dbMap[i] = (1/10000f)*i + 0.00003f
+        for(i in 0..100 step 5) dbMap[i] = (1/10000f)*i + 0.00008f
     }
 
     fun doTest(direc: Int): Boolean {
@@ -42,7 +43,7 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
                 runBlocking { test.join() }
 
                 thread{ for(i in 0..8){
-                    sleep(15)
+                    sleep(30)
                     ptViewModel.setProgress(++progress)
                 }}
                 val release = thread { mediaPlayer!!.release() }
@@ -68,34 +69,38 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
 
         btnYes.setOnClickListener {
             btnNo.isClickable = false
-            lock = true
             when(currentDb){
                 in -15..0 ->{result[direc][position] = 0
                     mediaPlayer.stop()
                     isFin = true
+                    Log.d("tag","75")
                 }
                 else ->{
                     currentDb-=10
                     play()
+                    Log.d("tag","80")
                 }
             }
             btnNo.isClickable = true
         }
+
         btnNo.setOnClickListener {
             btnYes.isClickable = false
             if(currentDb>=100){
                 mediaPlayer.stop()
                 result[direc][position] = 100
                 isFin = true
+                Log.d("tag","91")
             }else if(dbSet.contains(currentDb)){
                 mediaPlayer.stop()
                 result[direc][position] = currentDb
                 isFin = true
+                Log.d("tag","96")
             }else{
                 dbSet.add(currentDb)
-                Log.d("tag",dbSet.size.toString())
                 currentDb+=5
                 play()
+                Log.d("tag","101")
             }
             btnYes.isClickable = true
         }
@@ -116,6 +121,7 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
 
     fun pause(){
         isPaused=true
+        mediaPlayer?.release()
     }
 
     fun getResult(): MutableList<MutableList<Int>> {

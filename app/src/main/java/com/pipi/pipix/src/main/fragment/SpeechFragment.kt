@@ -38,7 +38,6 @@ class SpeechFragment : BaseFragment<FragmentSpeechBinding>(
         intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE,activity?.packageName)
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE,"ko-KR")
 
-        requestPermissions()
         setListener()
 
         binding.speechButtonRight.setOnTouchListener { v, event ->
@@ -60,22 +59,6 @@ class SpeechFragment : BaseFragment<FragmentSpeechBinding>(
     }
 
 
-
-
-
-    private fun requestPermissions() {
-        if(Build.VERSION.SDK_INT >= 23 && context?.let {
-                ContextCompat.checkSelfPermission(
-                    it,
-                    android.Manifest.permission.RECORD_AUDIO)
-            } != PackageManager.PERMISSION_GRANTED){
-            activity?.let {
-                ActivityCompat.requestPermissions(
-                    it,
-                    arrayOf(android.Manifest.permission.RECORD_AUDIO), 0)
-            }
-        }
-    }
 
     private fun setListener() {
         recognitionListener = object: RecognitionListener{
