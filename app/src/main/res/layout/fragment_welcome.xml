@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".src.main.Fragment.WelcomeFragment">
+    tools:context=".src.main.fragment.WelcomeFragment">
 
     <Button
         android:id="@+id/welcome_button_start"
@@ -14,7 +14,7 @@
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/button_background2"
-        android:paddingHorizontal="130dp"
+
         android:text="시작하기"
         android:paddingVertical="20dp"
         android:textColor="@color/white"
