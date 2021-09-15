@@ -1,4 +1,4 @@
-package com.pipi.pipix.src.main.Fragment
+package com.pipi.pipix.src.main.fragment
 
 import android.os.Bundle
 import android.view.View
@@ -13,7 +13,6 @@ class OnBoardingSecondFragment : BaseFragment<FragmentOnBoardingSecondBinding>(F
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.onBoardingSecondAnimation.loop(true)
 
         binding.onBoardingSecondButtonNext.setOnClickListener {
 

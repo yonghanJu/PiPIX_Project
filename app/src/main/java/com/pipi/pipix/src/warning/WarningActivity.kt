@@ -10,5 +10,9 @@ class WarningActivity  : BaseActivity<ActivityWarningBinding>(ActivityWarningBin
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        binding.consentButtonCheck.setOnClickListener {
+            finish()
+        }
     }
 }
