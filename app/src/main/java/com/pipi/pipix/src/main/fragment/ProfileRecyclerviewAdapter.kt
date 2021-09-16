@@ -16,6 +16,7 @@ import com.pipi.pipix.data.PRViewModel
 import com.pipi.pipix.data.PureResult
 import com.pipi.pipix.src.chart.ChartActivity
 import com.pipi.pipix.src.deleteitem.DeleteItemActivity
+import com.pipi.pipix.src.speechresult.SpeechResultActivity
 import kotlinx.coroutines.NonDisposableHandle
 import kotlinx.coroutines.NonDisposableHandle.parent
 import java.io.Serializable
@@ -40,11 +41,21 @@ class ProfileRecyclerviewAdapter (val context: ProfileFragment) :  RecyclerView.
             more = view!!.findViewById(R.id.item_more)
             dateTime = view!!.findViewById(R.id.item_time)
 
+
               view.setOnClickListener {
-                  val intent = Intent(view.context, ChartActivity::class.java)
-                  intent.putExtra("test",data)
+                  if (data.testType == 1) {
+                      val intent = Intent(view.context, ChartActivity::class.java)
+                  intent.putExtra("test", data)
                   view.getContext().startActivity(intent)
+              }else {
+                      val intent = Intent(view.context, SpeechResultActivity::class.java)
+                      intent.putExtra("test", data)
+                      view.getContext().startActivity(intent)
+                  }
              }
+
+
+
             more!!.setOnClickListener {
                 val intent2 = Intent(view.context, DeleteItemActivity::class.java)
                 intent2.putExtra("delete",itemPosition)
