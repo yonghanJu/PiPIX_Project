@@ -30,19 +30,23 @@ class OnBoardingSecondFragment : BaseFragment<FragmentOnBoardingSecondBinding>(F
 
 
         class RecorderTask(var recorder: MediaRecorder, val sound: TextView) : TimerTask() {
-
+            var test = 0
             override fun run() {
 
                 SystemClock.sleep(3000)
+
                 mHandler?.post(Runnable {
                     val amplitude = recorder.maxAmplitude
                     val amplitudeDb = (20 * Math.log10(Math.abs(amplitude).toDouble()))
                     Log.d("test", (amplitudeDb - 10f).toString())
-                    if(amplitudeDb - 10f <= 30){
+                    if(test == 0) {
+
+                    }else if(amplitudeDb - 10f <= 30){
                     sound.text = "검사에 적합한 환경입니다. 진행하시겠습니까?"}
                     else{
                         sound.text = "검사에 적합하지 않은 환경입니다. 그래도 진행하시겠습니까?"
                     }
+                    test++
                 })
 
             }
