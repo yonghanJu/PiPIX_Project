@@ -16,10 +16,6 @@ class PureTest2ViewModel:ViewModel() {
         MutableLiveData<Int>()
     }
 
-    val progressText: MutableLiveData<String> by lazy{
-        MutableLiveData<String>()
-    }
-
     fun setHz(hz: Int){
         hzText.postValue("${hz}hz")
     }
@@ -30,9 +26,5 @@ class PureTest2ViewModel:ViewModel() {
 
     fun setProgress(prog: Int){
         progress.postValue(prog)
-    }
-
-    fun setProgressText(text: String){
-        progressText.postValue(text)
     }
 }
