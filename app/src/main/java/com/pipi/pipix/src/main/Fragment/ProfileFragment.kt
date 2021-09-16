@@ -57,16 +57,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
             profileRecyclerviewAdapter.setData(user)
         })
 
-        //test
-        val now = System.currentTimeMillis()
-        val date =  Date(now)
-        val sdf = android.icu.text.SimpleDateFormat("yyyy.MM.dd a hh시 mm분")
-        val testdata1 = PureResult(0,1,0,0,sdf.format(date),0,0,0,0,0,0,0,0,0,0,0,0,0,0)
-        val testdata2 = PureResult(0,2,30,30,sdf.format(date),100,70,0,0,0,0,0,0,0,0,0,0,0,0)
-
-        mUserViewModel.addPureResult(testdata1)
-        mUserViewModel.addPureResult(testdata2)
-
         binding.profileTextviewNickname.text = ApplicationClass.prefs.userNickName
 
         binding.profileButtonTest1.setOnClickListener {
