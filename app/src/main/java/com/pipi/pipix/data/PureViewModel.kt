@@ -5,8 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class PureViewModel:ViewModel() {
-
-
     val currentCountVisible: MutableLiveData<Int> by lazy{
         MutableLiveData<Int>()
     }
