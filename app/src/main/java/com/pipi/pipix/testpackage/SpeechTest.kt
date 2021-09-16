@@ -65,6 +65,7 @@ class SpeechTest(private val tpaRight: Int, private val tpaLeft: Int, private va
 
         // 테스트 실행
         while(!isPaused && !isTest1Fin){
+
             Log.d("tag", "direc: $direc db : $currentDb")
             when(currentDb){
                 in -15..-5 -> {
@@ -162,7 +163,6 @@ class SpeechTest(private val tpaRight: Int, private val tpaLeft: Int, private va
     // 테스트 2(명료도)
     fun doTest2(direc: Int): Boolean{
         isTest2Fin = false
-        var rWait = true
         // 시작 데시벨 설정
         currentDb = if(direc==1) result[0]+35 else result[1] +35
 
@@ -170,6 +170,7 @@ class SpeechTest(private val tpaRight: Int, private val tpaLeft: Int, private va
         var currentScore = 0
 
         for(i in test2Item){
+            var rWait = true
             if(isPaused) return false
             // 음원 준비
             mediaPlayer = MediaPlayer.create(context, wordsIdList2[i])
@@ -198,7 +199,6 @@ class SpeechTest(private val tpaRight: Int, private val tpaLeft: Int, private va
 
             // 버튼 풀기--------------------카운트 동안 버튼 이미지 변결 필요
             recordButton.isClickable = true
-
 
             val job = thread {
                 while(!recordFin && rWait && !isPaused){}
