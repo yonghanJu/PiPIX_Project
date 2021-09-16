@@ -90,8 +90,6 @@ class PureFragment2  : BaseFragment<FragmentPure2Binding>(FragmentPure2Binding::
             }
         }
 
-        // 코루틴으로 시작
-        testJob.start()
 
         binding.pure2ButtonPause.setOnClickListener {
             pureTest.pause()

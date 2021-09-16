@@ -109,7 +109,6 @@ class SpeechFragment : BaseFragment<FragmentSpeechBinding>(
             }
         }
 
-        speechTestJob.start()
     }
 
     private fun setListener() {
