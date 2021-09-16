@@ -2,25 +2,28 @@ package com.pipi.pipix.src.main.fragment
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.os.Build
+import android.media.AudioManager
 import android.os.Bundle
 import android.speech.RecognitionListener
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.navigation.fragment.findNavController
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.pipi.pipix.R
 import com.pipi.pipix.config.BaseFragment
+import com.pipi.pipix.data.PRViewModel
+import com.pipi.pipix.data.PureResult
 import com.pipi.pipix.databinding.FragmentSpeechBinding
+import com.pipi.pipix.src.main.SoundController
+import com.pipi.pipix.testpackage.SpeechTest
+import com.pipi.pipix.testpackage.SpeechViewModel
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import kotlin.properties.Delegates
 
 class SpeechFragment : BaseFragment<FragmentSpeechBinding>(
     FragmentSpeechBinding::bind, R.layout.fragment_speech) {
@@ -28,17 +31,52 @@ class SpeechFragment : BaseFragment<FragmentSpeechBinding>(
     private lateinit var speechRecognizer: SpeechRecognizer
     private lateinit var recognitionListener: RecognitionListener
     private lateinit var matches: ArrayList<String>
+    private lateinit var speechViewModel: SpeechViewModel
+    private lateinit var speechTest: SpeechTest
+    private lateinit var prViewModel: PRViewModel
     private var isSpeech  = false
+    private var tpaRight = 0
+    private var tpaLeft = 0
+
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // 다른 앱의 음악 끄기 SoundController 이용
+        SoundController.isStopMusicOfOtherApps()
+
+        // 볼륨 조절
+        val st = AudioManager.STREAM_MUSIC
+        SoundController.mAudioManager.setStreamVolume(st,15,1)
+        SoundController.mAudioManager.setStreamVolume(AudioManager.STREAM_SYSTEM,1,1)
+
 
         val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
         intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE,activity?.packageName)
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE,"ko-KR")
 
         setListener()
+        
+        prViewModel = ViewModelProvider(this).get(PRViewModel::class.java)
+        prViewModel.readAllData.observe(viewLifecycleOwner, Observer { list ->
+            tpaLeft = list[list.size-1].tpaLeft
+            tpaRight = list[list.size -1].tpaRight
+        })
+
+        // 테스트 객체 생성
+        speechViewModel = ViewModelProvider(this).get(SpeechViewModel::class.java)
+        speechTest= SpeechTest(tpaRight, tpaLeft, binding.speechButtonRight, binding.speechCountText, speechViewModel, prViewModel, requireContext())
+
+
+        speechViewModel.currentCountVisible.observe(viewLifecycleOwner, Observer {
+            binding.speechCountText.visibility = it
+        })
+
+        speechViewModel.currentImageVisible.observe(viewLifecycleOwner, Observer {
+            binding.speechImageviewImage.visibility = it
+        })
+
 
         binding.speechButtonRight.setOnTouchListener { v, event ->
             when(event.action){
@@ -46,19 +84,20 @@ class SpeechFragment : BaseFragment<FragmentSpeechBinding>(
                     speechRecognizer = SpeechRecognizer.createSpeechRecognizer(context)
                     speechRecognizer.setRecognitionListener(recognitionListener)
                     speechRecognizer.startListening(intent)
-                    isSpeech = true
+                    speechTest.recordStart()
                 }
             }
             true
         }
 
-        val scope = CoroutineScope(CoroutineName("SpeechTest"))
-        val speechTest = scope.launch {
 
+
+        val scope = CoroutineScope(CoroutineName("SpeechTest"))
+        showCustomToast(tpaLeft.toString())
+        val speechTestJob = scope.launch {
+            if(speechTest.doTest1(1) && speechTest.doTest1(0)){}
         }
     }
-
-
 
     private fun setListener() {
         recognitionListener = object: RecognitionListener{
@@ -81,20 +120,20 @@ class SpeechFragment : BaseFragment<FragmentSpeechBinding>(
                     SpeechRecognizer.ERROR_NETWORK_TIMEOUT -> "네트워크 타임아웃"
                     SpeechRecognizer.ERROR_NO_MATCH -> "찾을 수 없음"
                     SpeechRecognizer.ERROR_RECOGNIZER_BUSY -> "RECOGNIZER가 바쁨"
-                    SpeechRecognizer.ERROR_SERVER -> "서버가 이상함"
+                    SpeechRecognizer.ERROR_SERVER -> "서버 오류"
                     SpeechRecognizer.ERROR_SPEECH_TIMEOUT -> "말하는 시간초과"
                     else -> "알 수 없는 오류"
                 }
-                Toast.makeText(context, "에러 발생 $message", Toast.LENGTH_SHORT).show()
-
+                if(error != SpeechRecognizer.ERROR_NO_MATCH) Toast.makeText(context, "에러 발생 $message", Toast.LENGTH_SHORT).show()
+                speechTest.recordText("")
             }
 
             override fun onResults(results: Bundle?) {
-//                matches: ArrayList<String> = results?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION) as ArrayList<String>
-//                for (i in 0 until matches.size) {
-//                    tvResult.text = matches[i]
-//                    Log.d("tag",matches.size.toString())
-//                }
+                matches= results?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION) as ArrayList<String>
+                for (i in 0 until matches.size) {
+                    speechTest.recordText(matches[i])
+                    Log.d("tag",matches.size.toString())
+                }
             }
 
             override fun onPartialResults(partialResults: Bundle?) {}

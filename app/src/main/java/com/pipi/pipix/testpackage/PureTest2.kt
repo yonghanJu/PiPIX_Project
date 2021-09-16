@@ -32,12 +32,19 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
 
                 val set = thread{
                     // 초기 설정
+                    btnNo.isClickable = false
+                    btnYes.isClickable = false
                     mediaPlayer = MediaPlayer.create(context, resIdList1[position])
                     mediaPlayer!!.isLooping = true
                     ptViewModel.setHz(dbList[position])
                     ptViewModel.setDirec(direc)
                 }
-                runBlocking { set.join() }
+
+                runBlocking {
+                    set.join()
+                    btnNo.isClickable = true
+                    btnYes.isClickable = true
+                }
 
                 val test = thread { testDb(direc, position,mediaPlayer!!) }
                 runBlocking { test.join() }
@@ -56,53 +63,48 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
     private fun testDb(direc: Int, position: Int, mediaPlayer: MediaPlayer) {
         var currentDb = 30
         var dbSet = mutableSetOf<Int>()
-        var isFin: Boolean = false
+        var isFin = false
         btnYes.isClickable = true
         btnNo.isClickable = true
         // 버그 수정 필요
         fun play(){
-            if(currentDb in 0..100 && mediaPlayer != null){
+            if(currentDb in 0..100){
                 mediaPlayer.setVolume((1-direc)*dbMap[currentDb]!!, direc*dbMap[currentDb]!!)
                 mediaPlayer.start()
             }
         }
 
         btnYes.setOnClickListener {
-            btnNo.isClickable = false
+            //btnNo.isClickable = false
             when(currentDb){
                 in -15..0 ->{result[direc][position] = 0
                     mediaPlayer.stop()
                     isFin = true
-                    Log.d("tag","75")
                 }
                 else ->{
                     currentDb-=10
                     play()
-                    Log.d("tag","80")
                 }
             }
-            btnNo.isClickable = true
+            //btnNo.isClickable = true
         }
 
         btnNo.setOnClickListener {
-            btnYes.isClickable = false
+            //btnYes.isClickable = false
             if(currentDb>=100){
                 mediaPlayer.stop()
                 result[direc][position] = 100
                 isFin = true
-                Log.d("tag","91")
             }else if(dbSet.contains(currentDb)){
                 mediaPlayer.stop()
                 result[direc][position] = currentDb
                 isFin = true
-                Log.d("tag","96")
             }else{
                 dbSet.add(currentDb)
                 currentDb+=5
                 play()
-                Log.d("tag","101")
             }
-            btnYes.isClickable = true
+            //btnYes.isClickable = true
         }
 
         // 첫 실행
