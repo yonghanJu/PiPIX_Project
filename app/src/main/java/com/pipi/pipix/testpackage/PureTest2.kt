@@ -68,7 +68,7 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
         btnNo.isClickable = true
         // 버그 수정 필요
         fun play(){
-            if(currentDb in 0..100 && mediaPlayer != null){
+            if(currentDb in 0..100){
                 mediaPlayer.setVolume((1-direc)*dbMap[currentDb]!!, direc*dbMap[currentDb]!!)
                 mediaPlayer.start()
             }

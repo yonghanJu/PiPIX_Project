@@ -1,10 +1,9 @@
-package com.pipi.pipix.data
+package com.pipi.pipix.testpackage
 
-import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class PureViewModel:ViewModel() {
+class SpeechViewModel: ViewModel() {
     val currentCountVisible: MutableLiveData<Int> by lazy{
         MutableLiveData<Int>()
     }
