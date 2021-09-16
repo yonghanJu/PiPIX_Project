@@ -15,7 +15,7 @@
         android:layout_marginBottom="30dp"
         android:background="@drawable/button_background2"
         android:paddingVertical="20dp"
-        android:text="test"
+        android:text="확인"
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
