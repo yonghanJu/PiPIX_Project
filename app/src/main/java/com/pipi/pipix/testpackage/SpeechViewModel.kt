@@ -11,4 +11,8 @@ class SpeechViewModel: ViewModel() {
     val currentImageVisible: MutableLiveData<Int> by lazy{
         MutableLiveData<Int>()
     }
+
+    val currentClickable: MutableLiveData<Boolean> by lazy{
+        MutableLiveData<Boolean>()
+    }
 }
