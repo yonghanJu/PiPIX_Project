@@ -15,6 +15,7 @@ import com.pipi.pipix.data.PureResult
 import com.pipi.pipix.databinding.ActivityWarningBinding
 import com.pipi.pipix.databinding.FragmentProfileBinding
 import com.pipi.pipix.src.chart.ChartActivity
+import com.pipi.pipix.src.main.fragment.ResultFragment.Companion.recyclerviewAdapter
 import com.pipi.pipix.src.warning.WarningActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -30,6 +31,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
     companion object {
         var testType : Int? = null // 1이면 순음 2이면 어음
         var dataList = emptyList<PureResult>()
+        lateinit var mUserViewModel : PRViewModel
 
     }
 
@@ -38,6 +40,11 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
 
         testType = null//뒤로가기로 인해 다시 화면에 돌아오면 null 처리
 
+        // UserViewModel
+        mUserViewModel = ViewModelProvider(this).get(PRViewModel::class.java)
+        mUserViewModel.readAllData.observe(viewLifecycleOwner, Observer { user ->
+            recyclerviewAdapter.setData(user)
+        })
 
 
 
@@ -55,7 +62,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
             //dataList는 전역 변수, 해당 코드는 데이터리스트가 비어있으면 순음 검사를 진행하지 않았다고 판단 -> 수정 필요!
 
             if(dataList.isEmpty()){
-
                 val intent = Intent(context, WarningActivity::class.java)
                 startActivity(intent)}
                 else{
