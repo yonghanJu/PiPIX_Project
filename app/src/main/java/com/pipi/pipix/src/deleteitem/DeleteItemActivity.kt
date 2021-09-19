@@ -6,7 +6,9 @@ import com.pipi.pipix.config.BaseActivity
 import com.pipi.pipix.databinding.ActivityDeleteitemBinding
 import com.pipi.pipix.src.main.fragment.ProfileFragment
 import com.pipi.pipix.src.main.fragment.ProfileFragment.Companion.dataList
-import com.pipi.pipix.src.main.fragment.ResultFragment.Companion.mUserViewModel
+import com.pipi.pipix.src.main.fragment.ProfileFragment.Companion.mUserViewModel
+import com.pipi.pipix.src.main.fragment.ResultFragment
+
 
 class DeleteItemActivity : BaseActivity<ActivityDeleteitemBinding>(ActivityDeleteitemBinding::inflate) {
 
