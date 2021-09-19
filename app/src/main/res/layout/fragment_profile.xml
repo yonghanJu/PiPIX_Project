@@ -241,7 +241,9 @@
                 android:id="@+id/profile_drawer_button_testbtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="testbtn"
+                android:text="내 정보"
+                android:textStyle="bold"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -254,37 +256,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="테스트"
-                android:textSize="50dp" />
 
-            <TextView
-                android:layout_width="match_parent"
+            <View
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="테스트"
-                android:textSize="50dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="테스트"
-                android:textSize="50dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="테스트"
-                android:textSize="50dp" />
-
+                android:layout_weight="1"/>
             <Button
                 android:id="@+id/profile_drawer_button_closedrawer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="10dp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
                 android:text="드로어 닫기" />
 
         </LinearLayout>
