@@ -13,10 +13,10 @@ import com.pipi.pipix.databinding.FragmentWelcomeBinding
 
 class ResultFragment  : BaseFragment<FragmentResultBinding>(
     FragmentResultBinding::bind, R.layout.fragment_result) {
+companion object{
+    var recyclerviewAdapter = RecyclerviewAdapter()
+}
 
-    companion object{
-        lateinit var mUserViewModel : PRViewModel
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,14 +31,14 @@ class ResultFragment  : BaseFragment<FragmentResultBinding>(
             }
         })
 
-        // 리사이클러뷰에 Adapter 객체 지정.
-        var RecyclerviewAdapter = RecyclerviewAdapter(this)
-        recyclerView.adapter = RecyclerviewAdapter
-
         // UserViewModel
-        mUserViewModel = ViewModelProvider(this).get(PRViewModel::class.java)
-        mUserViewModel.readAllData.observe(viewLifecycleOwner, Observer { user ->
-            RecyclerviewAdapter.setData(user)
+        ProfileFragment.mUserViewModel.readAllData.observe(viewLifecycleOwner, Observer { user ->
+            recyclerviewAdapter.setData(user)
         })
+        recyclerView.adapter = recyclerviewAdapter
+
+
+
+
     }
 }
