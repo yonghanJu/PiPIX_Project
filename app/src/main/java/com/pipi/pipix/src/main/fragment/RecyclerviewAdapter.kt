@@ -16,6 +16,7 @@ import com.pipi.pipix.data.PRViewModel
 import com.pipi.pipix.data.PureResult
 import com.pipi.pipix.src.chart.ChartActivity
 import com.pipi.pipix.src.deleteitem.DeleteItemActivity
+import com.pipi.pipix.src.main.fragment.ProfileFragment.Companion.dataList
 import com.pipi.pipix.src.speechresult.SpeechResultActivity
 import kotlinx.coroutines.NonDisposableHandle
 import kotlinx.coroutines.NonDisposableHandle.parent
@@ -23,11 +24,9 @@ import java.io.Serializable
 import java.security.AccessController.getContext
 import java.text.SimpleDateFormat
 
-class ProfileRecyclerviewAdapter (val context: ProfileFragment) :  RecyclerView.Adapter<ProfileRecyclerviewAdapter.ViewHolder>() {
+class RecyclerviewAdapter (val context: ResultFragment) :  RecyclerView.Adapter<RecyclerviewAdapter.ViewHolder>() {
 
-    companion object{
-        var dataList = emptyList<PureResult>()
-    }
+
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var more: ImageView? = null

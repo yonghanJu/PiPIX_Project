@@ -6,34 +6,83 @@
     android:layout_height="match_parent"
     tools:context=".src.main.fragment.PureFragment">
 
+    <ImageView
+        android:id="@+id/pure2_button_pause"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_pageback"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/pure2_textview_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="65dp"
-        android:text="순음청력검사"
-        android:textColor="@color/black"
+        android:text="기본검사"
+        android:textColor="@color/colorAccent"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/pure2_animation"
-        android:layout_width="0dp"
-        app:lottie_loop="true"
-        android:layout_height="150dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
+    <FrameLayout
+        android:background="@drawable/layout_background"
+        android:id="@+id/pure2_framelayout"
+        android:layout_width="314dp"
+        android:layout_height="213dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pure2_textview_text"
-        app:lottie_autoPlay="true"
-        app:lottie_rawRes="@raw/lottie"
-        tools:ignore="MissingClass" />
+        app:layout_constraintTop_toBottomOf="@+id/pure2_textview_text">
+
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:paddingHorizontal="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal">
+
+
+        <TextView
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/pure2_textview_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="오른쪽"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/pure2_textview_text3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1000hz"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+            <TextView
+                android:layout_marginTop="50dp"
+                android:id="@+id/pure2_textview_checktext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="소리가 들리시나요?"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+    </FrameLayout>
 
     <ProgressBar
         android:id="@+id/progress2"
@@ -46,9 +95,9 @@
         android:progress="0"
         android:progressDrawable="@drawable/custom_progress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pure2_textview_text3" />
+        app:layout_constraintTop_toBottomOf="@+id/pure2_framelayout" />
 
     <Button
         android:id="@+id/pure2_button_yes"
@@ -56,9 +105,9 @@
         android:layout_height="90dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="80dp"
-        android:background="@drawable/button_background3"
+        android:background="@drawable/button_background4"
         android:text="예"
-        android:textColor="@color/white"
+        android:textColor="@color/colorAccent"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/pure_guideline"
         app:layout_constraintEnd_toStartOf="@+id/pure2_button_no"
@@ -73,89 +122,34 @@
         android:layout_marginEnd="20dp"
         android:background="@drawable/button_background4"
         android:text="아니요"
-        android:textColor="@color/white"
+        android:textColor="@color/colorAccent"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/pure_guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/pure2_button_yes" />
 
-    <Button
-        android:id="@+id/pure2_button_pause"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/button_background"
-        android:paddingVertical="15dp"
-        android:text="검사 중지"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/pure_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_end="100dp" />
+        app:layout_constraintGuide_end="45dp" />
 
-    <TextView
-        android:id="@+id/pure2_textview_text2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="오른쪽"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="@+id/pure2_animation"
-        app:layout_constraintStart_toStartOf="@+id/pure2_animation"
-        app:layout_constraintTop_toBottomOf="@+id/pure2_animation" />
-
-    <TextView
-        android:id="@+id/pure2_textview_text3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1000hz"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-
-        app:layout_constraintEnd_toEndOf="@+id/pure2_textview_text2"
-        app:layout_constraintStart_toStartOf="@+id/pure2_textview_text2"
-        app:layout_constraintTop_toBottomOf="@+id/pure2_textview_text2" />
 
     <TextView
         android:id="@+id/pure2_textview_progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="10dp"
         android:text="0%"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/progress2"
         app:layout_constraintStart_toStartOf="@+id/progress2"
         app:layout_constraintTop_toBottomOf="@+id/progress2" />
 
-    <TextView
 
-        android:id="@+id/pure2_textview_checktext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="소리가 들리시나요?"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/pure2_textview_progress"
-        app:layout_constraintHorizontal_bias="0.517"
-        app:layout_constraintStart_toStartOf="@+id/pure2_textview_progress"
-        app:layout_constraintTop_toBottomOf="@+id/pure2_textview_progress" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

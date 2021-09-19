@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
             android:gravity="center"
             android:id="@+id/item_time"
@@ -33,6 +34,6 @@
         android:id="@+id/item_view"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/line"/>
+        android:background="@color/colorAccent"/>
 
 </LinearLayout>
