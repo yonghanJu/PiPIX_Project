@@ -32,6 +32,7 @@ class RecyclerviewAdapter :  RecyclerView.Adapter<RecyclerviewAdapter.ViewHolder
         var more: ImageView? = null
         var dateTime: TextView? = null
         var itemPosition : Int? = null
+        var type: TextView? = null
         lateinit var data : PureResult
 
 
@@ -39,6 +40,7 @@ class RecyclerviewAdapter :  RecyclerView.Adapter<RecyclerviewAdapter.ViewHolder
             // Define click listener for the ViewHolder's View.
             more = view!!.findViewById(R.id.item_more)
             dateTime = view!!.findViewById(R.id.item_time)
+            type = view!!.findViewById(R.id.item_type)
 
 
               view.setOnClickListener {
@@ -89,6 +91,12 @@ class RecyclerviewAdapter :  RecyclerView.Adapter<RecyclerviewAdapter.ViewHolder
         viewHolder.dateTime?.setText(time)
         viewHolder.data = dataList[position]
         viewHolder.itemPosition = position
+
+        if(currentItem.testType == 1){
+        viewHolder.type!!.text = "기본"}
+        else{
+            viewHolder.type!!.text = "단어"
+        }
 
     }
 
