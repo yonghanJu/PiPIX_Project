@@ -52,6 +52,7 @@
         android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:textColor="@color/gray"
         android:text="어음절의 단어를 사용하여 들을 수 있는 최소 어음 강도를 측정합니다. 검사가 시작되면 단어를 듣게되고 마이크 버튼을 누른 상태에서 단어를 따라 말합니다. 3초 안에 마이크 버튼을 누르지 않으면 듣지 못한것으로 체크됩니다."
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
