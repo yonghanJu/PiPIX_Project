@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
@@ -11,7 +13,7 @@
         android:text="검사결과지"
         android:gravity="center"
         android:textSize="25sp"
-        android:textColor="@color/black"
+        android:textColor="@color/colorAccent"
         android:textStyle="bold"
         android:layout_marginTop="40dp"/>
     <com.github.mikephil.charting.charts.LineChart
@@ -22,54 +24,138 @@
         android:layout_height="400dp"/>
 
     <LinearLayout
-        android:layout_marginLeft="50dp"
+        android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ellipse"/>
        <TextView
+           android:layout_marginHorizontal="10dp"
            android:layout_marginLeft="1dp"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:drawablePadding="13dp"
            android:gravity="center_vertical"
            android:textSize="20sp"
            android:textStyle="bold"
-           android:textColor="@color/black"
-           android:drawableLeft="@drawable/ellipse"
-           android:text=": 왼쪽 귀"/>
+           android:textColor="@color/colorAccent"
+           android:text="왼쪽"/>
+        <ImageView
+            android:layout_marginLeft="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/iconx"/>
         <TextView
+            android:layout_marginHorizontal="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawablePadding="10dp"
             android:gravity="center_vertical"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="@color/black"
-            android:drawableLeft="@drawable/star"
-            android:text=": 오른쪽 귀"/>
+            android:textColor="@color/colorAccent"
+            android:text="오른쪽"/>
 
     </LinearLayout>
 
-    <TextView
-        android:visibility="invisible"
-        android:layout_marginTop="40dp"
-        android:id="@+id/chart_textview_result"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="검사결과"
-        android:gravity="center"
-        android:textSize="35sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        />
+   <LinearLayout
+       android:layout_marginTop="40dp"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal">
+       <ImageView
+           android:paddingLeft="10dp"
+           android:layout_gravity="center_vertical"
+           android:layout_width="27dp"
+           android:layout_height="27dp"
+           android:layout_weight="1"
+           android:src="@drawable/angry1"/>
+       <ImageView
+          android:paddingLeft="18dp"
+           android:layout_gravity="center_vertical"
+           android:layout_width="30dp"
+           android:layout_height="30dp"
+           android:layout_weight="1"
+           android:src="@drawable/sad1"/>
+       <ImageView
+           android:paddingLeft="8dp"
+           android:layout_gravity="center_vertical"
+           android:layout_width="30dp"
+           android:layout_height="30dp"
+           android:layout_weight="1"
+           android:src="@drawable/neutral1"/>
+       <ImageView
+           android:layout_gravity="center_vertical"
+           android:layout_width="27dp"
+           android:layout_height="27dp"
+           android:layout_weight="1"
+           android:src="@drawable/smile1"/>
+   </LinearLayout>
 
-    <ImageButton
-        android:layout_marginRight="10dp"
-        android:layout_gravity="end"
-        android:id="@+id/chart_button_back"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/button"
-        android:background="#00FFFFFF"/>
+
+
+
+    <FrameLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <View
+               android:layout_gravity="center_vertical"
+               android:layout_marginHorizontal="50dp"
+               android:layout_width="match_parent"
+               android:layout_height="2dp"
+               android:background="@color/gray"/>
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:textColor="@color/gray"
+                android:text="매우나쁨"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/ic_baseline_lens_24"
+                />
+            <TextView
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:text="나쁨"
+                android:textColor="@color/gray"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/ic_baseline_lens_24" />
+            <TextView
+                android:textSize="10sp"
+                android:text="보통"
+                android:textStyle="bold"
+                android:textColor="@color/gray"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/ic_baseline_lens_24" />
+            <TextView
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:textColor="@color/gray"
+                android:gravity="center_horizontal"
+                android:text="좋음"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/ic_baseline_lens_24" />
+
+        </LinearLayout>
+
+       </FrameLayout>
+
+
 </LinearLayout>
