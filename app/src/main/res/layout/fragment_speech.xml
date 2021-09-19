@@ -64,7 +64,7 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="center"
-            android:src="@drawable/pinkicon"
+            android:src="@drawable/newspeakericon"
             android:visibility="gone"/>
 
         <TextView
@@ -73,7 +73,7 @@
             android:layout_height="150dp"
             android:layout_gravity="center"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/gray"
             android:textSize="100dp" />
     </FrameLayout>
 
