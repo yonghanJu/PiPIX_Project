@@ -86,6 +86,9 @@
         <action
             android:id="@+id/action_ProfileFragment_to_resultFragment"
             app:destination="@id/resultFragment" />
+        <action
+            android:id="@+id/action_ProfileFragment_to_TRTFragment"
+            app:destination="@id/TRTFragment" />
     </fragment>
 
     <fragment
@@ -146,4 +149,8 @@
         android:id="@+id/resultFragment"
         android:name="com.pipi.pipix.src.main.fragment.ResultFragment"
         android:label="ResultFragment" />
+    <fragment
+        android:id="@+id/TRTFragment"
+        android:name="com.pipi.pipix.src.main.fragment.TRTFragment"
+        android:label="TRTFragment" />
 </navigation>

@@ -19,8 +19,8 @@ class SpeechResultActivity  : BaseActivity<ActivitySpeechresultBinding>(Activity
 
         binding.speechresultTextviewLeftsrt.text = data.tpaLeft.toString() + "dB"
         binding.speechresultTextviewRightsrt.text = data.tpaRight.toString()  + "dB"
-        binding.speechresultTextviewLeftwrs.text = data.scoreLeft.toString() + "점"
-        binding.speechresultTextviewRightwrs.text = data.scoreRight.toString() + "점"
+        binding.speechresultTextviewLeftwrs.text = data.scoreLeft.toString() + "/10"
+        binding.speechresultTextviewRightwrs.text = data.scoreRight.toString() + "/10"
 
         setScreen()
     }

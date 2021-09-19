@@ -81,6 +81,9 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
 
         binding.profileTextviewNickname.text = ApplicationClass.prefs.userNickName
 
+        binding.profileTextviewMenu3.setOnClickListener {
+            findNavController().navigate(R.id.action_ProfileFragment_to_TRTFragment)
+        }
 
         binding.profileTextviewMenu4.setOnClickListener {
             findNavController().navigate(R.id.action_ProfileFragment_to_resultFragment)
