@@ -95,7 +95,7 @@ class SpeechTest(private val tpaRight: Int, private val tpaLeft: Int, private va
             recordFin = false
 
             // 버튼 잠금--------------------카운트 동안 버튼 이미지 변결 필요
-            recordButton.isClickable = false
+            speechViewModel.currentClickable.postValue(false)
             setImageGone()
             setCountVisible()
 
@@ -114,7 +114,7 @@ class SpeechTest(private val tpaRight: Int, private val tpaLeft: Int, private va
             mediaPlayer.start()
 
             // 버튼 풀기--------------------카운트 동안 버튼 이미지 변결 필요
-            recordButton.isClickable = true
+            speechViewModel.currentClickable.postValue(true)
 
             val job = thread {
                 while(!recordFin && rWait && !isPaused){}
@@ -143,7 +143,7 @@ class SpeechTest(private val tpaRight: Int, private val tpaLeft: Int, private va
             thread { // 3초 카운팅
                 sleep(3000)
                 if(!isRecorded){
-                    recordButton.isClickable =false
+                    speechViewModel.currentClickable.postValue(false)
                     rWait = false
                 }
             }
@@ -169,7 +169,10 @@ class SpeechTest(private val tpaRight: Int, private val tpaLeft: Int, private va
         val test2Item = mutableListOf(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19).shuffled() as MutableList<Int>
         var currentScore = 0
 
+        var count = 0
         for(i in test2Item){
+            if(count>9) break
+            else count++
             var rWait = true
             if(isPaused) return false
             // 음원 준비
@@ -179,7 +182,7 @@ class SpeechTest(private val tpaRight: Int, private val tpaLeft: Int, private va
             recordFin = false
 
             // 버튼 잠금--------------------카운트 동안 버튼 이미지 변결 필요
-            recordButton.isClickable = false
+            speechViewModel.currentClickable.postValue(false)
             setImageGone()
             setCountVisible()
 
@@ -198,19 +201,19 @@ class SpeechTest(private val tpaRight: Int, private val tpaLeft: Int, private va
             mediaPlayer.start()
 
             // 버튼 풀기--------------------카운트 동안 버튼 이미지 변결 필요
-            recordButton.isClickable = true
+            speechViewModel.currentClickable.postValue(true)
 
             val job = thread {
                 while(!recordFin && rWait && !isPaused){}
                 if(recordFin && recordString == wordsList2[i]){
-                    currentScore += 5
+                    currentScore += 10
                 }
             }
 
             thread { // 3초 카운팅
                 sleep(3000)
                 if(!isRecorded){ // 녹음 시작이 안됐을 때
-                    recordButton.isClickable =false
+                    speechViewModel.currentClickable.postValue(false)
                     rWait = false
                 }
             }
