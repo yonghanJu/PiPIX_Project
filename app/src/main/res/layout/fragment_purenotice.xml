@@ -47,6 +47,7 @@
         app:layout_constraintTop_toBottomOf="@+id/purenotice_imageview_image" />
 
     <TextView
+        android:textColor="@color/gray"
         android:id="@+id/purenotice_textview_text2"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
