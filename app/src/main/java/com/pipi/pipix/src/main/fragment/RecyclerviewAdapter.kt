@@ -24,7 +24,7 @@ import java.io.Serializable
 import java.security.AccessController.getContext
 import java.text.SimpleDateFormat
 
-class RecyclerviewAdapter (val context: ResultFragment) :  RecyclerView.Adapter<RecyclerviewAdapter.ViewHolder>() {
+class RecyclerviewAdapter :  RecyclerView.Adapter<RecyclerviewAdapter.ViewHolder>() {
 
 
 
