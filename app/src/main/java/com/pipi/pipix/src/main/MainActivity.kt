@@ -3,12 +3,15 @@ package com.pipi.pipix.src.main
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
+import androidx.core.view.GravityCompat
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.pipi.pipix.R
 import com.pipi.pipix.config.BaseActivity
 import com.pipi.pipix.databinding.ActivityMainBinding
 import com.pipi.pipix.src.main.SoundController.init
+import com.pipi.pipix.src.main.fragment.ProfileFragment
+import com.pipi.pipix.src.main.fragment.ProfileFragment.Companion.drawerView
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate)  {
     private val requiredPermissions = arrayOf(
@@ -66,6 +69,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         private const val REQUEST_RECORD_AUDIO_PERMISSION = 201
     }
 
-
+    override fun onBackPressed() {
+        if(ProfileFragment.drawerLayout!!.isDrawerOpen(drawerView!!)){
+            ProfileFragment.drawerLayout!!.closeDrawers()
+        }else{
+            super.onBackPressed()
+        }
+    }
 
 }
