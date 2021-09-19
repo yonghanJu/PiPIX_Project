@@ -7,13 +7,24 @@
     tools:context=".src.main.fragment.SpeechFragment">
 
 
+    <ImageView
+        android:id="@+id/speech_imageview_btn_back"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_pageback"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/speech_textview_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="65dp"
-        android:text="어음청력검사"
-        android:textColor="@color/black"
+        android:text="단어검사"
+        android:textColor="@color/colorAccent"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +39,7 @@
         android:background="@drawable/button_background4"
         android:text="누르고 말하세요!"
         android:gravity="center"
-        android:textColor="@color/black"
+        android:textColor="@color/colorAccent"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
