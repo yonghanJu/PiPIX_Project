@@ -11,7 +11,7 @@ class SpeechResultActivity  : BaseActivity<ActivitySpeechresultBinding>(Activity
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding.speechresultButtonBack.setOnClickListener {
+        binding.speechresultImageviewBtnBack.setOnClickListener {
             finish()
         }
 

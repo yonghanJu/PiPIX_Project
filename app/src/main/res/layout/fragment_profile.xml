@@ -175,6 +175,8 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
+        android:clickable="true"
+        android:focusable="true"
         android:id="@+id/profile_layout_drawer"
         android:layout_width="300dp"
         android:layout_height="match_parent"
@@ -258,7 +260,7 @@
             android:orientation="vertical">
 
             <View
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
             <Button

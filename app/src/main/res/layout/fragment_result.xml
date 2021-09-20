@@ -7,6 +7,18 @@
     android:background="@color/colorAccent"
     tools:context=".src.main.fragment.ProfileFragment">
 
+    <ImageView
+        android:id="@+id/result_imageview_btn_back"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_pageback"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.005"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/result_textview_text"
