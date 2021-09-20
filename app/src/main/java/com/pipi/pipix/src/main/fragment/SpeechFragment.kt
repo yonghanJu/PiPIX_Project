@@ -71,7 +71,7 @@ class SpeechFragment : BaseFragment<FragmentSpeechBinding>(
 
         // 테스트 객체 생성
         speechViewModel = ViewModelProvider(this).get(SpeechViewModel::class.java)
-        speechTest= SpeechTest(tpaRight, tpaLeft, binding.speechButtonRight, binding.speechCountText, speechViewModel, prViewModel, requireContext())
+        speechTest= SpeechTest(tpaRight, tpaLeft, binding.speechCountText, speechViewModel, prViewModel, requireContext())
 
 
         speechViewModel.currentCountVisible.observe(viewLifecycleOwner, Observer {
@@ -98,12 +98,11 @@ class SpeechFragment : BaseFragment<FragmentSpeechBinding>(
             true
         }
 
-//        binding.speechButtonRight.setOnClickListener {
-//            speechRecognizer = SpeechRecognizer.createSpeechRecognizer(context)
-//                    speechRecognizer.setRecognitionListener(recognitionListener)
-//                    speechRecognizer.startListening(intent)
-//                    speechTest.recordStart()
-//        }
+        binding.speechImageviewBtnBack.setOnClickListener {
+            speechTest.pause()
+            isPause = true
+            findNavController().navigate(R.id.action_speechFragment_to_ProfileFragment)
+        }
 
 
         val scope = CoroutineScope(CoroutineName("SpeechTest"))
