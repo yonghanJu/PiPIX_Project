@@ -27,6 +27,9 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
 
         setScreen()
 
+        binding.chartImageviewBtnBack.setOnClickListener {
+            finish()
+        }
 
 
         val data = intent.getSerializableExtra("test") as PureResult
