@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/mp3_imageview_btn_back"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_pageback"
+        />
+
+    <TextView
+        android:id="@+id/mp3_textview_title"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorAccent"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:text="파도소리"
+        android:gravity="center_horizontal"/>
+
+<ImageButton
+    android:id="@+id/mp3_button_action"
+    android:layout_marginTop="30dp"
+    android:layout_gravity="center_horizontal"
+    android:layout_width="200dp"
+    android:layout_height="200dp"
+    android:background="@drawable/button_background4"
+    android:src="@drawable/iconplay"/>
+
+    <TextView
+        android:id="@+id/mp3_textview_timer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/gray"
+        android:text="00:00"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_marginVertical="50dp"/>
+    <SeekBar
+        android:id="@+id/mp3_seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="60000"
+        android:thumb="@drawable/custom_thumb"
+        android:progressDrawable="@drawable/custom_seekbar"
+        android:layout_marginHorizontal="20dp"/>
+
+    <TextView
+        android:layout_marginVertical="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/gray"
+        android:text="이명이 들리지 않을 정도의\n편안한 볼륨으로 설정하세요"/>
+
+
+
+</LinearLayout>

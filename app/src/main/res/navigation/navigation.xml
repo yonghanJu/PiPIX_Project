@@ -166,5 +166,13 @@
     <fragment
         android:id="@+id/TRTFragment"
         android:name="com.pipi.pipix.src.main.fragment.TRTFragment"
-        android:label="TRTFragment" />
+        android:label="TRTFragment" >
+        <action
+            android:id="@+id/action_TRTFragment_to_MP3Fragment"
+            app:destination="@id/MP3Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/MP3Fragment"
+        android:name="com.pipi.pipix.src.main.fragment.MP3Fragment"
+        android:label="MP3Fragment" />
 </navigation>
