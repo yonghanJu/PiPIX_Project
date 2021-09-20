@@ -31,6 +31,34 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
 
         val data = intent.getSerializableExtra("test") as PureResult
 
+        val pta = (data.tpaLeft + data.tpaRight) / 2
+        Log.d("test",pta.toString())
+
+        var image1 = binding.chartImageviewAngry
+        var image2 = binding.chartImageviewSad
+        var image3 = binding.chartImageviewNeutral
+        var image4 = binding.chartImageviewSmile
+
+        var text1 = binding.chartTextviewAngry
+        var text2 = binding.chartTextviewSad
+        var text3 = binding.chartTextviewNeutural
+        var text4 = binding.chartTextviewSmile
+        when(pta){
+            in 0..10 -> {  image4.setImageResource(R.drawable.smile2)
+                text4.setTextColor(getColor(R.color.colorAccent))
+                text4.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_baseline_lens_24_2, 0, 0)}
+            in 10..30 -> {image3.setImageResource(R.drawable.neutral2)
+                text3.setTextColor(getColor(R.color.colorAccent))
+                text3.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_baseline_lens_24_2, 0, 0)}
+            in 30..50 -> {image2.setImageResource(R.drawable.sad2)
+                text2.setTextColor(getColor(R.color.colorAccent))
+                text2.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_baseline_lens_24_2, 0, 0)}
+            else -> {image1.setImageResource(R.drawable.angry2)
+                text1.setTextColor(getColor(R.color.colorAccent))
+                text1.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_baseline_lens_24_2, 0, 0)}
+
+        }
+
 
 
         Log.d("test",data.toString())
