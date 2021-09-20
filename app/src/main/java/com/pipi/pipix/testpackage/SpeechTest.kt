@@ -7,17 +7,13 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import com.pipi.pipix.R
 import com.pipi.pipix.data.PRViewModel
-import com.pipi.pipix.data.PureResult
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.isActive
 import kotlinx.coroutines.runBlocking
 import java.util.*
 import kotlin.concurrent.thread
 
-class SpeechTest(private val tpaRight: Int, private val tpaLeft: Int, private val recordButton: Button, private val textCount: TextView, private val speechViewModel: SpeechViewModel, val prViewModel: PRViewModel, val context: Context) {
+class SpeechTest(private val tpaRight: Int, private val tpaLeft: Int, private val textCount: TextView, private val speechViewModel: SpeechViewModel, val prViewModel: PRViewModel, val context: Context) {
     private var recordString = ""
     private var totalCountRight = 0
     private var correctCount = 0
