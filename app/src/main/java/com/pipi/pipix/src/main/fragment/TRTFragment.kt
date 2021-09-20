@@ -20,6 +20,7 @@ companion object{
 
         binding.trtImageviewBtnBack.setOnClickListener {
             //뒤로가기
+            findNavController().popBackStack()
         }
 
         binding.trtTextviewMenu1.setOnClickListener {
