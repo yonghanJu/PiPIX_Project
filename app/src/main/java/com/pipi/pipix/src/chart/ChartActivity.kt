@@ -202,7 +202,7 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
         yAxisRight.setDrawLabels(true)
         //yAxisRight.setDrawGridLines(true) // 격자
         yAxisRight.axisMaximum = 109f
-        yAxisRight.axisMinimum = -19f // 최소값 0
+        yAxisRight.axisMinimum = -19f //
         //yAxisRight.granularity = 10f // 10 단위마다 선을 그리려고 granularity 설정 해 주었다.
         yAxisRight.setLabelCount(12)
 
