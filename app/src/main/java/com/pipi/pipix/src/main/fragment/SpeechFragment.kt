@@ -82,6 +82,10 @@ class SpeechFragment : BaseFragment<FragmentSpeechBinding>(
             binding.speechImageviewImage.visibility = it
         })
 
+        speechViewModel.currentClickable.observe(viewLifecycleOwner,{
+            binding.speechButtonRight.isEnabled = it
+        })
+
         binding.speechButtonRight.setOnTouchListener { v, event ->
             when(event.action){
                 MotionEvent.ACTION_DOWN ->{
@@ -93,6 +97,14 @@ class SpeechFragment : BaseFragment<FragmentSpeechBinding>(
             }
             true
         }
+
+//        binding.speechButtonRight.setOnClickListener {
+//            speechRecognizer = SpeechRecognizer.createSpeechRecognizer(context)
+//                    speechRecognizer.setRecognitionListener(recognitionListener)
+//                    speechRecognizer.startListening(intent)
+//                    speechTest.recordStart()
+//        }
+
 
         val scope = CoroutineScope(CoroutineName("SpeechTest"))
         val speechTestJob = scope.launch {
@@ -109,7 +121,6 @@ class SpeechFragment : BaseFragment<FragmentSpeechBinding>(
             }
         }
 
-        speechTestJob.start()
     }
 
     private fun setListener() {
@@ -144,6 +155,7 @@ class SpeechFragment : BaseFragment<FragmentSpeechBinding>(
             override fun onResults(results: Bundle?) {
                 matches= results?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION) as ArrayList<String>
                 for (i in 0 until matches.size) {
+                    binding.tvResult.text = matches[i]
                     speechTest.recordText(matches[i])
                     Log.d("tag",matches.size.toString())
                 }

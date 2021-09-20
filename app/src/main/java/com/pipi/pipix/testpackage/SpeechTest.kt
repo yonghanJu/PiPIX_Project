@@ -3,6 +3,7 @@ package com.pipi.pipix.testpackage
 import android.content.Context
 import android.media.MediaPlayer
 import android.os.SystemClock.sleep
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -31,18 +32,20 @@ class SpeechTest(private val tpaRight: Int, private val tpaLeft: Int, private va
 
 
     private lateinit var mediaPlayer: MediaPlayer
-    private lateinit var usedWordsSet: Set<Int>
-    private lateinit var dbSet: Set<Int>
+    private lateinit var usedWordsSet: MutableSet<Int>
+    private lateinit var dbSet: MutableSet<Int>
 
     private val wordsList = arrayOf("국수","권투","극장","까치","꽃병","눈물","달걀","독약","땅콩","뚜껑","목욕","발톱",
         "방석","빛깔","색칠","석탄","송곳","약국","양복","연필","엽서","욕심","육군",
         "접시","찰떡","찹쌀","책상","콩팥","톱밥","팥죽","폭발","필통","학생","합격")
-    private var wordsList2 = arrayOf("1","2,","3")
+    private var wordsList2 = arrayOf("갓","강","국","귀","꿀","남","녹","논","닭","답","발","범","불","산","솔,","운","잔","짐","터","통")
 
     private val wordsIdList = arrayOf(R.raw.w1,R.raw.w2,R.raw.w3,R.raw.w4,R.raw.w5,R.raw.w6,R.raw.w7,R.raw.w8,R.raw.w9,R.raw.w10,
         R.raw.w11,R.raw.w12,R.raw.w13,R.raw.w14,R.raw.w15,R.raw.w16,R.raw.w17,R.raw.w18,R.raw.w19,R.raw.w20,R.raw.w21,R.raw.w22,R.raw.w23,
         R.raw.w24,R.raw.w25,R.raw.w26,R.raw.w27,R.raw.w28,R.raw.w29,R.raw.w30,R.raw.w31,R.raw.w32,R.raw.w33,R.raw.w34)
-    private var wordsIdList2 = arrayOf(1,2,3)
+
+    private var wordsIdList2 = arrayOf(R.raw.c1,R.raw.c2,R.raw.c3,R.raw.c4,R.raw.c5,R.raw.c6,R.raw.c7,R.raw.c8,R.raw.c9,R.raw.c10,R.raw.c11,
+        R.raw.c12,R.raw.c13,R.raw.c14,R.raw.c15,R.raw.c16,R.raw.c17,R.raw.c18,R.raw.c19,R.raw.c20)
 
     // db 세팅
     init {
@@ -62,6 +65,8 @@ class SpeechTest(private val tpaRight: Int, private val tpaLeft: Int, private va
 
         // 테스트 실행
         while(!isPaused && !isTest1Fin){
+
+            Log.d("tag", "direc: $direc db : $currentDb")
             when(currentDb){
                 in -15..-5 -> {
                     test1Fin(direc, 0)
@@ -78,7 +83,7 @@ class SpeechTest(private val tpaRight: Int, private val tpaLeft: Int, private va
             while(!isPaused && !isTest1Fin){
                 randomInt = Random().nextInt(34)
                 if(!usedWordsSet.contains(randomInt)){
-                    usedWordsSet.plus(randomInt)
+                    usedWordsSet.add(randomInt)
                     break
                 }
             }
@@ -90,7 +95,7 @@ class SpeechTest(private val tpaRight: Int, private val tpaLeft: Int, private va
             recordFin = false
 
             // 버튼 잠금--------------------카운트 동안 버튼 이미지 변결 필요
-            recordButton.isClickable = false
+            speechViewModel.currentClickable.postValue(false)
             setImageGone()
             setCountVisible()
 
@@ -109,7 +114,7 @@ class SpeechTest(private val tpaRight: Int, private val tpaLeft: Int, private va
             mediaPlayer.start()
 
             // 버튼 풀기--------------------카운트 동안 버튼 이미지 변결 필요
-            recordButton.isClickable = true
+            speechViewModel.currentClickable.postValue(true)
 
             val job = thread {
                 while(!recordFin && rWait && !isPaused){}
@@ -122,14 +127,14 @@ class SpeechTest(private val tpaRight: Int, private val tpaLeft: Int, private va
                     }else{                                          // 단어를 틀렸다면
                         if(dbSet.contains(currentDb)){ test1Fin(direc, currentDb) }// 2 번 틀렸다면
                         else {                                          // 처음 틀렸다면
-                            dbSet.plus(currentDb)
+                            dbSet.add(currentDb)
                             currentDb +=5
                         }
                     }
                 }else{                                          // 3초간 반응이 없다면
                     if(dbSet.contains(currentDb)){ test1Fin(direc, currentDb) }// 2 번 틀렸다면
                     else {                                          // 처음 틀렸다면
-                        dbSet.plus(currentDb)
+                        dbSet.add(currentDb)
                         currentDb +=5
                     }
                 }
@@ -138,7 +143,7 @@ class SpeechTest(private val tpaRight: Int, private val tpaLeft: Int, private va
             thread { // 3초 카운팅
                 sleep(3000)
                 if(!isRecorded){
-                    recordButton.isClickable =false
+                    speechViewModel.currentClickable.postValue(false)
                     rWait = false
                 }
             }
@@ -158,14 +163,17 @@ class SpeechTest(private val tpaRight: Int, private val tpaLeft: Int, private va
     // 테스트 2(명료도)
     fun doTest2(direc: Int): Boolean{
         isTest2Fin = false
-        var rWait = true
         // 시작 데시벨 설정
         currentDb = if(direc==1) result[0]+35 else result[1] +35
 
         val test2Item = mutableListOf(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19).shuffled() as MutableList<Int>
         var currentScore = 0
 
+        var count = 0
         for(i in test2Item){
+            if(count>9) break
+            else count++
+            var rWait = true
             if(isPaused) return false
             // 음원 준비
             mediaPlayer = MediaPlayer.create(context, wordsIdList2[i])
@@ -174,7 +182,7 @@ class SpeechTest(private val tpaRight: Int, private val tpaLeft: Int, private va
             recordFin = false
 
             // 버튼 잠금--------------------카운트 동안 버튼 이미지 변결 필요
-            recordButton.isClickable = false
+            speechViewModel.currentClickable.postValue(false)
             setImageGone()
             setCountVisible()
 
@@ -193,20 +201,19 @@ class SpeechTest(private val tpaRight: Int, private val tpaLeft: Int, private va
             mediaPlayer.start()
 
             // 버튼 풀기--------------------카운트 동안 버튼 이미지 변결 필요
-            recordButton.isClickable = true
-
+            speechViewModel.currentClickable.postValue(true)
 
             val job = thread {
                 while(!recordFin && rWait && !isPaused){}
                 if(recordFin && recordString == wordsList2[i]){
-                    currentScore += 5
+                    currentScore += 10
                 }
             }
 
             thread { // 3초 카운팅
                 sleep(3000)
                 if(!isRecorded){ // 녹음 시작이 안됐을 때
-                    recordButton.isClickable =false
+                    speechViewModel.currentClickable.postValue(false)
                     rWait = false
                 }
             }
