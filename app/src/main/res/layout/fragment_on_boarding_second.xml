@@ -13,7 +13,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
-        android:background="@drawable/button_background2"
+        android:background="@drawable/button_background"
         android:paddingVertical="20dp"
         android:text="확인"
         android:textColor="@color/white"
@@ -21,8 +21,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/nextbutton" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <com.airbnb.lottie.LottieAnimationView
@@ -57,6 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="잠시만 기다려주세요"
+        android:textColor="@color/gray"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/on_boarding_second_textview_text1"
         app:layout_constraintStart_toStartOf="@+id/on_boarding_second_textview_text1"

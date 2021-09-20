@@ -4,21 +4,35 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+
     <LinearLayout
         android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/item_type"
+            android:padding="5dp"
+            android:background="@color/gray"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="기본"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="15sp"/>
+
         <TextView
             android:gravity="center"
             android:id="@+id/item_time"
             android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="2021.09.01 오전 12시 39분"
+            android:maxLines="1"
             android:textStyle="bold"
-            android:textSize="20sp"
+            android:textSize="17sp"
             android:textColor="@color/black"/>
 
         <ImageView
@@ -33,6 +47,6 @@
         android:id="@+id/item_view"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/line"/>
+        android:background="@color/colorAccent"/>
 
 </LinearLayout>

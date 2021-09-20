@@ -8,7 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="colorAccent">#889dfe</color>
+    <color name="colorAccent">#132C6F</color>
     <color name="btncolor">#A9B8FF</color>
     <color name="btncolor2">#7F92F6</color>
     <color name="btncolor3">#F6A0F5</color>
@@ -16,5 +16,6 @@
     <color name="btncolor5">#FBC7FB</color>
     <color name="line">#1A000000</color>
     <color name="transparency">#00FFFFFF</color>
-    <color name="layoutcolor">#CDD6FD</color>
+    <color name="layoutcolor">#132C6F</color>
+    <color name="gray">#666666</color>
 </resources>

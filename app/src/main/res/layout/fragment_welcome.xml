@@ -13,8 +13,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
-        android:background="@drawable/button_background2"
-
+        android:background="@drawable/button_background"
         android:text="시작하기"
         android:paddingVertical="20dp"
         android:textColor="@color/white"
@@ -22,8 +21,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/startbutton" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/welcome_imageview_title"
@@ -39,6 +37,7 @@
         android:id="@+id/welcome_textview_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/gray"
         android:layout_marginTop="5dp"
         android:textStyle="bold"
         android:text="청력검사의 새로운 패러다임"
