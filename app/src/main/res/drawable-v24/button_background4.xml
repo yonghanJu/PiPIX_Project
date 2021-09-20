@@ -3,11 +3,20 @@
     <corners
         android:radius="100dp"
         />
-    <gradient
-        android:angle="0"
-        android:startColor="@color/btncolor3"
-        android:endColor="@color/btncolor4"
-        android:type="linear" />
+    <!-- 테두리 내부 색상 설정 -->
+    <solid android:color="@android:color/white" />
+
+    <!-- 테두리 내부 여백 설정 -->
+    <padding
+        android:bottom="8dp"
+        android:left="8dp"
+        android:right="8dp"
+        android:top="8dp" />
+
+    <!-- 테두리 설정: 두께, 색상 -->
+    <stroke
+        android:width="3dp"
+        android:color="@color/colorAccent" />
     <padding
         android:left="0dp"
         android:top="0dp"

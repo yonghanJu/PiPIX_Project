@@ -16,6 +16,7 @@ import com.pipi.pipix.data.PRViewModel
 import com.pipi.pipix.data.PureResult
 import com.pipi.pipix.src.chart.ChartActivity
 import com.pipi.pipix.src.deleteitem.DeleteItemActivity
+import com.pipi.pipix.src.main.fragment.ProfileFragment.Companion.dataList
 import com.pipi.pipix.src.speechresult.SpeechResultActivity
 import kotlinx.coroutines.NonDisposableHandle
 import kotlinx.coroutines.NonDisposableHandle.parent
@@ -23,16 +24,15 @@ import java.io.Serializable
 import java.security.AccessController.getContext
 import java.text.SimpleDateFormat
 
-class ProfileRecyclerviewAdapter (val context: ProfileFragment) :  RecyclerView.Adapter<ProfileRecyclerviewAdapter.ViewHolder>() {
+class RecyclerviewAdapter :  RecyclerView.Adapter<RecyclerviewAdapter.ViewHolder>() {
 
-    companion object{
-        var dataList = emptyList<PureResult>()
-    }
+
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var more: ImageView? = null
         var dateTime: TextView? = null
         var itemPosition : Int? = null
+        var type: TextView? = null
         lateinit var data : PureResult
 
 
@@ -40,6 +40,7 @@ class ProfileRecyclerviewAdapter (val context: ProfileFragment) :  RecyclerView.
             // Define click listener for the ViewHolder's View.
             more = view!!.findViewById(R.id.item_more)
             dateTime = view!!.findViewById(R.id.item_time)
+            type = view!!.findViewById(R.id.item_type)
 
 
               view.setOnClickListener {
@@ -90,6 +91,12 @@ class ProfileRecyclerviewAdapter (val context: ProfileFragment) :  RecyclerView.
         viewHolder.dateTime?.setText(time)
         viewHolder.data = dataList[position]
         viewHolder.itemPosition = position
+
+        if(currentItem.testType == 1){
+        viewHolder.type!!.text = "기본"}
+        else{
+            viewHolder.type!!.text = "단어"
+        }
 
     }
 

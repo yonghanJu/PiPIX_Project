@@ -27,10 +27,6 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
 
         setScreen()
 
-        binding.chartButtonBack.setOnClickListener {
-            finish()
-        }
-
 
 
         val data = intent.getSerializableExtra("test") as PureResult
@@ -68,20 +64,19 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
         entries.add(Entry(6f, data.L_250!!.toFloat()))
 
 
-
         //오른쪽 데이터 리스트
         if(data.R_8000 != null)
-        entries2.add(Entry(1f, data.R_8000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        entries2.add(Entry(1f, data.R_8000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.iconx2)))
         if(data.R_4000 != null)
-        entries2.add(Entry(2f, data.R_4000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        entries2.add(Entry(2f, data.R_4000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.iconx2)))
         if(data.R_2000 != null)
-        entries2.add(Entry(3f, data.R_2000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        entries2.add(Entry(3f, data.R_2000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.iconx2)))
         if(data.R_1000 != null)
-        entries2.add(Entry(4f, data.R_1000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        entries2.add(Entry(4f, data.R_1000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.iconx2)))
         if(data.R_500!= null)
-        entries2.add(Entry(5f, data.R_500!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        entries2.add(Entry(5f, data.R_500!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.iconx2)))
         if(data.R_250 != null)
-        entries2.add(Entry(6f, data.R_250!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.star2)))
+        entries2.add(Entry(6f, data.R_250!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.iconx2)))
         //entry add는 if문 사용 null check
 
 
@@ -92,12 +87,11 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
         chartData.addDataSet(set1)
         set1.setColor(Color.RED)
         set1.lineWidth = 1F
-        set1.circleRadius = 7F
+        set1.circleRadius = 10F
         set1.setDrawCircleHole(true)
-        set1.circleHoleRadius = 4F
+        set1.circleHoleRadius = 7F
         set1.setCircleColor(Color.RED)
-        set1.valueTextSize = 15F
-        set1.valueTextColor = Color.RED
+        set1.setDrawValues(false)
 
 
 
@@ -106,12 +100,10 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
         val set2 = LineDataSet(entries2, " : 오른쪽 귀")
         chartData.addDataSet(set2)
         set2.setColor(Color.BLUE)
+        set2.setDrawValues(false)
         set2.lineWidth = 1F
-        set2.circleSize = 0f
         set2.setDrawCircles(false)
         set2.setDrawCircleHole(false)
-        set2.valueTextSize = 15F
-        set2.valueTextColor = Color.BLUE
         set2.setDrawIcons(set2.isDrawIconsEnabled())
 
 
@@ -119,18 +111,18 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
         //Y축 레이블을 모두 나타내기 위한 틀
         val entries3 = ArrayList<Entry>()
 
-        entries3.add(Entry(1f, -10f))
-        entries3.add(Entry(1f, 0f))
-        entries3.add(Entry(1f, 10f))
-        entries3.add(Entry(1f, 20f))
-        entries3.add(Entry(1f, 30f))
-        entries3.add(Entry(1f, 40f))
-        entries3.add(Entry(1f, 50f))
-        entries3.add(Entry(1f, 60f))
-        entries3.add(Entry(1f, 70f))
-        entries3.add(Entry(1f, 80f))
-        entries3.add(Entry(1f, 90f))
-        entries3.add(Entry(1f, 100f))
+        entries3.add(Entry(0f, -10f))
+        entries3.add(Entry(0f, 0f))
+        entries3.add(Entry(0f, 10f))
+        entries3.add(Entry(0f, 20f))
+        entries3.add(Entry(0f, 30f))
+        entries3.add(Entry(0f, 40f))
+        entries3.add(Entry(7f, 50f))
+        entries3.add(Entry(7f, 60f))
+        entries3.add(Entry(7f, 70f))
+        entries3.add(Entry(7f, 80f))
+        entries3.add(Entry(7f, 90f))
+        entries3.add(Entry(7f, 100f))
 
         val set3 = LineDataSet(entries3,"test")
         chartData.addDataSet(set3)
@@ -138,8 +130,6 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
         set3.setDrawCircles(false)
         set3.setDrawCircleHole(false)
         set3.valueTextColor = ContextCompat.getColor(this, R.color.transparency)
-
-
 
         lineChart.data = chartData
 
@@ -162,7 +152,10 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
 
         // Axis set
         val xAxis = lineChart.xAxis
-        xAxis.setLabelCount(6, true)
+        xAxis.setLabelCount(6)
+        xAxis.mAxisMaximum = 6.9f
+        xAxis.mAxisMinimum = 0.9f
+
         xAxis.setDrawGridLines(true) // 격자
 
         val yAxisRight =lineChart.axisRight
@@ -205,7 +198,7 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
     inner class MyXAxisFormatter : ValueFormatter() {
         private val Hz = arrayOf("250", "500","1000","2000", "4000", "8000")
         override fun getAxisLabel(value: Float, axis: AxisBase?): String {
-            return Hz.getOrNull(value.toInt() - 1) ?:value.toInt().toString()
+            return Hz.getOrNull(value.toInt() - 1) ?:""
         }
     }
 

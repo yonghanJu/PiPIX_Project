@@ -3,14 +3,16 @@
     <item>
         <shape>
             <corners android:radius="10dp" />
-            <solid android:color="@color/layoutcolor" />
+            <solid android:color="@color/gray" />
+
         </shape>
     </item>
     <item>
         <clip>
             <shape>
                 <corners android:radius="10dp" />
-                <solid android:color="@color/btncolor2" />
+                <solid android:color="@color/colorAccent"/>
+
             </shape>
         </clip>
     </item>

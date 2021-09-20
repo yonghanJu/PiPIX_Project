@@ -33,7 +33,7 @@ class OnBoardingSecondFragment : BaseFragment<FragmentOnBoardingSecondBinding>(F
             var test = 0
             override fun run() {
 
-                SystemClock.sleep(3000)
+                SystemClock.sleep(2500)
 
                 mHandler?.post(Runnable {
                     val amplitude = recorder.maxAmplitude

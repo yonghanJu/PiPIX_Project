@@ -5,7 +5,10 @@ import android.os.Bundle
 import com.pipi.pipix.config.BaseActivity
 import com.pipi.pipix.databinding.ActivityDeleteitemBinding
 import com.pipi.pipix.src.main.fragment.ProfileFragment
-import com.pipi.pipix.src.main.fragment.ProfileRecyclerviewAdapter.Companion.dataList
+import com.pipi.pipix.src.main.fragment.ProfileFragment.Companion.dataList
+import com.pipi.pipix.src.main.fragment.ProfileFragment.Companion.mUserViewModel
+import com.pipi.pipix.src.main.fragment.ResultFragment
+
 
 class DeleteItemActivity : BaseActivity<ActivityDeleteitemBinding>(ActivityDeleteitemBinding::inflate) {
 
@@ -20,7 +23,7 @@ class DeleteItemActivity : BaseActivity<ActivityDeleteitemBinding>(ActivityDelet
         var position = intent.getIntExtra("delete",999)
 
         binding.deleteitemButtonCheck.setOnClickListener {
-            ProfileFragment.mUserViewModel.deletePureResult(dataList[position])
+            mUserViewModel.deletePureResult(dataList[position])
             finish()
         }
     }
