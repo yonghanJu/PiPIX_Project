@@ -116,7 +116,7 @@ class SpeechFragment : BaseFragment<FragmentSpeechBinding>(
                 val pr = PureResult(0,2,result[0],result[1],sdf.format(date),result[2],result[3])
                 prViewModel.addPureResult(pr)
                 isPause = true
-                activity?.runOnUiThread { findNavController().navigate(R.id.action_speechFragment_to_ProfileFragment) }
+                activity?.runOnUiThread { findNavController().navigate(R.id.action_speechFragment_to_resultFragment) }
             }
         }
 
