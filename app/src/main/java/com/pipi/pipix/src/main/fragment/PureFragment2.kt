@@ -85,7 +85,7 @@ class PureFragment2  : BaseFragment<FragmentPure2Binding>(FragmentPure2Binding::
                 viewModel.addPureResult(pr)
                 activity?.runOnUiThread {
                     isPause = true
-                    findNavController().navigate(R.id.action_pureFragment2_to_ProfileFragment) }
+                    findNavController().navigate(R.id.action_pureFragment2_to_resultFragment) }
 
             }
         }
