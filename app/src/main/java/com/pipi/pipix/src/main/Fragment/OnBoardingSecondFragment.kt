@@ -91,8 +91,9 @@ class OnBoardingSecondFragment : BaseFragment<FragmentOnBoardingSecondBinding>(F
     private var mHandler: Handler? = Handler(Looper.getMainLooper())
 
     override fun onPause() {
-
-
+        recorder!!.stop()
+        recorder!!.release()
+        recorder = null
         super.onPause()
         mHandler = null
     }
