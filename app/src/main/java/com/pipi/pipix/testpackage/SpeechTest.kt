@@ -202,7 +202,7 @@ class SpeechTest(private val tpaRight: Int, private val tpaLeft: Int, private va
             val job = thread {
                 while(!recordFin && rWait && !isPaused){}
                 if(recordFin && recordString == wordsList2[i]){
-                    currentScore += 10
+                    currentScore++
                 }
             }
 
