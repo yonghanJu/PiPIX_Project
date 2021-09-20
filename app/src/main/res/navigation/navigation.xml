@@ -133,11 +133,12 @@
         <action
             android:id="@+id/action_speechFragment_to_ProfileFragment"
             app:destination="@id/ProfileFragment"
-            app:popUpTo="@id/pureNoticeFragment"
+            app:popUpTo="@id/speechNoticeFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_speechFragment_to_resultFragment"
             app:destination="@id/resultFragment"
+            app:enterAnim="@android:anim/fade_in"
             app:popUpTo="@id/speechNoticeFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -169,7 +170,8 @@
         android:label="TRTFragment" >
         <action
             android:id="@+id/action_TRTFragment_to_MP3Fragment"
-            app:destination="@id/MP3Fragment" />
+            app:destination="@id/MP3Fragment"
+            app:enterAnim="@android:anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/MP3Fragment"

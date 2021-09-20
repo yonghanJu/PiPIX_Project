@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.ProgressBar
 import android.widget.SeekBar
 import android.widget.TextView
+import androidx.navigation.fragment.findNavController
 import com.pipi.pipix.R
 import com.pipi.pipix.config.BaseActivity
 import com.pipi.pipix.config.BaseFragment
@@ -33,6 +34,7 @@ class MP3Fragment : BaseFragment<FragmentMp3Binding>(FragmentMp3Binding::bind, R
 
         binding.mp3ImageviewBtnBack.setOnClickListener {
         //뒤로가기
+            findNavController().popBackStack()
         }
 
         var title = binding.mp3TextviewTitle
