@@ -49,26 +49,18 @@
 
     <TextView
         android:id="@+id/on_boarding_first_textview_text2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="5dp"
-        android:textStyle="bold"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:text="이어폰의 왼쪽과 오른쪽을 잘 구분하여 착용해주세요.\n이어폰이나 헤드셋을 사용하지 않을 시 정확하게\n측정 할 수 없습니다."
         android:textColor="@color/gray"
-        android:text="이어폰이나 헤드셋을 사용하지 않을시"
-        app:layout_constraintEnd_toEndOf="@+id/on_boarding_first_textview_text1"
-        app:layout_constraintStart_toStartOf="@+id/on_boarding_first_textview_text1"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/on_boarding_first_textview_text1" />
 
-    <TextView
-        android:id="@+id/on_boarding_first_textview_text3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:textStyle="bold"
-        android:textColor="@color/gray"
-        android:text="정확하게 측정할 수 없습니다"
-        app:layout_constraintEnd_toEndOf="@+id/on_boarding_first_textview_text2"
-        app:layout_constraintStart_toStartOf="@+id/on_boarding_first_textview_text2"
-        app:layout_constraintTop_toBottomOf="@+id/on_boarding_first_textview_text2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
