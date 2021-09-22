@@ -23,14 +23,31 @@
         android:text="파도소리"
         android:gravity="center_horizontal"/>
 
-<ImageButton
-    android:id="@+id/mp3_button_action"
-    android:layout_marginTop="30dp"
-    android:layout_gravity="center_horizontal"
-    android:layout_width="200dp"
-    android:layout_height="200dp"
-    android:background="@drawable/button_background4"
-    android:src="@drawable/iconplay"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/mp3_button_start"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:background="@drawable/button_background4"
+            android:src="@drawable/iconplay"/>
+        <ImageButton
+            android:id="@+id/mp3_button_stop"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:background="@drawable/button_background4"
+            android:src="@drawable/iconpause"
+            android:visibility="gone"/>
+
+    </FrameLayout>
+
+
 
     <TextView
         android:id="@+id/mp3_textview_timer"
@@ -38,15 +55,15 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textColor="@color/gray"
-        android:text="00:00"
+        android:text="00 : 00"
         android:textStyle="bold"
         android:textSize="20sp"
         android:layout_marginVertical="50dp"/>
-    <SeekBar
+    <androidx.appcompat.widget.AppCompatSeekBar
         android:id="@+id/mp3_seekBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:max="60000"
+        android:max="3600"
         android:thumb="@drawable/custom_thumb"
         android:progressDrawable="@drawable/custom_seekbar"
         android:layout_marginHorizontal="20dp"/>

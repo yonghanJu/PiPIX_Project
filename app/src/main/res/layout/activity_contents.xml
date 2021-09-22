@@ -1,250 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@color/white"
-    android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_gravity="center"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-        <ScrollView
-            android:layout_width="match_parent"
+
+
+
+        <TextView
+            android:background="@color/white"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:orientation="vertical">
-
-                        <TextView
-                            android:layout_margin="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="개인정보처리방침"
-                            android:textSize="20sp"
-                            android:textColor="@color/black"/>
-
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="삐삐 (“회사”라 함)는 정보통신망 이용촉진 및 정보보호 등에 관한 법률, 개인정보보호법, 통신비밀보호법, 전기통신사업법, 등 정보통신서비스제공자가 준수하여야 할 관련 법령상의 개인정보보호 규정을 준수하며, 관련 법령에 의거한 개인정보처리방침을 정하여 이용자 권익 보호에 최선을 다하고 있습니다."/>
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginVertical="10dp"
-                            android:text="본 개인정보처리방침은 회사가 제공하는 “어플리케이션 (삐삐X)” (이하에서는 어플리케이션을 이하 ‘서비스’라 합니다.)이용에 적용되며 다음과 같은 내용을 담고 있습니다."/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:text="개인정보 수집 항목 및 이용목적"
-                            android:textSize="20sp"
-                            android:textColor="@color/black"/>
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginVertical="10dp"
-                            android:text="“회사”는 회원가입, 서비스의 제공을 위해 아래와 같은 최소한의 개인정보를 필수항목으로 수집하고 있습니다."/>
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginVertical="10dp"
-                            android:text="“회사”는 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며, 이용 목적이 변경되는 경우에는 개인정보 보호법 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다."/>
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="1.	“회사”는 서비스 제공을 위하여 수집한 모든 개인정보와 생성 정보를 아래의 목적으로 이용합니다."/>
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:text="o	회원식별 및 가입의사 확인, 회원관리"/>
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:text="o	서비스 이용 과정 중 본인식별, 인증, 실명확인 및 각종 안내/고지"/>
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:text="o	서비스 방문 및 이용기록 및 통계"/>
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="2.	이용자(이하 “회원”이라 함) 개인정보의 수집·이용 목적과 개인정보 항목은 아래와 같습니다"/>
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:text="o	회원가입시 작성하는 가명(닉네임)"/>
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:text="o	회원가입시 기입하는 연령"/>
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:text="o	“회사”의 서비스 이용 후 발생하는 건강정보"/>
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:text="o	가명, 연령 그리고 건강정보는 서비스이용 및 회원관리를 위해 이용됩니다."/>
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="3.	”회사”는 귀하의 개인정보보호를 매우 중요시하며, 『개인정보 보호법』과 『정보통신망 이용촉진 및 정보보호 등에 관한법률』상의 개인정보 처리방침 및 행정안전부와 정보통신부가 제정한 『개인정보 보호지침』을 준수하고 있습니다. 회사는 개인정보처리방침을 통하여 귀하께서 제공하시는 개인정보가 어떠한 용도와 방식으로 이용되고 있으며, 개인정보보호를 위해 어떠한 조치가 취해지고 있는지 알려드립니다."/>
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="4.	“회사”는 개인정보 처리방침을 사이트 첫 화면과 고객센터의 ‘개인정보 처리방침’ 항목에서 공개함으로써 회원들이 언제나 용이하게 보실 수 있도록 조치하고 있습니다."/>
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="5.	“회사”는 개인정보 처리방침의 지속적인 개선을 위하여 개인정보 처리방침을 개정하는데 필요한 절차를 정하고 있습니다. 그리고 개인정보 처리방침을 개정하는 경우 버전번호 등을 부여하여 개정된 사항을 귀하께서 쉽게 알아볼 수 있도록 하고 있습니다."/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="20sp"
-                            android:textColor="@color/black"
-                            android:layout_margin="10dp"
-                            android:text="개인정보 수집 및 이용에 대한 동의"/>
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="회사는 회원들이 회사의 개인정보 보호정책 또는 이용약관의 내용에 대하여 「동의 」버튼을 클릭할 수 있는 절차를 마련하여, 「동의」 버튼을 클릭하면 개인정보 수집 및 이용에 대해 동의한 것으로 봅니다."/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="20sp"
-                            android:textColor="@color/black"
-                            android:layout_margin="10dp"
-                            android:text="개인정보의 처리 및 보유 기간"/>
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="1.	회원의 개인정보는 그 수집목적 또는 제공받은 목적이 달성되거나 회원이 이용계약 해지(회원탈퇴)를 요청한 경우 파기하는 것을 원칙으로 하며, 이 경우 회원의 개인정보는 재생할 수 없는 방법에 의하여 시스템에서 완전히 삭제되며 어떠한 용도로도 열람 또는 이용할 수 없도록 처리됩니다. 또한, 일시적인 목적(설문조사 등)으로 입력 받은 개인정보는 그 목적이 달성된 이후에는 동일한 방법으로 사후 재생이 불가능한 방법으로 처리됩니다."/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:text="개인정보 파기절차 및 방법"
-                            android:textSize="20sp"
-                            android:textColor="@color/black"/>
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_marginBottom="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="회원의 개인정보는 원칙적으로 보유기간의 경과, 개인정보의 수집 및 이용목적 달성 등 그 개인정보가 불필요하게 되었을 때에는 지체 없이 파기합니다. 회사의 개인정보 파기절차 및 방법은 다음과 같습니다."/>
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="1. 파기절차 - 회사는 개인정보의 파기에 관한 사항을 기록하고 관리하며, 파기는 개인정보 보호책임자의 책임하에 수행되며, 개인정보 보호책임자는 파기 결과를 확인합니다. - 회사는 다른 법령에 따라 보존해야 하는 경우에는 예외적으로 회원의 개인정보를 파기하지 않을 수 있습니다. "/>
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="2. 파기방법 "/>
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_margin="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="•	종이나 그 밖의 기록매체에 저장된 개인정보는 파쇄하거나 소각합니다. "/>
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_margin="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="•	전자적 파일 형태로 저장된 개인정보는 복원이 불가능한 방법(내지 기록을 재생할 수 없는 기술적 방법)으로 영구 삭제합니다."/>
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="3.	미파기 정보의 보존방법 회사는 법령에 따라 개인정보를 파기하지 않고 보존하는 경우에 해당 개인정보 또는 개인정보파일을 다른 개인정보와 분리하여 저장 관리합니다. 회사는 별도 DB로 옮긴 개인정보를 법률에 의한 경우가 아니고서는 보유하는 이외의 다른 목적으로 이용하지 않습니다."/>
-                        <TextView
-                            android:layout_margin="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="20sp"
-                            android:textColor="@color/black"
-                            android:text="개인정보주체의 권리와 의무 및 그 행사방법"/>
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="1.	회원은 언제든지 회사에 “삐삐” 서비스를 통하여 등록되어 있는 자신의 개인정보, 회사가 회원의 개인정보를 이용하거나 제3자에게 제공한 현황, 회사에게 개인정보 수집, 이용, 제공 등의 동의를 한 현황에 대하여 열람이나 제공을 요구할 수 있고, 오류가 있는 경우에는 그 정정을 요구할 수 있으며, 삭제 내지 가입해지를 요구할 수도 있습니다."/>
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="2.	회원의 개인정보 조회, 수정을 위해서는 ‘개인정보변경’(또는 ‘회원정보수정’ 등)을, 가입해지(동의철회)를 위해서는 “회원탈퇴”를 클릭하여 본인 확인 절차를 거치신 후 직접 열람, 정정 또는 탈퇴가 가능합니다."/>
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="3.	이 경우에 회사는 지체 없이 그 개인정보를 조사하여 회원의 요구에 따라 정정, 삭제 등 필요한 조치를 한 후 그 결과를 회원에게 알립니다. 회사는 필요한 조치를 할 때까지는 해당 개인정보를 이용하거나 제공하지 않습니다."/>
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="4.	회원은 언제든지 회사에 자신의 개인정보 처리의 정지를 요구할 수 있으며, 이 경우에 회사는 지체 없이 그 요구에 따라 개인정보 처리의 전부 내지 일부를 정지하며, 처리가 정지된 개인정보에 대하여 지체 없이 그 개인정보의 파기 등 필요한 조치를 취합니다."/>
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="5.	개인정보와 관련하여 의의나 의견이 있으신 분은 개인정보 보호책임자 및 담당자에게 서면, 전화 또는 E-mail로 연락하시면 접수 즉시 처리하고 결과를 안내해 드리겠습니다. 로그온(log-on)한 상태에서는 주위의 다른 사람에게 개인정보가 유출되지 않도록 특별히 주의를 기울이시기 바랍니다."/>
-                        <TextView
-                            android:layout_margin="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="20sp"
-                            android:textColor="@color/black"
-                            android:text="개인정보관련 의견수렴 및 침해, 불만처리에 관한 사항"/>
-                        <TextView
-                            android:textColor="@color/gray"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="10dp"
-                            android:text="”회사”는 개인정보보호와 관련하여 “회원”의 의견을 수렴하고 있으며 불만을 처리하기 위하여 모든 절차와 방법을 마련하고 있습니다. “회원”은 회사의 서비스 이용 중 발생한 모든 개인정보 보호 관련 문의, 불만처리, 피해구제 등에 관한 사항을 아래 개인정보 보호책임자 및 담당자에게 문의할 수 있습니다. “회사”는 “회원”의 신고사항에 대하여 신속하게 처리하여 답변해 드립니다."/>
+            android:layout_margin="10dp"
+            android:layout_gravity="center_horizontal"
+            android:text="개인정보처리방침"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+        <View
+            android:background="@color/white"
+            android:layout_width="330dp"
+            android:layout_height="500dp"
+            />
 
 
+    </LinearLayout>
 
-
-
-
-
-                </LinearLayout>
-
-        </ScrollView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
 
