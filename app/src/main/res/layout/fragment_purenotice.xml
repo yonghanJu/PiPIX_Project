@@ -52,7 +52,7 @@
         android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="순음청력검사의 목적은 인간의 의사소통에 중요한 가청 주파수의 범위 (250 ~ 8,000 Hz)에서 청력 역치를 측정하는 것입니다. 청력 역치란 들을 수 있는 가장 작은 소리 크기 입니다. 검사가 시작되면 소리가 들리는 쪽 방향을 터치하세요."
+        android:text="순음청력검사의 목적은 인간의 의사소통에 중요한 가청 주파수의 범위 (250 ~ 8000Hz)에서 청력의 역치를 측정하는 것입니다. 청력 역치란 들을 수 있는 가장 작은소리의 크기를 뜻합니다. 검사가 시작되어 소리가 들리면 “예”버튼을 누르고 들리지 않으면 “아니요” 버튼을 누르세요."
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
