@@ -51,11 +51,12 @@
         android:id="@+id/speechnotice_textview_text2"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
+        android:text="이음절과 일음절 단어를 사용하여 어음청력검사를 진행합니다. 검사가 시작되면 단어를 듣고 마이크 버튼을 누른 상태에서 들은 단어를 따라 말합니다. 3초 안에 마이크 버튼을 누르지 않으면 듣지 못한것으로 체크됩니다."
         android:textColor="@color/gray"
-        android:text="어음절의 단어를 사용하여 들을 수 있는 최소 어음 강도를 측정합니다. 검사가 시작되면 단어를 듣게되고 마이크 버튼을 누른 상태에서 단어를 따라 말합니다. 3초 안에 마이크 버튼을 누르지 않으면 듣지 못한것으로 체크됩니다."
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/speechnotice_textview_text1" />
 
