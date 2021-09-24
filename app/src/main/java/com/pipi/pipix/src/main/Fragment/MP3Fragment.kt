@@ -69,9 +69,12 @@ class MP3Fragment : BaseFragment<FragmentMp3Binding>(FragmentMp3Binding::bind, R
 
             seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
                 override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                    timeTick = seekBar!!.progress
+                    if(fromUser){
+                        time.text = String.format("%02d : %02d",timeTick/60, timeTick%60)
+                    }
 
-                    timeTick = progress
-                    time.text = String.format("%02d : %02d",timeTick/60, timeTick%60)
+
                 }
 
                 override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -93,12 +96,15 @@ class MP3Fragment : BaseFragment<FragmentMp3Binding>(FragmentMp3Binding::bind, R
                     seekBar.isEnabled = false
                     start.visibility = GONE
                     stop.visibility = VISIBLE
+                    Log.d("test",timeTick.toString())
                     minute = timeTick / 60
                     second = timeTick % 60
                     timer(period = 1000, initialDelay = 1000) {
 
                         mHandler?.post(Runnable {
                             time.text = String.format("%02d : %02d", minute, second)
+                            Log.d("test",String.format("%02d : %02d", minute, second))
+                            seekBar.progress = minute * 60
                         })
 
                         if (second == 0 && minute == 0) {
@@ -139,6 +145,7 @@ class MP3Fragment : BaseFragment<FragmentMp3Binding>(FragmentMp3Binding::bind, R
             }
         mHandler = null
     }
+
 
 
 
