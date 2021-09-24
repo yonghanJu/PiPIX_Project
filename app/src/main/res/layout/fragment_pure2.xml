@@ -69,16 +69,17 @@
             android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="20sp" />
+
             <TextView
-                android:layout_marginTop="50dp"
-                android:id="@+id/pure2_textview_checktext"
+                android:id="@+id/pure2_textview_db"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="소리가 들리시나요?"
+                android:layout_marginTop="50dp"
+                android:text="15dB"
+                android:textStyle="bold"
                 android:textColor="@color/white"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+                android:textSize="20sp" />
         </LinearLayout>
 
 
@@ -98,6 +99,19 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pure2_framelayout" />
+
+    <TextView
+        android:id="@+id/pure2_textview_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="소리가 들리시나요?"
+        android:textColor="@color/colorAccent"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pure2_textview_progress" />
 
     <Button
         android:id="@+id/pure2_button_yes"
