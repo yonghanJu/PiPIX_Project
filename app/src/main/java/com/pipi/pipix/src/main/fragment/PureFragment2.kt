@@ -32,6 +32,7 @@ class PureFragment2  : BaseFragment<FragmentPure2Binding>(FragmentPure2Binding::
     private lateinit var progressBar: ProgressBar
     private lateinit var progressText: TextView
     private lateinit var scope: CoroutineScope
+    private lateinit var dbText: TextView
     private  var isPause:Boolean = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -51,6 +52,7 @@ class PureFragment2  : BaseFragment<FragmentPure2Binding>(FragmentPure2Binding::
         direcText = binding.pure2TextviewText3
         progressBar = binding.progress2
         progressText = binding.pure2TextviewProgress
+        dbText = binding.pure2TextviewDb
 
         ptViewModel.hzText.observe(viewLifecycleOwner, Observer {
             hzText.text = it
@@ -59,6 +61,12 @@ class PureFragment2  : BaseFragment<FragmentPure2Binding>(FragmentPure2Binding::
         ptViewModel.direcText.observe(viewLifecycleOwner, Observer {
             direcText.text = it
         })
+
+        ptViewModel.dB.observe(viewLifecycleOwner,{
+            dbText.text = it.toString()+"dB"
+        })
+
+        ptViewModel.dB.postValue(30)    // 초기값 설정
 
         ptViewModel.progress.observe(viewLifecycleOwner, Observer {
             if(it<100){
