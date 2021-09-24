@@ -57,14 +57,14 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
         // 드로어 화면을 열고 닫을 버튼 객체 참조
 
         val btnOpenDrawer = binding.profileImageButtonOpendrawer
-        val btnCloseDrawer= binding.profileDrawerButtonClosedrawer
+        //val btnCloseDrawer= binding.profileDrawerButtonClosedrawer
 
 
         // 드로어 여는 버튼 리스너
         btnOpenDrawer.setOnClickListener(View.OnClickListener { drawerLayout!!.openDrawer(drawerView!!) })
 
         // 드로어 닫는 버튼 리스너
-        btnCloseDrawer.setOnClickListener(View.OnClickListener { drawerLayout!!.closeDrawer(drawerView!!) })
+        //btnCloseDrawer.setOnClickListener(View.OnClickListener { drawerLayout!!.closeDrawer(drawerView!!) })
 
 
 
