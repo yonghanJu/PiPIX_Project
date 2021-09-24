@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.pipi.pipix.R
 import com.pipi.pipix.config.BaseFragment
 import com.pipi.pipix.data.PRViewModel
+import com.pipi.pipix.data.PureResult
 import com.pipi.pipix.databinding.FragmentResultBinding
 import com.pipi.pipix.databinding.FragmentWelcomeBinding
 
