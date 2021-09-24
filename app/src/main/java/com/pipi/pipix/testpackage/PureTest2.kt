@@ -62,6 +62,7 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
 
     private fun testDb(direc: Int, position: Int, mediaPlayer: MediaPlayer) {
         var currentDb = 30
+        ptViewModel.dB.postValue(30)
         var dbSet = mutableSetOf<Int>()
         var isFin = false
         btnYes.isClickable = true
@@ -75,7 +76,6 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
         }
 
         btnYes.setOnClickListener {
-            //btnNo.isClickable = false
             when(currentDb){
                 in -15..0 ->{result[direc][position] = 0
                     mediaPlayer.stop()
@@ -86,11 +86,10 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
                     play()
                 }
             }
-            //btnNo.isClickable = true
+            ptViewModel.dB.postValue(currentDb)
         }
 
         btnNo.setOnClickListener {
-            //btnYes.isClickable = false
             if(currentDb>=100){
                 mediaPlayer.stop()
                 result[direc][position] = 100
@@ -104,7 +103,7 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
                 currentDb+=5
                 play()
             }
-            //btnYes.isClickable = true
+            ptViewModel.dB.postValue(currentDb)
         }
 
         // 첫 실행
