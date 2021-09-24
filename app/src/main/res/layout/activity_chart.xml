@@ -48,7 +48,7 @@
            android:textSize="20sp"
            android:textStyle="bold"
            android:textColor="@color/colorAccent"
-           android:text="왼쪽"/>
+           android:text="오른쪽"/>
         <ImageView
             android:layout_marginLeft="40dp"
             android:layout_width="30dp"
@@ -62,7 +62,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/colorAccent"
-            android:text="오른쪽"/>
+            android:text="왼쪽"/>
 
     </LinearLayout>
 
