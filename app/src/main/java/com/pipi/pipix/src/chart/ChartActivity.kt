@@ -81,34 +81,42 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
         //그래프에 들어갈 좌표값 입력
 
         //왼쪽 데이터 리스트
-        if(data.L_8000 != null)
-        entries.add(Entry(1f, data.L_8000!!.toFloat()))
-        if(data.L_4000 != null)
-        entries.add(Entry(2f, data.L_4000!!.toFloat()))
-        if(data.L_2000 != null)
-        entries.add(Entry(3f, data.L_2000!!.toFloat()))
-        if(data.L_1000 != null)
-        entries.add(Entry(4f, data.L_1000!!.toFloat()))
-        if(data.L_500 != null)
-        entries.add(Entry(5f, data.L_500!!.toFloat()))
-        if(data.L_250 != null)
-        entries.add(Entry(6f, data.L_250!!.toFloat()))
+        if(data.R_250 != null)
+            entries.add(Entry(1f, data.R_250!!.toFloat()))
+        if(data.R_500 != null)
+            entries.add(Entry(2f, data.R_500!!.toFloat()))
+        if(data.R_1000 != null)
+            entries.add(Entry(3f, data.R_1000!!.toFloat()))
+        if(data.R_2000 != null)
+            entries.add(Entry(4f, data.R_2000!!.toFloat()))
+        if(data.R_4000 != null)
+            entries.add(Entry(5f, data.R_4000!!.toFloat()))
+        if(data.R_8000 != null)
+        entries.add(Entry(6f, data.R_8000!!.toFloat()))
+
+
+
 
 
         //오른쪽 데이터 리스트
-        if(data.R_8000 != null)
-        entries2.add(Entry(1f, data.R_8000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.iconx2)))
-        if(data.R_4000 != null)
-        entries2.add(Entry(2f, data.R_4000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.iconx2)))
-        if(data.R_2000 != null)
-        entries2.add(Entry(3f, data.R_2000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.iconx2)))
-        if(data.R_1000 != null)
-        entries2.add(Entry(4f, data.R_1000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.iconx2)))
-        if(data.R_500!= null)
-        entries2.add(Entry(5f, data.R_500!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.iconx2)))
-        if(data.R_250 != null)
-        entries2.add(Entry(6f, data.R_250!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.iconx2)))
-        //entry add는 if문 사용 null check
+        if(data.L_250 != null)
+            entries2.add(Entry(1f, data.L_250!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.iconx2)))
+        if(data.L_500!= null)
+            entries2.add(Entry(2f, data.L_500!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.iconx2)))
+        if(data.L_1000 != null)
+            entries2.add(Entry(3f, data.L_1000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.iconx2)))
+        if(data.L_2000 != null)
+            entries2.add(Entry(4f, data.L_2000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.iconx2)))
+        if(data.L_4000 != null)
+            entries2.add(Entry(5f, data.L_4000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.iconx2)))
+        if(data.L_8000 != null)
+        entries2.add(Entry(6f, data.L_8000!!.toFloat(),ContextCompat.getDrawable(getApplicationContext(),R.drawable.iconx2)))
+
+
+
+
+
+
 
 
         //디자인 부분
@@ -174,12 +182,7 @@ class ChartActivity  : BaseActivity<ActivityChartBinding>(ActivityChartBinding::
 
         // Legend set
         lineChart.getLegend().setEnabled(false)
-        //var legend = lineChart.legend
-        //legend.setTextColor(Color.BLACK)
-        //legend.setTextSize(15F)
-        //legend.xEntrySpace = 20F
-        //legend.orientation = Legend.LegendOrientation.VERTICAL
-        //legend.setForm(Legend.LegendForm.CIRCLE)
+
 
         // Axis set
         val xAxis = lineChart.xAxis
