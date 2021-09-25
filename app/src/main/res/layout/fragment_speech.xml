@@ -18,6 +18,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ProgressBar
+        android:id="@+id/speech_progress"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="100dp"
+        android:progress="0"
+        android:progressDrawable="@drawable/custom_progress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvResult" />
+
+    <TextView
+        android:id="@+id/speech_textview_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="0%"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/speech_progress"
+        app:layout_constraintStart_toStartOf="@+id/speech_progress"
+        app:layout_constraintTop_toBottomOf="@+id/speech_progress" />
+
     <TextView
         android:id="@+id/speech_textview_text"
         android:layout_width="wrap_content"
@@ -35,18 +61,18 @@
         android:id="@+id/speech_button_right"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/button_background4"
-        android:text="누르고 말하세요!"
         android:gravity="center"
+        android:text="누르고 말하세요!"
         android:textColor="@color/colorAccent"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/speech_framelayout"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/speech_textview_progress"
+        app:layout_constraintVertical_bias="0.833" />
 
     <FrameLayout
         android:background="@drawable/layout_background"
@@ -81,9 +107,10 @@
         android:id="@+id/tvResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:textSize="26dp"
-        app:layout_constraintBottom_toTopOf="@+id/speech_button_right"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/speech_framelayout" />
 
