@@ -1,5 +1,6 @@
 package com.pipi.pipix.src.main.fragment
 
+import android.media.AudioManager
 import android.media.MediaRecorder
 import android.os.Bundle
 import android.os.Handler
@@ -13,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.pipi.pipix.R
 import com.pipi.pipix.config.BaseFragment
 import com.pipi.pipix.databinding.FragmentOnBoardingSecondBinding
+import com.pipi.pipix.src.main.SoundController
 import java.util.*
 
 
@@ -25,6 +27,7 @@ class OnBoardingSecondFragment : BaseFragment<FragmentOnBoardingSecondBinding>(F
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        SoundController.isStopMusicOfOtherApps()
 
         binding.onBoardingSecondTextviewText2.text = "잠시만 기다려주세요"
 
