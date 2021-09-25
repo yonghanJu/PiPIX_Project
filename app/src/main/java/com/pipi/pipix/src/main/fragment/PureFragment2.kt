@@ -118,6 +118,7 @@ class PureFragment2  : BaseFragment<FragmentPure2Binding>(FragmentPure2Binding::
 
     override fun onPause() {
         pureTest.pause()
+        SoundController.mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC,7,1)
         if(!isPause)findNavController().navigate(R.id.action_pureFragment2_to_ProfileFragment)
         super.onPause()
     }
