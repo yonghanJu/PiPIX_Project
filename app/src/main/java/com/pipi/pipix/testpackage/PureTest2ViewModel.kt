@@ -16,6 +16,10 @@ class PureTest2ViewModel:ViewModel() {
         MutableLiveData<Int>()
     }
 
+    val dB: MutableLiveData<Int>by lazy {
+        MutableLiveData<Int>()
+    }
+
     fun setHz(hz: Int){
         hzText.postValue("${hz}hz")
     }
