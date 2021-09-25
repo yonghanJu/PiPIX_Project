@@ -139,9 +139,21 @@
     </GridLayout>
 
 
-<View
-    android:layout_width="wrap_content"
+<TextView
+    android:layout_marginHorizontal="40sp"
+    android:textSize="20sp"
+    android:textColor="@color/gray"
+    android:textStyle="bold"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_weight="1"/>
-
+    android:text="어음청취역치란?\n검사자가 단어를 듣고 이해할 수 있는 수준의 가장 작은 소리 크기를 뜻합니다. 수치가 낮을수록 청력이 좋음을 의미합니다."/>
+    <TextView
+        android:layout_marginVertical="20dp"
+        android:layout_marginHorizontal="40sp"
+        android:textSize="20sp"
+        android:textColor="@color/gray"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="어음명료도란?\n검사자가 듣기 편안한 소리로 10개의 단어를 듣고 맞춘 단어 수를 의미합니다. 10개 중 7개 이하라면 병원에서 정밀 검사를 받으시길 바랍니다."/>
 </LinearLayout>
