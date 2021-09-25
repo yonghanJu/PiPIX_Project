@@ -176,6 +176,7 @@ class SpeechFragment : BaseFragment<FragmentSpeechBinding>(
     }
     override fun onPause() {
         speechTest.pause()
+        SoundController.mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC,7,1)
         if(!isPause)findNavController().navigate(R.id.action_speechFragment_to_ProfileFragment)
         super.onPause()
     }
