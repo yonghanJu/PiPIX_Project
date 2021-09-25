@@ -68,6 +68,7 @@
         android:gravity="center"
         android:textColor="@color/gray"/>
     <androidx.appcompat.widget.AppCompatSeekBar
+        android:layout_marginTop="10dp"
         android:id="@+id/mp3_seekBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -77,14 +78,14 @@
         android:layout_marginHorizontal="20dp"/>
 
     <TextView
-        android:layout_marginHorizontal="40dp"
+        android:gravity="center_horizontal"
         android:layout_marginVertical="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:textSize="20sp"
         android:textColor="@color/gray"
-        android:text="버튼을 오른쪽으로 이동하여 타이머를 설정하고 재생버튼을 클릭하세요. 이명이 들리지 않을 정도의 편안한 볼륨으로 청취하세요"/>
+        android:text="버튼을 오른쪽으로 이동하여\n타이머를 설정하고 재생버튼\n을 클릭하세요. 이명이 들리\n지 않을 정도의 편안한 볼륨으\n로 청취하세요"/>
 
 
 
