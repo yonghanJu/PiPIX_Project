@@ -4,10 +4,8 @@ import android.content.Context
 import android.media.MediaPlayer
 import android.util.Log
 import android.widget.Button
-import android.widget.Toast
 import com.pipi.pipix.R
 import kotlinx.coroutines.*
-import java.lang.Math.pow
 import java.lang.Thread.sleep
 import kotlin.concurrent.thread
 import kotlin.math.pow
@@ -27,10 +25,7 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
 
     init {
         //for(i in 0..100 step 5) dbMap[i] = (1/10000f)*i + 0.00008f
-        for(i in 0..100 step 5){
-            dbMap[i] = (1.0/10.0.pow((100.0-i)/20.0)).toFloat()
-            Log.d("tag",dbMap[i].toString())
-        }
+        for(i in 0..100 step 5) dbMap[i] = (1.0/ (10.0).pow((100.0-i)/20.0) ).toFloat()
     }
 
     fun doTest(direc: Int): Boolean {
