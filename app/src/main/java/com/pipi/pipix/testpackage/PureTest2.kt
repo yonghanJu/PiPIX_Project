@@ -4,11 +4,11 @@ import android.content.Context
 import android.media.MediaPlayer
 import android.util.Log
 import android.widget.Button
-import android.widget.Toast
 import com.pipi.pipix.R
 import kotlinx.coroutines.*
 import java.lang.Thread.sleep
 import kotlin.concurrent.thread
+import kotlin.math.pow
 import kotlin.math.roundToInt
 
 class PureTest2(private val btnYes:Button, private val btnNo: Button, var context: Context, var ptViewModel: PureTest2ViewModel) {
@@ -22,8 +22,10 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
     private val dbList = arrayListOf(1000, 2000, 4000, 8000, 250, 500)
     private val dbMap = mutableMapOf<Int,Float>()
     private var result = mutableListOf(mutableListOf(0,0,0,0,0,0), mutableListOf(0,0,0,0,0,0))
+
     init {
-        for(i in 0..100 step 5) dbMap[i] = (1/10000f)*i + 0.00008f
+        //for(i in 0..100 step 5) dbMap[i] = (1/10000f)*i + 0.00008f
+        for(i in 0..100 step 5) dbMap[i] = (1.0/ (10.0).pow((100.0-i)/20.0) ).toFloat()
     }
 
     fun doTest(direc: Int): Boolean {
@@ -71,6 +73,9 @@ class PureTest2(private val btnYes:Button, private val btnNo: Button, var contex
         fun play(){
             if(currentDb in 0..100){
                 mediaPlayer.setVolume((1-direc)*dbMap[currentDb]!!, direc*dbMap[currentDb]!!)
+                mediaPlayer.start()
+            }else if(currentDb < 0){
+                mediaPlayer.setVolume((1-direc)*dbMap[0]!!, direc*dbMap[0]!!)
                 mediaPlayer.start()
             }
         }
