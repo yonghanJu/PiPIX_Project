@@ -1,6 +1,7 @@
 package com.pipi.pipix.src.main.fragment
 
 import android.Manifest
+import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
@@ -18,6 +19,7 @@ import com.pipi.pipix.config.BaseActivity
 import com.pipi.pipix.config.BaseFragment
 import com.pipi.pipix.databinding.FragmentMp3Binding
 import com.pipi.pipix.databinding.FragmentTrtBinding
+import com.pipi.pipix.src.main.SoundController
 import com.pipi.pipix.src.main.fragment.TRTFragment.Companion.trtType
 import java.io.IOException
 import kotlin.concurrent.timer
@@ -30,6 +32,10 @@ class MP3Fragment : BaseFragment<FragmentMp3Binding>(FragmentMp3Binding::bind, R
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
+
+            val st = AudioManager.STREAM_MUSIC
+            SoundController.mAudioManager.setStreamVolume(st,7,1)
+            SoundController.isStopMusicOfOtherApps()
 
 
             val seekBar = binding.mp3SeekBar
