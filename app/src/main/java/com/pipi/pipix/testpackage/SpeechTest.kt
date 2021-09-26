@@ -12,6 +12,7 @@ import com.pipi.pipix.data.PRViewModel
 import kotlinx.coroutines.runBlocking
 import java.util.*
 import kotlin.concurrent.thread
+import kotlin.math.pow
 
 class SpeechTest(private val tpaRight: Int, private val tpaLeft: Int, private val textCount: TextView, private val speechViewModel: SpeechViewModel, val prViewModel: PRViewModel, val context: Context) {
     private var recordString = ""
@@ -44,7 +45,7 @@ class SpeechTest(private val tpaRight: Int, private val tpaLeft: Int, private va
 
     // db 세팅
     init {
-        for(i in 0..100 step 5) dbMap[i] = (1/10000f)*i + 0.00008f
+        for(i in 0..100 step 5) dbMap[i] = (1.0/ (10.0).pow((100.0-i)/20.0) ).toFloat()
     }
 
 
@@ -149,7 +150,7 @@ class SpeechTest(private val tpaRight: Int, private val tpaLeft: Int, private va
 
         // 테스트 성공 여부 true or false 반환
         if(isPaused) return false
-        thread{ for(i in 0..30){
+        thread{ for(i in 0..29){
             Thread.sleep(30)
             speechViewModel.currentProgress.postValue(++progress)
         }}
