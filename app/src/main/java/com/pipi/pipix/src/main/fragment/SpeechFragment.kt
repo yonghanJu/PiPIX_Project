@@ -11,6 +11,8 @@ import android.speech.SpeechRecognizer
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.lifecycle.Observer
@@ -39,6 +41,8 @@ class SpeechFragment : BaseFragment<FragmentSpeechBinding>(
     private lateinit var speechViewModel: SpeechViewModel
     private lateinit var speechTest: SpeechTest
     private lateinit var prViewModel: PRViewModel
+    private lateinit var progressBar: ProgressBar
+    private lateinit var progressText: TextView
     private var isPause = false
     private var tpaRight = 0
     private var tpaLeft = 0
@@ -84,6 +88,18 @@ class SpeechFragment : BaseFragment<FragmentSpeechBinding>(
 
         speechViewModel.currentClickable.observe(viewLifecycleOwner,{
             binding.speechButtonRight.isEnabled = it
+        })
+
+
+        speechViewModel.currentProgress.postValue(0)
+        speechViewModel.currentProgress.observe(viewLifecycleOwner, {
+            if(it<100){
+                progressBar.progress = it
+                progressText.text = "${it}%"
+            }else {
+                progressBar.progress = 100
+                progressText.text = "100%"
+            }
         })
 
         binding.speechButtonRight.setOnTouchListener { v, event ->
