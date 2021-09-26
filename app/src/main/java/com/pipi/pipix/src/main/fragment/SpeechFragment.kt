@@ -90,7 +90,8 @@ class SpeechFragment : BaseFragment<FragmentSpeechBinding>(
             binding.speechButtonRight.isEnabled = it
         })
 
-
+        progressBar = binding.speechProgress
+        progressText = binding.speechTextviewProgress
         speechViewModel.currentProgress.postValue(0)
         speechViewModel.currentProgress.observe(viewLifecycleOwner, {
             if(it<100){
