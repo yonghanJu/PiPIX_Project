@@ -15,14 +15,13 @@ import kotlin.concurrent.thread
 
 class SpeechTest(private val tpaRight: Int, private val tpaLeft: Int, private val textCount: TextView, private val speechViewModel: SpeechViewModel, val prViewModel: PRViewModel, val context: Context) {
     private var recordString = ""
-    private var totalCountRight = 0
-    private var correctCount = 0
     private var isPaused = false
     private var isRecorded = false
     private var isTest1Fin = false
     private var isTest2Fin = false
     private var recordFin = false
     private var currentDb = 0
+    private var progress = 0
     private val dbMap = mutableMapOf<Int,Float>()
     private var result = mutableListOf(0,0,0,0) // index 0,1,2,3 -> tpaRight, tpaLeft, scoreRight, scoreLeft
 
@@ -150,11 +149,12 @@ class SpeechTest(private val tpaRight: Int, private val tpaLeft: Int, private va
 
         // 테스트 성공 여부 true or false 반환
         if(isPaused) return false
+        thread{ for(i in 0..30){
+            Thread.sleep(30)
+            speechViewModel.currentProgress.postValue(++progress)
+        }}
         return true
     }
-
-
-
 
     // 테스트 2(명료도)
     fun doTest2(direc: Int): Boolean{
@@ -215,6 +215,11 @@ class SpeechTest(private val tpaRight: Int, private val tpaLeft: Int, private va
             }
 
             runBlocking { job.join() }
+            thread{
+                speechViewModel.currentProgress.postValue(++progress)
+                Thread.sleep(30)
+                speechViewModel.currentProgress.postValue(++progress)
+            }
         } // end of for Loop
 
         test2Fin(direc, currentScore)
